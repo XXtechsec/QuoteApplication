@@ -1,0 +1,150 @@
+{% extends "Quotes/base.html" %}
+{% block content %}
+
+
+<div class="row">
+  <div class="col-md-3">
+    <div class='content-section'>
+      <h3>Choose From the following Products:</h3>
+
+      <form id="searchform" action="{% url 'search' %}" method="POST"> {% csrf_token %}
+      <input class="searchfield" id="searchbox" name="userSearch" type="text" placeholder="search" value = "{{ search }}">
+      </form>
+
+      {%block QuoteMaker%}{%endblock QuoteMaker%}
+    </div>
+  </div>
+  <div class="col-md-9">
+    <div class="sticky">
+      <div class='content-section'>
+        <h1>Quote: <small>{{ name }}</small></h1>
+        <h6>Company: {{ company }}</h6>
+        <div class="container">
+          <div class="card">
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Service Type</th>
+                  <th>Type</th>
+                  <th>Quality/SubType</th>
+                  <th>SKU</th>
+                  <th>Description</th>
+                  <th>Price</th>
+                  <th>Options</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for product in result %}
+                <tr>
+                  <td>{{ product.ServiceType }}</td>
+                  <td>{{ product.Type }}</td>
+                  <td>
+                    {% with product.Quality as quality %}
+                    {% if "Bronze (9x5)" in quality or "Silver (12x5)" in quality or 'Gold (24x7)' in quality %}
+
+                    <form action="{% url 'changeQuality' %}" method="post">{% csrf_token %}
+                      <input style=display:none value="{{ product }}" name='ToChangeQuality'>
+                      <select name="dropdown" onchange="this.form.submit()">
+                        </input>
+
+                        {% if "Bronze (9x5)" in quality %}
+                        <option selected="selected" disabled>
+                          {% else %}
+                        <option value="Bronze">
+                          {% endif %}
+                          Bronze (9x5)</option>
+
+                        {% if 'Silver (12x5)' in quality %}
+                        <option selected="selected" disabled>
+                          {% else %}
+                        <option value="Silver">
+                          {% endif %}
+                          Silver (12x5)</option>
+
+                        {% if 'Gold (24x7)' in quality %}
+                        <option selected="selected" disabled>
+                          {% else %}
+                        <option value="Gold">
+                          {% endif %}
+                          Gold (24x7)</option>
+
+
+                      </select>
+
+                    </form>
+                    {% else %}
+                    {{quality}}
+                    {% endif %}
+                    {% endwith %}
+                  </td>
+                  <td>{{ product.SKU }}</td>
+                  <td>{{ product.Description|truncatechars:50  }}</td>
+                  <td>{% widthratio product.Price 1 product.Qty %}</td>
+                  <td>
+                    <form action="{% url 'delete' %}" method="POST">{% csrf_token %}
+                      <button id=deletebtn class="btn btn-danger btn-xs" type="submit" value="{{ product }}" name="deleteService">
+                        delete
+                      </button>
+                    </form>
+                    <b>Qty:</b>
+                    <form id= "QtyForm" action="{% url 'Qty' %}" method="POST">{% csrf_token %}
+                      <input type="number" min="1" value={{product.Qty}} name='Qty'  oninput="validity.valid||(value='');" onchange="this.form.submit()">
+                      <input style=display:none value="{{ product }}" name='ToChange'>
+                    </form>
+
+                  </td>
+                </tr>
+                {% endfor %}
+                <tr>
+                  <td><b>Total Price:</b></td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>-</td>
+                  <td>{{ total }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <form action="{% url 'Pdf' %}" target="_blank" method="POST">{% csrf_token %}
+            <button id=Menubtn class="button" data-toggle="collapse" aria-label="Toggle navigation" type="submit">
+              export to pdf
+            </button>
+          </form>
+          <form action="{% url 'CSV' %}" method="POST">{% csrf_token %}
+            <button id=Menubtn class="button" data-toggle="collapse" aria-label="Toggle navigation" type="submit">
+              export to CSV
+            </button>
+          </form>
+          <form action="{% url 'saveQuote' %}" method="POST">{% csrf_token %}
+            <button id=Menubtn class="button" data-toggle="collapse" aria-label="Toggle navigation" type="submit">
+              save and quit
+            </button>
+            <div class='content-section'>
+            <h4>Enter Name:
+            <input value="{{ name }}" name='saveName'>
+            </h4>
+            <h4>Enter Company Name:
+            <input value="{{ company }}" name='saveCompany'>
+            </h4>
+          </div>
+          </form>
+          <form action="{% url 'delete' %}" method="POST">{% csrf_token %}
+            <button id=deletebtn class="btn btn-danger btn-xs" type="submit" value="{{ product }}" name="deleteQuote">
+              delete Quote
+            </button>
+          </form>
+          <form action="{% url 'delete' %}" method="POST">{% csrf_token %}
+            <button id=deletebtn class="btn btn-danger btn-xs" type="submit" value="{{ product }}" name="clear">
+              clear
+            </button>
+          </form>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+  {%endblock content %}

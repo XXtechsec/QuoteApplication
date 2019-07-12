@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+
+    <style type="text/css">
+        @page {
+            size: A4;
+            margin: 1cm;
+        }
+        .table {
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: 5px;
+            background-color: #fff;
+        }
+        .table th,
+        .table td {
+            padding: 5px;
+            vertical-align: top;
+            border-top: 1px solid #000;
+            text-align: center;
+        }
+        .table thead th {
+            vertical-align: bottom;
+            border-bottom: 2px solid #000;
+        }
+        .table tbody + tbody {
+            border-top: 2px solid #000;
+        }
+        .table .table {
+            background-color: #fff;
+        }
+        .list-group {
+            display: block;
+            width: 100%;
+            list-style: none;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        .list-group p {
+            width: 100%;
+            height: 20px;
+            line-height: 20px;
+            list-style: none;
+            font-size: 1.1em;
+        }
+    </style>
+<body>
+
+<div class="container">
+    <div class="card">
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Qty</th>
+                <th>Service Type</th>
+                <th>Type</th>
+                <th>Quality/SubType</th>
+                <th>SKU</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for product in products %}
+                <tr>
+                    <td>{{product.Qty}}</td>
+                    <td>{{ product.ServiceType }}</td>
+                    <td>{{ product.Type }}</td>
+                    <td>{{ product.Quality }}</td>
+                    <td>{{ product.SKU }}</td>
+                    <td>{{ product.Description }}</td>
+                    <td>{% widthratio product.Price 1 product.Qty %}</td>
+                </tr>
+            {% endfor %}
+                    <td><b>Total Price:</b></td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>{{ total }}</td>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

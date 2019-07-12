@@ -1,0 +1,55 @@
+{% extends "Quotes/Results.html" %}
+{% block QuoteMaker %}
+<ul class="list-group">
+  {% for T, SubType in LookUp %}
+  <form action="{% url 'result' %}" method="POST">{% csrf_token %}
+  </form>
+  <button class="button" type="button" data-target="#{{ T|cut:" " |cut:"(" |cut:")" |cut:"x" }}" aria-expanded="false" data-toggle="collapse" aria-label="Toggle navigation">
+    {{ T }}
+  </button>
+  <div class="collapse" id="{{ T|cut:" " |cut:"(" |cut:")" |cut:"x" }}">
+    {% for o in SubType %}
+    {% if '-' in o and SubType|length_is:1 or 'Gold (24x7)' in o or 'Silver (12x5)' in o or 'Bronze (9x5)' in o and SubType|length_is:3 %}
+    <div>
+
+      {% else %}
+      {% with T|add:o as To%}
+
+
+      <button class="button" id='Sub' type="button" data-target="#{{To|cut:" " |cut:"(" |cut:")" |cut:"x"}}" aria-expanded="false" data-toggle="collapse" aria-label="Toggle navigation">
+        {% if 'Bronze (9x5)' in o %}
+        General
+        {% else %}
+        {{ o }}
+        {% endif %}
+      </button>
+
+      <div class="collapse" id="{{To|cut:" " |cut:"(" |cut:")" |cut:"x"}}" id='SubSub'>
+        {%endwith%}
+        {% endif %}
+        {% for product in Service %}
+        {% if 'Gold (24x7)' in o or 'Silver (12x5)' in o %}
+
+        {% else %}
+        {% if product.Quality == o and product.Type == T %}
+        <form action="{% url 'result' %}" method="POST">{% csrf_token %}
+          <button id=SubSub class="button" aria-expanded="false" data-toggle="collapse" aria-label="Toggle navigation" type="submit" name="add" value="{{ product }}">
+            {{ product.Description|cut:"Bronze" }}
+          </button>
+        </form>
+        {% endif %}
+        {% endif %}
+        {%endfor%}
+
+      </div>
+
+
+
+      {%endfor%}
+
+    </div>
+    {% endfor %}
+
+</ul>
+
+{% endblock QuoteMaker %}

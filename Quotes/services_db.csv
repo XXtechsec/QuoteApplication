@@ -1,0 +1,435 @@
+ServiceType,Type,Quality,SKU,Description,Price
+Managed Services,Appliance,Bronze (9x5),MS-FM-6030,Managed e-Mail Security Appliance-Primary Bronze,92
+Managed Services,Appliance,Bronze (9x5),MS-FM-6031,Managed e-Mail Security Service-Fail Over Bronze,68
+Managed Services,Appliance,Bronze (9x5),MS-FM-6032,Managed e-Mail Archiver Appliance Bronze,92
+Managed Services,Appliance,Bronze (9x5),MS-FM-6040,Managed IPS/IDS Appliance Bronze,94
+Managed Services,Appliance,Bronze (9x5),MS-FM-6041,Managed Firewall Content Security UTM Service Bronze,54
+Managed Services,Appliance,Gold (24x7),MS-FM-6030.G,Managed e-Mail Security Appliance-Primary Gold,170
+Managed Services,Appliance,Gold (24x7),MS-FM-6031.G,Managed e-Mail Security Service-Fail Over Gold,125
+Managed Services,Appliance,Gold (24x7),MS-FM-6032.G,Managed e-Mail Archiver Appliance Gold,170
+Managed Services,Appliance,Gold (24x7),MS-FM-6040.G,Managed IPS/IDS Appliance Gold,175
+Managed Services,Appliance,Gold (24x7),MS-FM-6041.G,Managed Firewall Content Security UTM Service Gold,100
+Managed Services,Appliance,Silver (12x5),MS-FM-6030.S,Managed e-Mail Security Appliance-Primary Silver,114
+Managed Services,Appliance,Silver (12x5),MS-FM-6031.S,Managed e-Mail Security Service-Fail Over Silver,84
+Managed Services,Appliance,Silver (12x5),MS-FM-6032.S,Managed e-Mail Archiver Appliance Silver,114
+Managed Services,Appliance,Silver (12x5),MS-FM-6040.S,Managed IPS/IDS Appliance Silver,117
+Managed Services,Appliance,Silver (12x5),MS-FM-6041.S,Managed Firewall Content Security UTM Service Silver,67
+Managed Services,Application,Silver (12x5),MS-BACKUP-1TB-S.001,Managed Backup per Terabyte (minimum 2 TB) (installation extra),100
+Managed Services,Application,Silver (12x5),MS-BACKUP-VCC-S.001,Veeam Cloud Connect Application Standby Support (Silver),50
+Managed Services,Application,Bronze (9x5),MS-BDL-4000,Network Application Support Bundle Bronze Bronze,160
+Managed Services,Application,Bronze (9x5),MS-BDL-5000,Backup Infrastructure Server/Node Support Bundle Bronze Bronze,230
+Managed Services,Application,Bronze (9x5),MS-BDL-6000,Managed Business Continuity Bronze Bronze,230
+Managed Services,Application,Bronze (9x5),MS-FM-3020,MS-Exchange Application Support Bronze Bronze,210
+Managed Services,Application,Bronze (9x5),MS-FM-3030,MS-Active Directory Application Support Bronze Bronze,210
+Managed Services,Application,Bronze (9x5),MS-FM-3040,MySQL Database Support Bronze Bronze,214
+Managed Services,Application,Bronze (9x5),MS-FM-3050,Custom Application Support Bronze Bronze,374
+Managed Services,Application,Bronze (9x5),MS-FM-3060,Cluster Application Support (per 2 node cluster) Bronze,188
+Managed Services,Application,Bronze (9x5),MS-FM-3061,Cluster Application Support add on ( per node) Bronze,54
+Managed Services,Application,Bronze (9x5),MS-BACKUP-1TB-B.001,Managed Backup per Terabyte (minimum 2 TB) (installation extra),80
+Managed Services,Application,Bronze (9x5),MS-BACKUP-VCC-B.001,Veeam Cloud Connect Application Standby Support (Bronze),45
+Managed Services,Application,Gold (24x7),MS-BDL-4000.G,Network Application Support Bundle Gold,300
+Managed Services,Application,Gold (24x7),MS-BDL-5000.G,Backup Infrastructure Server/Node Support Bundle Gold,430
+Managed Services,Application,Gold (24x7),MS-BDL-6000.G,Managed Business Continuity Gold,430
+Managed Services,Application,Gold (24x7),MS-FM-3020.G,MS-Exchange Application Support Gold,392
+Managed Services,Application,Gold (24x7),MS-FM-3030.G,MS-Active Directory Application Support Gold,392
+Managed Services,Application,Gold (24x7),MS-FM-3040.G,MySQL Database Support Gold,400
+Managed Services,Application,Gold (24x7),MS-FM-3050.G,Custom Application Support Gold,700
+Managed Services,Application,Gold (24x7),MS-FM-3060.G,Cluster Application Support (per 2 node cluster) Gold,350
+Managed Services,Application,Gold (24x7),MS-FM-3061.G,Cluster Application Support add on ( per node) Gold,100
+Managed Services,Application,Gold (24x7),MS-BACKUP-1TB-G.001,Managed Backup per Terabyte (minimum 2 TB) (includes installation),150
+Managed Services,Application,Gold (24x7),MS-BACKUP-VCC-G.001,Veeam Cloud Connect Application Standby Support (Gold),75
+Managed Services,Application,Silver (12x5),MS-BDL-4000.S,Network Application Support Bundle Silver,200
+Managed Services,Application,Silver (12x5),MS-BDL-5000.S,Backup Infrastructure Server/Node Support Bundle Silver,287
+Managed Services,Application,Silver (12x5),MS-BDL-6000.S,Managed Business Continuity Silver,287
+Managed Services,Application,Silver (12x5),MS-FM-3020.S,MS-Exchange Application Support Silver,262
+Managed Services,Application,Silver (12x5),MS-FM-3030.S,MS-Active Directory Application Support Silver,262
+Managed Services,Application,Silver (12x5),MS-FM-3040.S,MySQL Database Support Silver,267
+Managed Services,Application,Silver (12x5),MS-FM-3050.S,Custom Application Support Silver,467
+Managed Services,Application,Silver (12x5),MS-FM-3060.S,Cluster Application Support (per 2 node cluster) Silver,234
+Managed Services,Application,Silver (12x5),MS-FM-3061.S,Cluster Application Support add on ( per node) Silver,67
+Managed Services,Application,MS O365,MS-O365.500.001,O365 Support (<500 users),7
+Managed Services,Application,MS O365,MS-O365.1000.001,O365 Support (<1000 users),5
+Managed Services,Application,MS O365,MS-O365.Plus.001,O365 Support (unlimited user),3
+Managed Services,Base,-,MS-Base-1000,"Base Service (10 devices or less) inc. Service Delivery, Account Management, Change Management, Reporting, Remote Access Mgmt., Customer Portal, Help Desk",1000
+Managed Services,Base,-,MS-Base-1010,Base Service Add-on (next 40 devices),1000
+Managed Services,Base,-,MS-Base-1020,"Base Service Custom (As per Transition Pricing Tool) inc. Service Delivery, Account Management, Change Management, Reporting, Remote Access Mgmt., Customer Portal, Help Desk",0
+Managed Services,Cloud VM,Bronze (9x5),MS-BDL-1020,Manage Cloud Virtual Machine Low (1 - 2 vCPU / <16GB) Bronze,80
+Managed Services,Cloud VM,Bronze (9x5),MS-BDL-1021,Manage Cloud Virtual Machine Mid (4 vCPU/ >16GB) Bronze,156
+Managed Services,Cloud VM,Bronze (9x5),MS-BDL-1022,Manage Cloud Virtual Machine High (> 4 vCPU) Bronze,182
+Managed Services,Cloud VM,Bronze (9x5),MS-BDL-1031,Cloud Virtual Appliance (1 - 2 vCPU) Bronze,80
+Managed Services,Cloud VM,Gold (24x7),MS-BDL-1020.G,Cloud Virtual Machine Low (1 - 2 vCPU / <16GB) Gold,150
+Managed Services,Cloud VM,Gold (24x7),MS-BDL-1021.G,Cloud Virtual Machine Mid (1 - 4 vCPU / >16GB) Gold,290
+Managed Services,Cloud VM,Gold (24x7),MS-BDL-1022.G,Cloud Virtual Machine High (> 4 vCPU) Gold,340
+Managed Services,Cloud VM,Gold (24x7),MS-BDL-1031.G,Cloud Virtual Appliance (1 - 2 vCPU) Gold,150
+Managed Services,Cloud VM,Silver (12x5),MS-BDL-1020.S,Cloud Virtual Machine Low (1 - 2 vCPU / <16GB) Silver,100
+Managed Services,Cloud VM,Silver (12x5),MS-BDL-1021.S,Cloud Virtual Machine Mid (1 - 4 vCPU / >16GB) Silver,194
+Managed Services,Cloud VM,Silver (12x5),MS-BDL-1022.S,Cloud Virtual Machine High (> 4 vCPU) Silver,227
+Managed Services,Cloud VM,Silver (12x5),MS-BDL-1031.S,Cloud Virtual Appliance (1 - 2 vCPU) Silver,100
+Managed Services,Commerx Cloud,Cloud,MS-CS-CMX.MIS.01.01,Generic Cloud Services,0
+Managed Services,Commerx Cloud,Hosting,MS-CS-CMX.MIS.BCS.01.01,Base Cabinet Service,0
+Managed Services,Commerx Cloud,Hosting,MS-CS-CMX.MIS.PHS.01.01,Physical Server Hosting Service,0
+Managed Services,Commerx Cloud,Hosting,MS-CS-CMX.MIS.NET.01.01,Hosted Physical Managed Firewall and VPN Service Bundle,0
+Managed Services,Commerx Cloud,Hosting,MS-CS-CMX.VM.SRV.01.01,"COMPUTE UNIT - (per Ghz VCPU, 2GB VRAM)",30
+Managed Services,Commerx Cloud,Hosting,MS-CS-CMX.DS.BPG.01.01,DATA STORAGE - BlockStore - Tier I - Cloud (per Gbyte),0.08
+Managed Services,Commerx Cloud,Hosting,MS-CS-CMX.DS.BPG.02.01,DATA STORAGE - BlockStore - Tier II - Cloud (per Gbyte),0.07
+Managed Services,Commerx Cloud,Hosting,MS-CS-CMX.PH.LOW.01.01,"DEDICATED COMPUTE - Low Density (2xCPU, 12xCORE, 32GB RAM, SAN Connection)",280
+Managed Services,Commerx Cloud,Hosting,MS-CS-CMX.PH.MED.01.01,"DEDICATED COMPUTE - Medium Density (2xCPU, 12xCORE, 96GB RAM, SAN Connection)",325
+Managed Services,Commerx Cloud,Hosting,MS-CS-CMX.PH.HIG.01.01,"DEDICATED COMPUTE - High Density (2xCPU, 12xCORE, 192GB RAM, SAN Connection)",620
+Managed Services,Commerx Cloud,Hosting,MS-CS-CMX.DS.BPT.01.01,DATA STORAGE - BlockStore - Tier I - Dedicated Compute (per Tbyte),80
+Managed Services,Commerx Cloud,Hosting,MS-CS-CMX.DS.BPT.02.01,DATA STORAGE - BlockStore - Tier II - Dedicated (per Tbyte),70
+Managed Services,Commerx Cloud,Hosting,MS-CS-CMX.MAIL.2G.01.01,APP - Hosted Email Basic Mailbox (2Gbyte per user),7.7
+Managed Services,Commerx Cloud,Hosting,MS-CS-CMX.MAIL.25G.01.01,APP - Hosted Email Full Mailbox (25 Gbyte per user),9.5
+Managed Services,Commerx Cloud,Hosting,MS-CS-CMX.VDI.01.01,APP - REMOTE DESKTOP ( 32/64 bit x86 ),30
+Managed Services,Commerx Cloud,Rental,RT-MS-CS-CMX.MIS.01,Rental Server/Equipment Commerx Cloud (change description to match equipment list),0
+Managed Services,Commerx Cloud,Rental,RT-MS-CS-CMX.CUST.02,Rental Server/Equipment at Customer Site (change desc. to match equipment),0
+Managed Services,Commerx Cloud,OS,MS-CS-CMX.OS.MSVM.01.01,"GUEST VM O/S - MICROSOFT WINDOWS SERVER LICENSE (2003, 2008 or 2012)",18
+Managed Services,Commerx Cloud,OS,MS-CS-CMX.OS.RHEVM.01.01,GUEST VM O/S - RED HAT ENTERPRISE LINUX SERVER LICENSE ( 32/64 bit x86 ),18
+Managed Services,Commerx Cloud,Backup,MS-CS-CMX.VM.BKUPE.01.01,VM Backup Enablement (ONE LICENSE REQUIRED FOR EACH VM REQUIRING BACKUP),17.5
+Managed Services,Commerx Cloud,Power,MS-CS-CMX.POWER.100W.01.01,"EDGECONNECT (per Rack Unit including 100Watts of redundant power, redundant GigE ports)",179
+Managed Services,Commerx Cloud,Networking,MS-CS-CMX.INT.T100G.01.01,INTERNETCONNECT - Transfer (per 100 Gbyte),8
+Managed Services,Commerx Cloud,Networking,MS-CS-CMX.INT.TRM.01.01,INTERNETCONNECT - Transit (per Mbit),8
+Managed Services,Commerx Cloud,Networking,MS-CS-CMX.INT.IP.01.01,INTERNETCONNECT - Public IP Address (per IPv4 address),4
+Managed Services,Discount,-,MS-DSK-0000,One Time Service Discount,0
+Managed Services,End User,Bronze (9x5),MS-FM-7010,Managed Workstation (Windows) Bronze,30
+Managed Services,End User,Bronze (9x5),MS-FM-7011,"Managed Workstation (Windows),High Volume >200 Bronze",22
+Managed Services,End User,Bronze (9x5),MS-FM-7012,"Managed Workstation, Ultra High Volume >1000 Bronze",10
+Managed Services,End User,Bronze (9x5),MS-FM-7013,Managed Printer Bronze,15
+Managed Services,End User,Bronze (9x5),MS-FM-7014,"Managed Printer, High Volume >200 Bronze",12
+Managed Services,End User,Bronze (9x5),MS-FM-7015,"Managed Printer, Ultra High Volume >1000 Bronze",8
+Managed Services,End User,Bronze (9x5),MS-FM-7020,Managed Workstation (Linux) Bronze,30
+Managed Services,End User,Bronze (9x5),MS-FM-7021,"Managed Workstation (Linux),High Volume >200 Bronze",22
+Managed Services,End User,Bronze (9x5),MS-FM-7030,Managed Workstation (Mac) Bronze,30
+Managed Services,End User,Bronze (9x5),MS-FM-7031,"Managed Workstation (Mac),High Volume >200 Bronze",22
+Managed Services,End User,Gold (24x7),MS-FM-7010 .G,Managed Workstation (Windows) Gold,50
+Managed Services,End User,Gold (24x7),MS-FM-7011.G,"Managed Workstation (Windows),High Volume >200 Gold",40
+Managed Services,End User,Gold (24x7),MS-FM-7012.G,"Managed Workstation, Ultra High Volume >1000 Gold",18
+Managed Services,End User,Gold (24x7),MS-FM-7020.G,Managed Workstation (Linux) Gold,50
+Managed Services,End User,Gold (24x7),MS-FM-7021.G,"Managed Workstation (Linux),High Volume >200 Gold",40
+Managed Services,End User,Gold (24x7),MS-FM-7030.G,Managed Workstation (Mac) Gold,80
+Managed Services,End User,Gold (24x7),MS-FM-7031.G,"Managed Workstation (Mac),High Volume >200 Gold",40
+Managed Services,End User,Help Desk,MS-HD-0001,User Support and Help Desk Services Bronze (9x5),40
+Managed Services,End User,Help Desk,MS-HD-0001.S,User Support and Help Desk Services Silver (12x5),45
+Managed Services,End User,Help Desk,MS-HD-0001.G,User Support and Help Desk Services Gold (24x7),50
+Managed Services,End User,Help Desk,MS-HD-0001.P+,User Support and Help Desk Services Premium+ (24x7) Includes Hotel and Mobile Support,60
+Managed Services,End User,Help Desk,PS-MS-HD-IMG-0001,Laptop/Desktop Imaging,210
+Managed Services,End User,Help Desk,PS-MS-HD-OB-0001,Laptop/Desktop Onboarding,0
+Managed Services,End User,Silver (12x5),MS-FM-7010 .S,Managed Workstation (Windows) Silver,40
+Managed Services,End User,Silver (12x5),MS-FM-7011.S,"Managed Workstation (Windows),High Volume >200 Silver",27
+Managed Services,End User,Silver (12x5),MS-FM-7012.S,"Managed Workstation, Ultra High Volume >1000 Silver",12
+Managed Services,End User,Silver (12x5),MS-FM-7013.S,Managed Printer Silver,20
+Managed Services,End User,Silver (12x5),MS-FM-7014.S,"Managed Printer, High Volume >200 Silver",15
+Managed Services,End User,Silver (12x5),MS-FM-7015.S,"Managed Printer, Ultra High Volume >1000 Silver",12
+Managed Services,End User,Silver (12x5),MS-FM-7020.S,Managed Workstation (Linux) Silver,40
+Managed Services,End User,Silver (12x5),MS-FM-7021.S,"Managed Workstation (Linux),High Volume >200 Silver",27
+Managed Services,End User,Silver (12x5),MS-FM-7030.S,Managed Workstation (Mac) Silver,40
+Managed Services,End User,Silver (12x5),MS-FM-7031.S,"Managed Workstation (Mac),High Volume >200 Silver",27
+Managed Services,End User,Silver (12x5),MS-FM-7040.S,Managed Mobile Device Silver,20
+Managed Services,End User,Bronze (9x5),MS-FM-7040,Managed Mobile Device Bronze,16
+Managed Services,Generic,Bronze (9x5),MS-FM-2010,Server Monitoring and Response Bronze (Response is paid by the incident),55
+Managed Services,Generic,Bronze (9x5),MS-FM-2011,Network Monitoring and Response Bronze (Response is paid by the incident),55
+Managed Services,Generic,Bronze (9x5),MS-FM-2012,Level 1 Incident Response (Base) Bronze,500
+Managed Services,Generic,Bronze (9x5),MS-FM-2013,Level 1 Incident Response (60 incidents) (1 incident <15min) Bronze,1500
+Managed Services,Generic,Bronze (9x5),MS-FM-2014,Level 1 Incident Response (per incident) (1 incident <15min) Bronze,25
+Managed Services,Generic,Bronze (9x5),MS-FM-2015-BDL,Managed Services (Server/DR Replication/DR testing) Bundle Bronze,750
+Managed Services,End User,Gold (24x7),MS-FM-7040.G,Managed Mobile Device Gold,30
+Managed Services,Generic,Gold (24x7),MS-FM-2010.G,Server Monitoring and Response (Response is paid by the incident) Gold,105
+Managed Services,Generic,Gold (24x7),MS-FM-2011.G,Network Monitoring and Response (Response is paid by the incident) Gold,105
+Managed Services,Generic,Gold (24x7),MS-FM-2012.G,Level 1 Incident Response (Base) Gold,750
+Managed Services,Generic,Gold (24x7),MS-FM-2013.G,Level 1 Incident Response (60 incidents) (1 incident <15min) Gold,4500
+Managed Services,Generic,Gold (24x7),MS-FM-2014.G,Level 1 Incident Response (per incident) (1 incident <15min) Gold,75
+Managed Services,Generic,Gold (24x7),MS-FM-2015-BDL.G,Managed Services (Server/DR Replication/DR testing) Bundle Gold,1000
+Managed Services,Generic,Silver (12x5),MS-FM-2010.S,Server Monitoring and Response (Response is paid by the incident) Silver,80
+Managed Services,Generic,Silver (12x5),MS-FM-2011.S,Network Monitoring and Response (Response is paid by the incident) Silver,80
+Managed Services,Generic,Silver (12x5),MS-FM-2012.S,Level 1 Incident Response (Base) Silver,600
+Managed Services,Generic,Silver (12x5),MS-FM-2013.S,Level 1 Incident Response (60 incidents) (1 incident <15min) Silver,3000
+Managed Services,Generic,Silver (12x5),MS-FM-2014.S,Level 1 Incident Response (per incident) (1 incident <15min) Silver,50
+Managed Services,Generic,Silver (12x5),MS-FM-2015-BDL.S,Managed Services (Server/DR Replication/DR testing) Bundle Silver,1250
+Professional Services,Hourly Rates,-,PS-TM-L1.1,Technician Hourly Rate,110
+Professional Services,Hourly Rates,-,PS-TM-L1.M4T,Technician Hourly Rate M4 Inc Trvl.,440
+Professional Services,Hourly Rates,-,PS-TM-L1.M2R,Technician Hourly Rate M2 Remote,220
+Professional Services,Hourly Rates,-,PS-TM-L2.1,Senior Technician Hourly Rate,135
+Professional Services,Hourly Rates,-,PS-TM-L2.M4T,Senior Technician Hourly Rate M4 Inc Trvl.,540
+Professional Services,Hourly Rates,-,PS-TM-L2.M2R,Senior Technician Hourly Rate M2 Remo.,270
+Professional Services,Hourly Rates,-,PS-TM-L3.1,Technical Consultant Hourly Rate,170
+Professional Services,Hourly Rates,-,PS-TM-L3.M4T,Technical Consultant Hourly Rate M4 Inc Trvl.,680
+Professional Services,Hourly Rates,-,PS-TM-L3.M2R,Technical Consultant Hourly Rate M2 Remote,340
+Professional Services,Hourly Rates,-,PS-TM-L4.1,Senior Technical Consultant Hourly Rate,195
+Professional Services,Hourly Rates,-,PS-TM-L4.M4T,Senior Technical Consultant Hourly Rate M4 Inc Trvl.,780
+Professional Services,Hourly Rates,-,PS-TM-L4.M2R,Senior Technical Consultant Hourly Rate M2 Remote,390
+Professional Services,Hourly Rates,-,PS-TM-L5.1,Principal Consultant Hourly Rate,225
+Professional Services,Hourly Rates,-,PS-TM-L5.M4T,Principal Consultant Hourly Rate M4 Inc Trvl.,900
+Professional Services,Hourly Rates,-,PS-TM-L5.M2R,Principal Technical Consultant Hourly Rate M2 Remote,450
+Professional Services,Hourly Rates,-,PS-TM-L5.1,Senior Architect Hourly Rate,265
+Professional Services,Hourly Rates,-,PS-TM-L5.M4T,Senior Architect Hourly Rate M4 Inc Trvl.,1060
+Professional Services,Hourly Rates,-,PS-TM-L5.M2R,Senior Architect Hourly Rate M2 Remote,530
+Professional Services,Hourly Rates,-,PS-TM-PM.1,Project Manager Hourly Rate,170
+Professional Services,Hourly Rates,-,PS-TM-SPM.1,Senior Project Manager Hourly Rate,195
+Professional Services,Hourly Rates (VPA),-,PS-BLOCK.BDL.1,Volume Based Pricing Profesional Services Block (DSK Level 1),5000
+Professional Services,Hourly Rates (VPA),-,PS-BLOCK.BDL.2,Volume Based Pricing Profesional Services Block (DSK Level 2),10000
+Professional Services,Hourly Rates (VPA),-,PS-BLOCK.BDL.3,Volume Based Pricing Profesional Services Block (DSK Level 3),50000
+Professional Services,Hourly Rates (VPA),-,PS-MS-TM-L1.1,VPA Technician Hourly Rate,85
+Professional Services,Hourly Rates (VPA),-,PS-MS-TM-L1.M4T,VPA Technician Hourly Rate M4 Inc Trvl.,440
+Professional Services,Hourly Rates (VPA),-,PS-MS-TM-L1.M2R,VPA Technician Hourly Rate M2 Remo.,220
+Professional Services,Hourly Rates (VPA),-,PS-MS-TM-L2.1,VPA Senior Technician Hourly Rate,95
+Professional Services,Hourly Rates (VPA),-,PS-MS-TM-L2.M4T,VPA Senior Technician Hourly Rate M4 Inc Trvl.,380
+Professional Services,Hourly Rates (VPA),-,PS-MS-TM-L2.M2R,VPA Senior Technician Hourly Rate M2 Remo.,190
+Professional Services,Hourly Rates (VPA),-,PS-MS-TM-L3.1,VPA Technical Consultant Hourly Rate,120
+Professional Services,Hourly Rates (VPA),-,PS-MS-TM-L3.M4T,VPA Technical Consultant Hourly Rate M4 Inc Trvl.,480
+Professional Services,Hourly Rates (VPA),-,PS-MS-TM-L3.M2R,VPA Technical Consultant Hourly Rate M2 Remo.,240
+Professional Services,Hourly Rates (VPA),-,PS-MS-TM-L4.1,VPA Senior Technical Consultant Hourly Rate,155
+Professional Services,Hourly Rates (VPA),-,PS-MS-TM-L4.M4T,VPA Senior Technical Consultant Hourly Rate M4 Inc Trvl.,620
+Professional Services,Hourly Rates (VPA),-,PS-MS-TM-L4.M2R,VPA Senior Technical Consultant Hourly Rate M2 Remo.,310
+Professional Services,Hourly Rates (VPA),-,PS-MS-TM-L5.1,VPA Principal Consultant Hourly Rate,175
+Professional Services,Hourly Rates (VPA),-,PS-MS-TM-L5.M4T,VPA Principal Consultant Hourly Rate M4 Inc Trvl.,700
+Professional Services,Hourly Rates (VPA),-,PS-MS-TM-L5.M2R,VPA Principal Technical Consultant Hourly Rate M2 Remo.,350
+Professional Services,Hourly Rates (VPA),-,PS-MS-TM-L5.1,VPA Senior Architect Hourly Rate,210
+Professional Services,Hourly Rates (VPA),-,PS-MS-TM-L5.M4T,VPA Senior Architect Hourly Rate M4 Inc Trvl.,840
+Professional Services,Hourly Rates (VPA),-,PS-MS-TM-L5.M2R,VPA Senior Architect Hourly Rate M2 Remo.,420
+Professional Services,Hourly Rates (VPA),-,PS-MS-TM-PM.1,VPA Project Manager Hourly Rate,120
+Professional Services,Hourly Rates (VPA),-,PS-MS-TM-SPM.1,VPA Senior Project Manager Hourly Rate,155
+Professional Services,Hourly Rates (VPA),-,PS-MS-TM-DM.1,VPA Delivery Manager Hourly Rate,120
+Managed Services,Licensing,OS,MS-CS-CMX.OS.MSHOST.DC.01,DEDICATED COMPUTE O/S - MICROSOFT WINDOWS DATA CENTER (2 PROCS | P71-01031),346.5
+Managed Services,Licensing,OS,MS-CS-CMX.OS.MSHOST.STD.01,"DEDICATED COMPUTE O/S - MICROSOFT WINDOWS STANDARD (< 3 VMs, 2 PROCS | P73-04837)",58.5
+Managed Services,Licensing,OS,MS-CS-CMX.OS.RHEHOST.01.01,DEDICATED COMPUTE O/S - RED HAT ENTERPRISE LINUX (PER CPU SOCKET),58.5
+Managed Services,Licensing,OS,MS-CS-CMX.OS.ESXHOST.01.01,DEDICATED COMPUTE O/S - VMWARE VSPHERE (PER GByte OF UTILIZED RAM),6.75
+Managed Services,Licensing,Application,MS-CS-CMX.APP.EXSTD.01.01,APP - MICROSOFT EXCHANGE STANDARD SAL (ONE REQUIRED FOR EACH USER ACCESSING A HOSTED EXCHANGE SERVER | F08-00025),6.5
+Managed Services,Licensing,Application,MS-CS-CMX.APP.SH.01.01,APP - MICROSOFT SHAREPOINT SAL (ONE REQUIRED FOR EACH USER ACCESSING A SHAREPOINT SERVER | 76P-00840),6.5
+Managed Services,Licensing,Application,MS-CS-CMX.APP.SQLSTD.01.01,APP - MICROSOFT SQL SERVER STANDARD EDITION (1 LICENSE REQUIRED FOR EVERY 2 CORES | 7NQ-00302),250
+Managed Services,Licensing,Application,MS-CS-CMX.APP.SQLWEB.01.01,APP - MICROSOFT SQL SERVER WEB EDITION (1 LICENSE REQUIRED FOR EVERY VM RUNNING SQL SERVER | TFA-00523),20
+Managed Services,Networking,Bronze (9x5),MS-FM-5010,Managed Router (2 to 4 ports) Bronze,80
+Managed Services,Networking,Bronze (9x5),MS-FM-5020,Managed Router with Firewall Bronze,134
+Managed Services,Networking,Bronze (9x5),MS-FM-5021,Managed Cloud Router/VPN Bronze,80
+Managed Services,Networking,Bronze (9x5),MS-FM-5030,Managed Router - Additional NIC/VLAN Bronze,40
+Managed Services,Networking,Bronze (9x5),MS-FM-5040,Managed WAN - Primary ISP Bronze,46
+Managed Services,Networking,Bronze (9x5),MS-FM-5041,Managed WAN - Secondary ISP Bronze,16
+Managed Services,Networking,Bronze (9x5),MS-FM-5050,Managed Switch 48 ports Bronze,54
+Managed Services,Networking,Bronze (9x5),MS-FM-5051,Managed Switch 24 ports Bronze,46
+Managed Services,Networking,Bronze (9x5),MS-FM-5052,Managed Switch L3 Add On Bronze,22
+Managed Services,Networking,Bronze (9x5),MS-FM-5060,Managed Office Router 1P (WAN) Bronze,46
+Managed Services,Networking,Bronze (9x5),MS-FM-5070,Managed Network Appliance Bronze,46
+Managed Services,Networking,Bronze (9x5),MS-FM-6010,Managed Firewall - Primary Bronze,92
+Managed Services,Networking,Bronze (9x5),MS-FM-6011,Managed Firewall Service-Fail Over Bronze,52
+Managed Services,Networking,Bronze (9x5),MS-FM-6020,Managed Load Balancer-Primary Bronze,134
+Managed Services,Networking,Bronze (9x5),MS-FM-6021,Managed Load Balancer Service-Fail Over Bronze,68
+Managed Services,Networking,Bronze (9x5),MS-FM-6042,Managed Access Point Controller Bronze,94
+Managed Services,Networking,Bronze (9x5),MS-FM-6050,Managed Firewall/Router (Office): Bronze,46
+Managed Services,Networking,Bronze (9x5),MS-FM-6080,Managed Access Point Fit (Office) Bronze,28
+Managed Services,Networking,Bronze (9x5),MS-FM-6081,Managed Access Point Fat (Office) Bronze,46
+Managed Services,Networking,Bronze (9x5),MS-FM-6082,Managed Access Point Fit (Office) > 20 Bronze,9
+Managed Services,Networking,Bronze (9x5),MS-FM-6083,Managed Access Point Fat (Office) >20 Bronze,12
+Managed Services,Networking,Gold (24x7),MS-FM-5010.G,Managed Router (2 to 4 ports) Gold,150
+Managed Services,Networking,Gold (24x7),MS-FM-5020.G,Managed Router with Firewall Gold,250
+Managed Services,Networking,Gold (24x7),MS-FM-5021.G,Managed Cloud Router/VPN Gold,150
+Managed Services,Networking,Gold (24x7),MS-FM-5030.G,Managed Router - Additional NIC/VLAN Gold,75
+Managed Services,Networking,Gold (24x7),MS-FM-5040.G,Managed WAN - Primary ISP Gold,85
+Managed Services,Networking,Gold (24x7),MS-FM-5041.G,Managed WAN - Secondary ISP Gold,30
+Managed Services,Networking,Gold (24x7),MS-FM-5050.G,Managed Switch 48 ports Gold,100
+Managed Services,Networking,Gold (24x7),MS-FM-5051.G,Managed Switch 24 ports Gold,85
+Managed Services,Networking,Gold (24x7),MS-FM-5052.G,Managed Switch L3 Add On Gold,40
+Managed Services,Networking,Gold (24x7),MS-FM-5060 .G,Managed Office Router 1P (WAN) Gold,85
+Managed Services,Networking,Gold (24x7),MS-FM-5070 .G,Managed Network Appliance Gold,85
+Managed Services,Networking,Gold (24x7),MS-FM-6010.G,Managed Firewall - Primary Gold,170
+Managed Services,Networking,Gold (24x7),MS-FM-6011.G,Managed Firewall Service-Fail Over Gold,95
+Managed Services,Networking,Gold (24x7),MS-FM-6020.G,Managed Load Balancer-Primary Gold,250
+Managed Services,Networking,Gold (24x7),MS-FM-6021.G,Managed Load Balancer Service-Fail Over Gold,125
+Managed Services,Networking,Gold (24x7),MS-FM-6042 .G,Managed Access Point Controller Gold,175
+Managed Services,Networking,Gold (24x7),MS-FM-6050.G,Managed Firewall/Router (Office): Gold,85
+Managed Services,Networking,Gold (24x7),MS-FM-6080.G,Managed Access Point Fit (Office) Gold,50
+Managed Services,Networking,Gold (24x7),MS-FM-6081.G,Managed Access Point Fat (Office) Gold,85
+Managed Services,Networking,Gold (24x7),MS-FM-6082.G,Managed Access Point Fit (Office) > 20 Gold,16
+Managed Services,Networking,Gold (24x7),MS-FM-6083.G,Managed Access Point Fat (Office) >20 Gold,20
+Managed Services,Networking,Silver (12x5),MS-FM-5010.S,Managed Router (2 to 4 ports) Silver,100
+Managed Services,Networking,Silver (12x5),MS-FM-5020.S,Managed Router with Firewall Silver,167
+Managed Services,Networking,Silver (12x5),MS-FM-5021.S,Managed Cloud Router/VPN Silver,100
+Managed Services,Networking,Silver (12x5),MS-FM-5030.S,Managed Router - Additional NIC/VLAN Silver,50
+Managed Services,Networking,Silver (12x5),MS-FM-5040.S,Managed WAN - Primary ISP Silver,57
+Managed Services,Networking,Silver (12x5),MS-FM-5041.S,Managed WAN - Secondary ISP Silver,20
+Managed Services,Networking,Silver (12x5),MS-FM-5050.S,Managed Switch 48 ports Silver,67
+Managed Services,Networking,Silver (12x5),MS-FM-5051.S,Managed Switch 24 ports Silver,57
+Managed Services,Networking,Silver (12x5),MS-FM-5052.S,Managed Switch L3 Add On Silver,27
+Managed Services,Networking,Silver (12x5),MS-FM-5060 .S,Managed Office Router 1P (WAN) Silver,57
+Managed Services,Networking,Silver (12x5),MS-FM-5070 .S,Managed Network Appliance Silver,57
+Managed Services,Networking,Silver (12x5),MS-FM-6010.S,Managed Firewall - Primary Silver,114
+Managed Services,Networking,Silver (12x5),MS-FM-6011.S,Managed Firewall Service-Fail Over Silver,64
+Managed Services,Networking,Silver (12x5),MS-FM-6020.S,Managed Load Balancer-Primary Silver,167
+Managed Services,Networking,Silver (12x5),MS-FM-6021.S,Managed Load Balancer Service-Fail Over Silver,84
+Managed Services,Networking,Silver (12x5),MS-FM-6042 .S,Managed Access Point Controller Silver,117
+Managed Services,Networking,Silver (12x5),MS-FM-6050.S,Managed Firewall/Router (Office): Silver,57
+Managed Services,Networking,Silver (12x5),MS-FM-6080.S,Managed Access Point Fit (Office) Silver,34
+Managed Services,Networking,Silver (12x5),MS-FM-6081.S,Managed Access Point Fat (Office) Silver,57
+Managed Services,Networking,Silver (12x5),MS-FM-6082.S,Managed Access Point Fit (Office) > 20 Silver,11
+Managed Services,Networking,Silver (12x5),MS-FM-6083.S,Managed Access Point Fat (Office) >20 Silver,14
+Managed Services,One Time,-,PS-MS-OB-0000,Phase 1 - Digital Audit Base (includes 10 devices or less),2500
+Managed Services,One Time,-,PS-MS-OB-0010,Phase 1 - Digital Audit (per device),250
+Managed Services,One Time,-,PS-MS-OB-0020,Phase 2 - Remediation Services per hour (optional/4 hours minimum),720
+Managed Services,One Time,-,PS-MS-OB-0020-CUS,Phase 2 - Remediation Services Fixed,0
+Managed Services,One Time,-,PS-MS-OTSU-0001.CUS,Detailed Onboarding (Use Transition Pricing Tool),0
+Managed Services,One Time,-,PS-MS-OTSU-0002.CUS,Custom Integration and Migration Services for Cloud solution,0
+Managed Services,One Time,-,PS-OB-GEN-001,On Boarding per device,200
+Managed Services,Optional,-,MS-OPT-2000,Change Management,960
+Managed Services,Optional,-,MS-OPT-2010,Virtual CIO,1600
+Managed Services,Optional,-,MS-OPT-2020,Cluster Failover Test,1300
+Managed Services,Optional,-,MS-OPT-2030,Disaster Recovery Test Annual,5500
+Managed Services,Optional,-,MS-OPT-DRTest-1Y.001,"Disaster Recovery Test Annual rate ( 2 storage, >=20 VMs, NW Appliance, FWs) yearly contract",5500
+Managed Services,Optional,-,MS-OPT-DRTest-1M.001,"Disaster Recovery Test Monthly rate ( 2 storage, >=20 VMs, NW Appliance, FWs) yearly contract",600
+Managed Services,Optional,-,MS-OPT-DRTest-1M.001,Disaster Recovery Test Monthly rate ( Add On) yearly contract,25
+Managed Services,Optional,Firmware,MS-OPT-3PAR-FW.001,"3PAR Firmware Upgrade Monthly (3PAR + <10 Hosts, T&M extra)(once a year)",600
+Managed Services,Optional,Firmware,MS-OPT-3PAR-FW.002,"3PAR Firmware Upgrade Monthly (3PAR + <10 Hosts, T&M extra)(Twice a year)",900
+Managed Services,Optional,OS,MS-OPT.OS.PATCH.01.01,GUEST O/S - SOFTWARE PATCHING (ONE INSTANCE PER VM),65
+Managed Services,Optional,OS,MS-OPT.OS.VUL.01.01,GUEST O/S - SOFTWARE VULNERABILITY SCANNING PATCHING (ONE INSTANCE PER VM),125
+Managed Services,Optional,Networking,MS-OPT.NET.DNS.01.01,SERVICE - DNS HOSTING (per Domain Name),6.6
+Managed Services,Optional,Networking,MS-OPT.NET.VPN.01.01,SERVICE - VPN MANAGEMENT AND MONITORING,33.5
+Managed Services,Physical,Bronze (9x5),MS-BDL-1000,Physical Server Support Bundle Low (2 CPU /32 GB RAM) Bronze,160
+Managed Services,Physical,Bronze (9x5),MS-BDL-1001,Physical Server Support Bundle Mid (2-4 CPU /32 - 96 GB RAM) Bronze,188
+Managed Services,Physical,Bronze (9x5),MS-BDL-1002,Physical Server Support Bundle High (>4 CPU / >96 GB RAM) Bronze,230
+Managed Services,Physical,Bronze (9x5),MS-BDL-8010,Blade Infrastructure Enclosure Management Bundle Bronze,144
+Managed Services,Physical,Bronze (9x5),MS-FM-8010,Blade Enclosure Monitoring and Response Bronze,80
+Managed Services,Physical,Bronze (9x5),MS-FM-8020,Blade Enclosure IO Module Monitoring and Response Bronze,80
+Managed Services,Physical,Bronze (9x5),MS-FM-8030,Blade Server Hardware Monitoring and Response Bronze,28
+Managed Services,Physical,Gold (24x7),MS-BDL-1000.G,Physical Server Support Bundle Low (2 CPU /32 GB RAM) Gold,300
+Managed Services,Physical,Gold (24x7),MS-BDL-1001.G,Physical Server Support Bundle Mid (2-4 CPU /32 - 96 GB RAM) Gold,350
+Managed Services,Physical,Gold (24x7),MS-BDL-1002.G,Physical Server Support Bundle High (>4 CPU / >96 GB RAM) Gold,430
+Managed Services,Physical,Gold (24x7),MS-BDL-8010.G,Blade Infrastructure Enclosure Management Bundle Gold,270
+Managed Services,Physical,Gold (24x7),MS-FM-8010.G,Blade Enclosure Monitoring and Response Gold,150
+Managed Services,Physical,Gold (24x7),MS-FM-8020.G,Blade Enclosure IO Module Monitoring and Response Gold,150
+Managed Services,Physical,Gold (24x7),MS-FM-8030.G,Blade Server Hardware Monitoring and Response Gold,50
+Managed Services,Physical,Silver (12x5),MS-BDL-1000.S,Physical Server Support Bundle Low (2 CPU /32 GB RAM) Silver,200
+Managed Services,Physical,Silver (12x5),MS-BDL-1001.S,Physical Server Support Bundle Mid (2-4 CPU /32 - 96 GB RAM) Silver,234
+Managed Services,Physical,Silver (12x5),MS-BDL-1002.S,Physical Server Support Bundle High (>4 CPU / >96 GB RAM) Silver,287
+Managed Services,Physical,Silver (12x5),MS-BDL-8010.S,Blade Infrastructure Enclosure Management Bundle Silver,180
+Managed Services,Physical,Silver (12x5),MS-FM-8010.S,Blade Enclosure Monitoring and Response Silver,100
+Managed Services,Physical,Silver (12x5),MS-FM-8020.S,Blade Enclosure IO Module Monitoring and Response Silver,100
+Managed Services,Physical,Silver (12x5),MS-FM-8030.S,Blade Server Hardware Monitoring and Response Silver,34
+Maintenance Service,Services Montreal,-,MNCT-7x24 x2-M,7x24 - 2 hour Phone Response,0
+Maintenance Service,Services Montreal,-,MNCT-7x24 x4-M,7x24 - 4 hour Phone Response,0
+Maintenance Service,Services Montreal,-,MNCT-5x8 x2/SBD-M,"5x8 - 5 days per week, 8 hours per day Monday 8:30 local time - Friday 5:00 pm local time
+ SLA = 2 hour Phone Response / SBD On Site",0
+Maintenance Service,Services Montreal,-,MNCT-5x8 x4/NBD-M,"5x8 - 5 days per week, 8 hours per day Monday 8:30 local time - Friday 5:00 pm local time
+ SLA = 4 hour Phone Response / NBD On Site",0
+Maintenance Service,Services Montreal,-,MNCT-5x12 x2/SBD-M,"5x12 - 5 days per week, 12 hours per day Monday 8:30 local time - Friday 8:30 pm local time
+ SLA = 2 hour Phone Response / SBD on site",0
+Maintenance Service,Services Montreal,-,MNCT-5x12 x4/NBD-M,"5x12 - 5 days per week, 12 hours per day Monday 8:30 local time - Friday 8:30 pm local time
+ SLA = 4 hour Phone Response / NBD On Site",0
+Maintenance Service,Services Montreal,-,MNCT-7x12 x2/SBD-M,"7x12 - 5 days per week, 12 hours per day Monday 8:30 local time - Friday 8:30 pm local time
+ SLA = 2 hour Phone Response / SBD on site",0
+Maintenance Service,Services Montreal,-,MNCT-7x12 x4/NBD-M,"7x12 - 7 days per week, 12 hours per day Monday 8:30 local time - Friday 8:30 pm local time
+ SLA = 4 hour Phone Response / NBD On Site",0
+Maintenance Service,Services Toronto,-,MNCT-7x24 x2,7x24 - 2 hour Phone Response,0
+Maintenance Service,Services Toronto,-,MNCT-7x24 x4,7x24 - 4 hour Phone Response,0
+Maintenance Service,Services Toronto,-,MNCT-7x24 Swap,"7x24 - 7 days per week, (Customer will replace the FRU)
+ SLA = 4 hour Phone Response / NBD shipping",0
+Maintenance Service,Services Toronto,-,MNCT-5x8 x2/SBD,"5x8 - 5 days per week, 8 hours per day Monday 8:30 local time - Friday 5:00 pm local time
+ SLA = 2 hour Phone Response / SBD On Site",0
+Maintenance Service,Services Toronto,-,MNCT-5x8 x4/NBD,"5x8 - 5 days per week, 8 hours per day Monday 8:30 local time - Friday 5:00 pm local time
+ SLA = 4 hour Phone Response / NBD On Site",0
+Maintenance Service,Services Toronto,-,MNCT-5x12 x2/SBD,"5x12 - 5 days per week, 12 hours per day Monday 8:30 local time - Friday 8:30 pm local time
+ SLA = 2 hour Phone Response / SBD on site",0
+Maintenance Service,Services Toronto,-,MNCT-5x12 x4/NBD,"5x12 - 5 days per week, 12 hours per day Monday 8:30 local time - Friday 8:30 pm local time
+ SLA = 4 hour Phone Response / NBD On Site",0
+Maintenance Service,Services Toronto,-,MNCT-7x12 x2/SBD,"7x12 - 5 days per week, 12 hours per day Monday 8:30 local time - Friday 8:30 pm local time
+ SLA = 2 hour Phone Response / SBD on site",0
+Maintenance Service,Services Toronto,-,MNCT-7x12 x4/NBD,"7x12 - 7 days per week, 12 hours per day Monday 8:30 local time - Friday 8:30 pm local time
+ SLA = 4 hour Phone Response / NBD On Site",0
+Maintenance Service,Services Toronto,-,MNCT-7x24-SWAP,"7x24 Support, Customer is responsible to replace the part. Commerx will ship the part and assist remotely.",0
+Professional Services,Solution Sets,-,PS-C-GN-HP,Commerx Generic HP Solution,0
+Professional Services,Solution Sets,-,PS-C-GN-TKO,Commerx Generic Cloud TKO Integartion Solution,0
+Professional Services,Solution Sets,-,PS-C-GN-CTL,Commerx Generic Cloud Integration CTL Solution,0
+Professional Services,Solution Sets,-,PS-C-GN-CMX.01,Commerx Generic Instalation and Setup Solution,0
+Professional Services,Solution Sets,-,PS-C-GN-CMX.02,Commerx Generic Profesional Services and Project Management Solution,0
+Professional Services,Solution Sets,-,PS-C-GN-CMX.03,Commerx Generic Migration Services,0
+Professional Services,Solution Sets,-,PS-C-GN-MIG,Commerx Generic Migration Solution,0
+Professional Services,Solution Sets,-,PS-C-DP-HP,Commerx Data Protection HP Solution,0
+Professional Services,Solution Sets,-,PS-C-SN-HP,Commerx SAN HP Solution,0
+Professional Services,Solution Sets,-,PS-C-MG-HP,Commerx Management HP Solution,0
+Professional Services,Solution Sets,-,PS-C-GN-VM,Commerx Generic VMware Solution,0
+Professional Services,Solution Sets,-,PS-C-US-HP,Commerx Unix HP Solution,0
+Professional Services,Solution Sets,-,PS-C-NW-HP,Commerx Network HP Solution,0
+Professional Services,Solution Sets,-,PS-C-PC-HP,Commerx Private Cloud HP Solution,0
+Professional Services,Solution Sets,-,PS-C-SS-HP,Commerx Security Services HP Solution,0
+Professional Services,Solution Sets,-,PS-C-VT-HP,Commerx Virtualization HP Solution,0
+Professional Services,Solution Sets,-,PS-C-HV-HP,Commerx Hyper-converged HP Solution,0
+Managed Services,Storage,Bronze (9x5),MS-BDL-3000,Enterprise SAN Support Bundle Bronze,150
+Managed Services,Storage,Bronze (9x5),MS-BDL-3010,Commercial SAN Support Bundle Bronze,124
+Managed Services,Storage,Bronze (9x5),MS-BDL-3020,End User Computing NAS Support Bundle Bronze,80
+Managed Services,Storage,Gold (24x7),MS-BDL-3000.G,Enterprise SAN Support Bundle Gold,280
+Managed Services,Storage,Gold (24x7),MS-BDL-3010.G,Commercial SAN Support Bundle Gold,230
+Managed Services,Storage,Gold (24x7),MS-BDL-3020.G,End User Computing NAS Support Bundle Gold,150
+Managed Services,Storage,Silver (12x5),MS-BDL-3000.S,Enterprise SAN Support Bundle Silver,187
+Managed Services,Storage,Silver (12x5),MS-BDL-3010.S,Commercial SAN Support Bundle Silver,154
+Managed Services,Storage,Silver (12x5),MS-BDL-3020.S,End User Computing NAS Support Bundle Silver,100
+Managed Services,Storage,Bronze (9x5),MS-SAN-48P.01,Managed SAN Switch 48 ports Bronze,54
+Managed Services,Storage,Bronze (9x5),MS-SAN-24P.01,Managed SAN Switch 24 ports Bronze,46
+Managed Services,Storage,Gold (24x7),MS-SAN-48P.G.01,Managed SAN Switch 48 ports Gold,100
+Managed Services,Storage,Gold (24x7),MS-SAN-24P.G.01,Managed SAN Switch 24 ports Gold,85
+Managed Services,Storage,Silver (12x5),MS-SAN-48P.S.01,Managed SAN Switch 48 ports Silver,67
+Managed Services,Storage,Silver (12x5),MS-SAN-24P.S.01,Managed SAN Switch 24 ports Silver,57
+Managed Services,UNIX,Bronze (9x5),MS-BDL-2000,HP-UX Server Support bundle Base (Bronze),198
+Managed Services,UNIX,Bronze (9x5),MS-BDL-2001,HP-UX Server Support bundle High End (Bronze),224
+Managed Services,UNIX,Bronze (9x5),MS-BDL-2002,HP-UX Application Monitoring (Bronze),35
+Managed Services,UNIX,Bronze (9x5),MS-BDL-2003,HP-UX Replication/DR Monitoring (Bronze),55
+Managed Services,UNIX,Bronze (9x5),MS-BDL-2004,HP-UX High-Availabilty Add-on (Bronze),55
+Managed Services,UNIX,Gold (24x7),MS-BDL-2000.G,HP-UX Server Support bundle Base Gold,370
+Managed Services,UNIX,Gold (24x7),MS-BDL-2001.G,HP-UX Server Support bundle High End Gold,420
+Managed Services,UNIX,Gold (24x7),MS-BDL-2002.G,HP-UX Application Monitoring Gold,50
+Managed Services,UNIX,Gold (24x7),MS-BDL-2003.G,HP-UX Replication/DR Monitoring Gold,75
+Managed Services,UNIX,Gold (24x7),MS-BDL-2004.G,HP-UX High-Availabilty Add-on Gold,75
+Managed Services,UNIX,Silver (12x5),MS-BDL-2000.S,HP-UX Server Support bundle Base Silver,247
+Managed Services,UNIX,Silver (12x5),MS-BDL-2001.S,HP-UX Server Support bundle High End Silver,280
+Managed Services,UNIX,Silver (12x5),MS-BDL-2002.S,HP-UX Application Monitoring Silver,40
+Managed Services,UNIX,Silver (12x5),MS-BDL-2003.S,HP-UX Replication/DR Monitoring Silver,60
+Managed Services,UNIX,Silver (12x5),MS-BDL-2004.S,HP-UX High-Availabilty Add-on Silver,60
+Managed Services,Virtual Server,Bronze (9x5),MS-BDL-1010,Manage Virtual Machine Low (1 - 2 vCPU / <16GB) Bronze,86
+Managed Services,Virtual Server,Bronze (9x5),MS-BDL-1011,Manage Virtual Machine Mid (4 vCPU/ >16GB) Bronze,160
+Managed Services,Virtual Server,Bronze (9x5),MS-BDL-1012,Manage Virtual Machine High (> 4 vCPU) Bronze,188
+Managed Services,Virtual Server,Bronze (9x5),MS-BDL-1030,Manage Virtual Appliance (1-2vCPU) Bronze,86
+Managed Services,Virtual Server,Gold (24x7),MS-BDL-1010.G,Virtual Machine Low (1 - 2 vCPU / <16GB) Gold,160
+Managed Services,Virtual Server,Gold (24x7),MS-BDL-1011.G,Virtual Machine Mid (4 vCPU/ >16GB) Gold,300
+Managed Services,Virtual Server,Gold (24x7),MS-BDL-1012.G,Virtual Machine High (> 4 vCPU) Gold,350
+Managed Services,Virtual Server,Gold (24x7),MS-BDL-1030.G,Virtual Appliance (1-2vCPU) Gold,160
+Managed Services,Virtual Server,Silver (12x5),MS-BDL-1010.S,Virtual Machine Low (1 - 2 vCPU / <16GB) Silver,107
+Managed Services,Virtual Server,Silver (12x5),MS-BDL-1011.S,Virtual Machine Mid (4 vCPU/ >16GB) Silver,200
+Managed Services,Virtual Server,Silver (12x5),MS-BDL-1012.S,Virtual Machine High (> 4 vCPU) Silver,234
+Managed Services,Virtual Server,Silver (12x5),MS-BDL-1030.S,Virtual Appliance (1-2vCPU) Silver,107
+Managed Services,Optional,Firmware,MS-OPT-SANSW-FW.001,SAN Switch Firmware Upgrade Monthly (once a year),80
+Managed Services,Optional,Firmware,MS-OPT-HOST-FW.001,Host Firmware Upgrade Monthly (once a year),80
+Managed Services,Optional,Firmware,MS-OPT-BLADE-FW.001,Blade Firmware Upgrade Monthly (once a year),80
+Managed Services,Optional,Firmware,MS-OPT-PHSRV-FW.001,Stand Alone Firmware Upgrade Monthly (once a year),100
+Managed Services,Optional,Firmware,MS-OPT-NWSW-FW.001,Network Switch Firmware Upgrade Monthly (once a year),40
+Managed Services,Optional,Firmware,MS-OPT-FIREWL-FW.001,FireWall Firmware Upgrade Monthly (once a year),80
+Managed Services,Optional,Firmware,MS-OPT-F5BL-FW.001,F5 Firmware Upgrade Monthly (once a year),110
+Managed Services,Optional,Firmware,MS-OPT-STORC-FW.001,Comercial Storage Firmware Upgrade Monthly (once a year),160
+Managed Services,Optional,Firmware,MS-OPT-RVB-FW.001,Riverbed Firmware Upgrade Monthly (once a year),80
+Managed Services,Optional,Firmware,MS-OPT-UXPC-FW.001,Unix Paching and Firmware Upgrade Monthly (once a year),200
+Managed Services,Optional,Firmware,MS-OPT-C700-FW.001,HP C700 Blade Enclosure Firmware Upgrade Monthly (once a year),400
+Managed Services,Optional,Firmware,MS-OPT-C7000-FW.001,HP C7000 Blade Enclosure Firmware Upgrade Monthly (once a year),320
+Managed Services,Optional,Firmware,MS-OPT-C3000-FW.001,HP C3000 Blade Enclosure Firmware Upgrade Monthly (once a year),320
+Managed Services,Optional,Firmware,MS-OPT-C7000-ADDVCP.001,HP BLC VC Pair Flexfabric Firmware Upgrade Monthly (once a year),90
+Managed Services,Optional,Firmware,MS-OPT-SANSW-FW.002,SAN Switch Firmware Upgrade Monthly (Twice a year),120
+Managed Services,Optional,Firmware,MS-OPT-HOST-FW.002,Host Firmware Upgrade Monthly (Twice a year),120
+Managed Services,Optional,Firmware,MS-OPT-BLADE-FW.002,Blade Firmware Upgrade Monthly (Twice a year),120
+Managed Services,Optional,Firmware,MS-OPT-PHSRV-FW.002,Stand Alone Firmware Upgrade Monthly (Twice a year),150
+Managed Services,Optional,Firmware,MS-OPT-NWSW-FW.002,Network Switch Firmware Upgrade Monthly (Twice a year),60
+Managed Services,Optional,Firmware,MS-OPT-FIREWL-FW.002,FireWall Firmware Upgrade Monthly (Twice a year),120
+Managed Services,Optional,Firmware,MS-OPT-F5BL-FW.002,F5 Firmware Upgrade Monthly (Twice a year),165
+Managed Services,Optional,Firmware,MS-OPT-STORC-FW.002,Comercial Storage Firmware Upgrade Monthly (Twice a year),240
+Managed Services,Optional,Firmware,MS-OPT-RVB-FW.002,Riverbed Firmware Upgrade Monthly (Twice a year),120
+Managed Services,Optional,Firmware,MS-OPT-UXPC-FW.002,Unix Paching and Firmware Upgrade Monthly (Twice a year),300
+Managed Services,Optional,Firmware,MS-OPT-C700-FW.002,HP C700 Blade Enclosure Firmware Upgrade Monthly (Twice a year),600
+Managed Services,Optional,Firmware,MS-OPT-C7000-FW.002,HP C7000 Blade Enclosure Firmware Upgrade Monthly (Twice a year),480
+Managed Services,Optional,Firmware,MS-OPT-C3000-FW.002,HP C3000 Blade Enclosure Firmware Upgrade Monthly (Twice a year),480
+Managed Services,Optional,Firmware,MS-OPT-C7000-ADDVCP.002,HP BLC VC Pair Flexfabric Firmware Upgrade Monthly (Twice a year),135
+Managed Services,Optional,Firmware,MS-OPT-SANSW-FW.004,SAN Switch Firmware Upgrade Monthly (Quarterly in a year),200
+Managed Services,Optional,Firmware,MS-OPT-HOST-FW.004,Host Firmware Upgrade Monthly (Quarterly in a year),200
+Managed Services,Optional,Firmware,MS-OPT-BLADE-FW.004,Blade Firmware Upgrade Monthly (Quarterly in a year),200
+Managed Services,Optional,Firmware,MS-OPT-PHSRV-FW.004,Stand Alone Firmware Upgrade Monthly (Quarterly in a year),250
+Managed Services,Optional,Firmware,MS-OPT-NWSW-FW.004,Network Switch Firmware Upgrade Monthly (Quarterly in a year),100
+Managed Services,Optional,Firmware,MS-OPT-FIREWL-FW.004,FireWall Firmware Upgrade Monthly (Quarterly in a year),200
+Managed Services,Optional,Firmware,MS-OPT-STORC-FW.004,Comercial Storage Firmware Upgrade Monthly (Quarterly in a year),400
+Managed Services,Optional,Firmware,MS-OPT-RVB-FW.004,Riverbed Firmware Upgrade Monthly (Quarterly in a year),200
+Managed Services,Optional,Firmware,MS-OPT-UXPC-FW.004,Unix Paching and Firmware Upgrade Monthly (Quarterly in a year),500
+Managed Services,Optional,Firmware,MS-OPT-C700-FW.004,HP C700 Blade Enclosure Firmware Upgrade Monthly (Quarterly in a year),1000
+Managed Services,Optional,Firmware,MS-OPT-C7000-FW.004,HP C7000 Blade Enclosure Firmware Upgrade Monthly (Quarterly in a year),800
+Managed Services,Optional,Firmware,MS-OPT-C3000-FW.004,HP C3000 Blade Enclosure Firmware Upgrade Monthly (Quarterly in a year),800
+Managed Services,Optional,Firmware,MS-OPT-C7000-ADDVCP.004,HP BLC VC Pair Flexfabric Firmware Upgrade Monthly (Quarterly in a year),225
+Managed Services,Optional,Firmware,MS-OPT-CISCO-CORENHD.001,Cisco Core and High Density Switche (once a year),110
+Managed Services,Optional,Firmware,MS-OPT-CISCO-CORENHD.002,Cisco Core and High Density Switche (Twice a year),165

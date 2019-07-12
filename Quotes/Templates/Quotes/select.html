@@ -1,0 +1,17 @@
+{% extends "Quotes/base.html" %}
+{% block content %}
+<form action="{% url 'select' %}" method="POST">{% csrf_token %}
+  <button id=Menubtn class="button" data-toggle="collapse" aria-label="Toggle navigation" name='new' type="submit">
+    New Quote
+  </button>
+</form>
+{% for name, service in LookUpQuote %}
+
+<form action="{% url 'select' %}" method="POST">{% csrf_token %}
+  <button id=Menubtn class="button" data-toggle="collapse" aria-label="Toggle navigation" name='old' value= "{{ service }}" type="submit">
+    Name: {{ name }}
+    <input style=display:none value="{{ name }}" name='oldName'>
+  </button>
+</form>
+{%endfor%}
+{%endblock content%}

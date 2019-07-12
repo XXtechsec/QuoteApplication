@@ -1,0 +1,14 @@
+{% extends "Quotes/Results.html" %}
+{% block QuoteMaker %}
+{% for product in Service %}
+{% if 'Gold (24x7)' in o or 'Silver (12x5)' in o %}
+
+{% else %}
+<form action="{% url 'result' %}" method="POST">{% csrf_token %}
+  <button id=SubSub class="button" aria-expanded="false" data-toggle="collapse" aria-label="Toggle navigation" type="submit" name="add" value="{{ product }}">
+    {{ product.Description|cut:"Bronze" }}
+  </button>
+</form>
+{% endif %}
+{%endfor%}
+{% endblock QuoteMaker %}
