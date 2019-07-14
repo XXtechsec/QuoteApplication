@@ -13,18 +13,19 @@ from django.views.generic import View
 import operator
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 import csv
+from datetime import datetime
 
 z = []
 total = 0
 LookUp = {}
 selectedQuoteName = 'untitled'
 selectedQuoteCompany = 'untitled'
+selectedQuoteContact = 'untitled'
 def home(request):
     z = []
     return render(request, 'Quotes/home.html')
-
-
 
 def result(request):
     if 'add' in request.POST:
@@ -50,8 +51,6 @@ def delete(request):
     if 'clear' in request.POST:
         z.clear()
         return QuoteMaker(request)
-
-
 
 def changeQuality(request):
     global z
@@ -83,6 +82,7 @@ def QuoteMaker(request):
     global z
     global selectedQuoteName
     global selectedQuoteCompany
+    global selectedQuoteContact
     total = 0
     for o in z:
         total += (o['Price']*float(o['Qty']))
@@ -99,16 +99,24 @@ def QuoteMaker(request):
         'result': z,
         'total': total,
         'name': selectedQuoteName,
-        'company': selectedQuoteCompany
+        'company': selectedQuoteCompany,
+        'contact': selectedQuoteContact
     }
 
     return render(request, 'Quotes/QuoteMaker.html', context)
 
 def Pdf(request):
+    global selectedQuoteContact
+    global selectedQuoteCompany
     params = {
         'products': z,
         'total': total,
+        'User': request.user,
+        'company': selectedQuoteCompany,
+        'contact': selectedQuoteContact,
+        'Date': datetime.now().strftime("%Y-%m-%d")
     }
+
     return Render.render('Quotes/pdf.html', params)
 
 def CSV(request):
@@ -133,24 +141,33 @@ def saveQuote(request):
     global z
     saveName = request.POST['saveName']
     saveCompany = request.POST['saveCompany']
+    saveContact = request.POST['saveContact']
+    global selectedQuoteName
+    global selectedQuoteCompany
+    global selectedQuoteContact
     if z != []:
         if Quote.objects.filter(Name=saveName).exists() == False:
-            obj = Quote.objects.create(Name=saveName, Company=saveCompany)
+            obj = Quote.objects.create(Name=saveName, Company=saveCompany, Contact=saveContact)
             for i in z:
                 obj.Services.add(Service.objects.get(SKU=i['SKU']))
 
             obj.save()
             messages.success(request, "Successfully Created " + saveName)
-            z = []
-            return select(request)
+            selectedQuoteName = saveName
+            selectedQuoteCompany = saveCompany
+            selectedQuoteContact = saveContact
+            return QuoteMaker(request)
         else:
             obj = Quote.objects.get(Name=saveName)
             obj.Services.set('')
             for i in z:
                 obj.Services.add(Service.objects.get(SKU=i['SKU']))
+            Quote.objects.update(Company=saveCompany, Contact=saveContact)
             messages.success(request, "Successfully Updated " + saveName)
             z.clear()
-            return select(request)
+            selectedQuoteCompany = saveCompany
+            selectedQuoteContact = saveContact
+            return QuoteMaker(request)
 
 def Qty(request):
     try:
@@ -186,10 +203,9 @@ def select(request):
     global z
     global selectedQuoteName
     global selectedQuoteCompany
+    global selectedQuoteContact
     if 'new' in request.POST:
         z.clear()
-        selectedQuoteCompany = 'untitled'
-        selectedQuoteName = 'untitled'
         return QuoteMaker(request)
     elif 'old' in request.POST:
         z.clear()
@@ -197,6 +213,8 @@ def select(request):
         selectedQuoteName = request.POST['oldName']
         selectedQuoteCompany = list(Quote.objects.filter(Name=selectedQuoteName).values_list('Company', flat=True))
         selectedQuoteCompany = ''.join(selectedQuoteCompany)
+        selectedQuoteContact = list(Quote.objects.filter(Name=selectedQuoteName).values_list('Contact', flat=True))
+        selectedQuoteContact = ''.join(selectedQuoteContact)
         for id in selectedQuote:
             z.append(Service.objects.filter(pk=id).values()[0])
         return QuoteMaker(request)

@@ -119,14 +119,17 @@
           </form>
           <form action="{% url 'saveQuote' %}" method="POST">{% csrf_token %}
             <button id=Menubtn class="button" data-toggle="collapse" aria-label="Toggle navigation" type="submit">
-              save and quit
+              save
             </button>
             <div class='content-section'>
             <h4>Enter Name:
             <input value="{{ name }}" name='saveName'>
             </h4>
-            <h4>Enter Company Name:
+            <h4>Enter Client Name:
             <input value="{{ company }}" name='saveCompany'>
+            </h4>
+            <h4>Enter Client Contact:
+            <input value="{{ contact }}" name='saveContact'>
             </h4>
           </div>
           </form>

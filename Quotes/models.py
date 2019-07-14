@@ -15,6 +15,7 @@ class Service(models.Model):
 class Quote(models.Model):
     Name = models.CharField(max_length = 25)
     Company = models.CharField(max_length = 25)
+    Contact = models.CharField(max_length = 25)
     Services = models.ManyToManyField(Service)
 
 
