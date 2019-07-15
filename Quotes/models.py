@@ -11,7 +11,6 @@ class Service(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'Quotes_service'
     def __str__(self):
         return self.DescriptionService
 
