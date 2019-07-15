@@ -47,17 +47,22 @@ class ProductsCommerxcatalogProducts(models.Model):
 
 def merge_models(apps, schema_editor):
     for obj in ProductsCommerxcatalogProducts.objects.all():
-        if(obj.folderlist is None):
-            thirdFolder = 'Other'
-            secondFolder = '-'
-            firstFolder = '-'
-        else:
+        thirdFolder = 'Not Specified'
+        secondFolder = 'Other'
+        firstFolder = '-'
+        if(obj.folderlist is not None):
             firstFolder = ProductsCommerxcatalogFolders.objects.filter(id = obj.folderlist.replace('(83)', '').replace('(84)', '').replace('(', '').replace(')', '')).values()[0]
             print(firstFolder)
-            secondFolder = ProductsCommerxcatalogFolders.objects.filter(id = firstFolder['parentid']).values()[0]
-            print(secondFolder)
+
+            if(firstFolder.IndentLevel > 2):
+                secondFolder = ProductsCommerxcatalogFolders.objects.filter(id = firstFolder['parentid']).values()[0]
+                print(secondFolder)
+            else:
+                secondFolder = firstFolder
+
             thirdFolder = ProductsCommerxcatalogFolders.objects.filter(id = secondFolder['parentid']).values()[0]
             print(thirdFolder)
+
         service, created = Service.objects.get_or_create(
             ServiceTypeService = thirdFolder['foldername'],
             TypeService = secondFolder['foldername'],
