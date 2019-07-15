@@ -4,7 +4,7 @@ class Service(models.Model):
     ServiceTypeService = models.CharField(max_length = 100)
     TypeService= models.CharField(max_length = 100)
     QualityService = models.CharField(max_length = 100)
-    SKUService = models.CharField(max_length = 30)
+    SKUService = models.CharField(max_length = 50)
     DescriptionService = models.CharField(max_length = 200)
     priceService = models.FloatField()
     QtyService = models.IntegerField(default=1)
