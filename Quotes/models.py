@@ -50,18 +50,20 @@ def merge_models(apps, schema_editor):
         thirdFolder = 'Not Specified'
         secondFolder = 'Other'
         firstFolder = '-'
-        if(obj.folderlist is not None and obj.folderlist is not "(83)"):
-            firstFolder = ProductsCommerxcatalogFolders.objects.filter(id = obj.folderlist.replace('(83)', '').replace('(84)', '').replace('(', '').replace(')', '')).values()[0]
-            print(firstFolder)
+        if(obj.folderlist is not None):
+            folderId = obj.folderlist.replace('(83)', '').replace('(84)', '').replace('(', '').replace(')', ''))
+            if (folderId != ''):
+                firstFolder = ProductsCommerxcatalogFolders.objects.filter(id = folderId.values()[0]
+                print(firstFolder)
 
-            if(firstFolder['indentlevel'] > 2):
-                secondFolder = ProductsCommerxcatalogFolders.objects.filter(id = firstFolder['parentid']).values()[0]
-                print(secondFolder)
-            else:
-                secondFolder = firstFolder
+                if(firstFolder['indentlevel'] > 2):
+                    secondFolder = ProductsCommerxcatalogFolders.objects.filter(id = firstFolder['parentid']).values()[0]
+                    print(secondFolder)
+                else:
+                    secondFolder = firstFolder
 
-            thirdFolder = ProductsCommerxcatalogFolders.objects.filter(id = secondFolder['parentid']).values()[0]
-            print(thirdFolder)
+                thirdFolder = ProductsCommerxcatalogFolders.objects.filter(id = secondFolder['parentid']).values()[0]
+                print(thirdFolder)
 
         service, created = Service.objects.get_or_create(
             ServiceTypeService = thirdFolder['foldername'],
