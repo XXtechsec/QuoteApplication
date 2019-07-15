@@ -9,6 +9,9 @@ class Service(models.Model):
     priceService = models.FloatField()
     QtyService = models.IntegerField(default=1)
 
+    class Meta:
+        managed = False
+        db_table = 'Quotes_service'
     def __str__(self):
         return self.DescriptionService
 
