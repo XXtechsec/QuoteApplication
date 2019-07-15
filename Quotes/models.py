@@ -192,7 +192,7 @@ def merge_models(apps, schema_editor):
             ServiceType = thirdFolder['foldername'],
             Type = secondFolder['foldername'],
             Quality = firstFolder['foldername'],
-            SKU = obj.vendorpartnumber,
+            sku = obj.vendorpartnumber,
             Description = obj.description,
             price = obj.list,
             Qty = 1,
