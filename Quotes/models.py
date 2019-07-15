@@ -6,7 +6,7 @@ class Service(models.Model):
     Quality = models.CharField(max_length = 100)
     SKU = models.CharField(max_length = 20)
     Description = models.CharField(max_length = 200)
-    Price = models.FloatField()
+    price = models.FloatField()
     Qty = models.IntegerField(default=1)
 
     def __str__(self):
