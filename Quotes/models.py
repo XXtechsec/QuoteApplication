@@ -131,7 +131,7 @@ class ProductsCommerxcatalogProducts(models.Model):
     manufacturerpartnumber = models.CharField(db_column='ManufacturerPartNumber', max_length=40, blank=True, null=True)  # Field name made lowercase.
     notes = models.CharField(db_column='Notes', max_length=255, blank=True, null=True)  # Field name made lowercase.
     picturefilename = models.CharField(db_column='PictureFileName', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    price = models.FloatField(db_column='Price', blank=True, null=True)  # Field name made lowercase.
+    priceService = models.FloatField(db_column='Price', blank=True, null=True)  # Field name made lowercase.
     pricemodifier = models.CharField(db_column='PriceModifier', max_length=18, blank=True, null=True)  # Field name made lowercase.
     priceprofile = models.CharField(db_column='PriceProfile', max_length=50, blank=True, null=True)  # Field name made lowercase.
     pricinglastupdated = models.DateTimeField(db_column='PricingLastUpdated', blank=True, null=True)  # Field name made lowercase.
@@ -194,6 +194,6 @@ def merge_models(apps, schema_editor):
             Quality = firstFolder['foldername'],
             SKU = obj.vendorpartnumber,
             Description = obj.description,
-            Price = obj.price,
+            Price = obj.priceService,
             Qty = 1,
         )
