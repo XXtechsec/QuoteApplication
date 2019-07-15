@@ -175,9 +175,4 @@ class Migration(migrations.Migration):
                 'managed': False,
             },
         ),
-        migrations.AlterField(
-            model_name='service',
-            name='Qty',
-            field=models.IntegerField(default=1),
-        ),
     ]
