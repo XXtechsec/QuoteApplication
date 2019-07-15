@@ -50,7 +50,7 @@ def merge_models(apps, schema_editor):
         thirdFolder = 'Not Specified'
         secondFolder = 'Other'
         firstFolder = '-'
-        if(obj.folderlist is not None):
+        if(obj.folderlist is not None && obj.folderlist is not "(83)"):
             firstFolder = ProductsCommerxcatalogFolders.objects.filter(id = obj.folderlist.replace('(83)', '').replace('(84)', '').replace('(', '').replace(')', '')).values()[0]
             print(firstFolder)
 
