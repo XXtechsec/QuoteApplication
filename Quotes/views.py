@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from Quotes.forms import QuoteForm
 from django.http import HttpResponse
 from django.template import loader
 from Quotes.models import *
@@ -16,8 +15,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 import csv
 from datetime import datetime
-from django.contrib.auth import logout
-from django.contrib.auth import views as auth_views
 
 total = 0
 LookUp = {}
