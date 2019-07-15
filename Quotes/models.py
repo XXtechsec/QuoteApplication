@@ -194,6 +194,6 @@ def merge_models(apps, schema_editor):
             Quality = firstFolder['foldername'],
             SKU = obj.vendorpartnumber,
             Description = obj.description,
-            Price = obj.priceService,
+            Price = obj.list,
             Qty = 1,
         )
