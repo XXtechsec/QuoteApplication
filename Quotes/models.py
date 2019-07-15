@@ -183,7 +183,7 @@ class ProductsCommerxcatalogProducts(models.Model):
         db_table = 'Products_CommerxCatalog_Products'
 
 def merge_models(apps, schema_editor):
-    for obj in ProductsCommerxcatalogProducts:
+    for obj in ProductsCommerxcatalogProducts.objects.all():
         firstFolder = ProductsCommerxcatalogFolder.objects.filter(id = obj.folderlist.replace('(', '').replace(')', ''))
         secondFolder = ProductsCommerxcatalogFolder.objects.filter(id = firstFolder.parentid)
         thirdFolder = ProductsCommerxcatalogFolder.objects.filter(id = secondFolder.parentid)
