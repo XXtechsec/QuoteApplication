@@ -52,7 +52,7 @@ def merge_models(apps, schema_editor):
             secondFolder = '-'
             firstFolder = '-'
         else:
-            firstFolder = ProductsCommerxcatalogFolders.objects.filter(id = obj.folderlist.replace('(', '').replace(')', '')).replace('(83)', '').replace('(84)', '').values()[0]
+            firstFolder = ProductsCommerxcatalogFolders.objects.filter(id = obj.folderlist.replace('(', '').replace(')', '').replace('(83)', '').replace('(84)', '')).values()[0]
             print(firstFolder)
             secondFolder = ProductsCommerxcatalogFolders.objects.filter(id = firstFolder['parentid']).values()[0]
             print(secondFolder)
