@@ -3,7 +3,7 @@ from Quotes.models import Service
 from Quotes.models import Quote
 
 class ServiceAdmin(admin.ModelAdmin):
-    list_display = ('Type','Description', 'Price')
+    list_display = ('Type','Description', 'price')
     search_fields = ('Type', 'Description', 'SKU', 'id' )
     pass
 admin.site.register(Service, ServiceAdmin)

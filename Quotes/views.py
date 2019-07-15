@@ -95,13 +95,13 @@ def QuoteMaker(request):
     z = UserLookUp.get(request.user.id, [])
     total = 0
     for o in z:
-        total += (o['Price']*float(o['Qty']))
+        total += (o['price']*float(o['Qty']))
 
     for q in Service.objects.values_list('Type', flat=True).distinct():
         LookUp.update({q: list(Service.objects.filter(Type=q).values_list('Quality', flat=True).distinct())})
 
     context = {
-        'Service': Service.objects.values('Price', 'Description', 'ServiceType', 'Type', 'Quality', 'SKU', 'Qty'),
+        'Service': Service.objects.values('price', 'Description', 'ServiceType', 'Type', 'Quality', 'SKU', 'Qty'),
         'LookUp': sorted(LookUp.items()),
         'type': sorted(Service.objects.values_list('Type', flat=True).distinct()),
         'quality': sorted(Service.objects.values_list('Quality', flat=True).distinct()),
@@ -136,7 +136,7 @@ def CSV(request):
     model_class = Service
 
     meta = model_class._meta
-    field_names = ['ServiceType', 'Type', 'Quality', 'SKU', 'Description', 'Price', 'Qty']
+    field_names = ['ServiceType', 'Type', 'Quality', 'SKU', 'Description', 'price', 'Qty']
 
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename=' + selectedQuoteName + '.csv'.format(meta)
@@ -204,7 +204,7 @@ def search(request):
     searchResults = Service.objects.filter(Description__icontains=search).exclude(Description__contains="Silver").exclude(Description__contains="Gold")
 
     contextS = {
-        'Service': searchResults.values('Price', 'Description', 'ServiceType', 'Type', 'Quality', 'SKU', 'Qty'),
+        'Service': searchResults.values('price', 'Description', 'ServiceType', 'Type', 'Quality', 'SKU', 'Qty'),
         'result': z,
         'total': total,
         'search': search,

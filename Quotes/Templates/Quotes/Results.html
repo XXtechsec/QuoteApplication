@@ -80,7 +80,7 @@
                   </td>
                   <td>{{ product.SKU }}</td>
                   <td>{{ product.Description|truncatechars:50  }}</td>
-                  <td>{% widthratio product.Price 1 product.Qty %}</td>
+                  <td>{% widthratio product.price 1 product.Qty %}</td>
                   <td>
                     <form action="{% url 'delete' %}" method="POST">{% csrf_token %}
                       <button id=deletebtn class="btn btn-danger btn-xs" type="submit" value="{{ product }}" name="deleteService">
