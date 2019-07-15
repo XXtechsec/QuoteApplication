@@ -47,26 +47,29 @@ class ProductsCommerxcatalogProducts(models.Model):
 
 def merge_models(apps, schema_editor):
     for obj in ProductsCommerxcatalogProducts.objects.all():
-        thirdFolder = 'Not Specified'
-        secondFolder = 'Other'
-        firstFolder = '-'
-        if(obj.folderlist is not None):
-            folderId = obj.folderlist.replace('(83)', '').replace('(84)', '').replace('(', '').replace(')', '')
-            if (folderId != ''):
-                firstFolder = ProductsCommerxcatalogFolders.objects.filter(id = folderId).values()[0]
-                print(firstFolder)
+        try:
+            thirdFolder = 'Not Specified'
+            secondFolder = 'Other'
+            firstFolder = '-'
+            if(obj.folderlist is not None):
+                folderId = obj.folderlist.replace('(83)', '').replace('(84)', '').replace('(', '').replace(')', '')
+                if (folderId != ''):
+                    firstFolder = ProductsCommerxcatalogFolders.objects.filter(id = folderId).values()[0]
+                    print(firstFolder)
 
-                if(firstFolder['indentlevel'] > 2):
-                    secondFolder = ProductsCommerxcatalogFolders.objects.filter(id = firstFolder['parentid']).values()[0]
-                    print(secondFolder)
-                else:
-                    secondFolder = firstFolder
+                    if(firstFolder['indentlevel'] > 2):
+                        secondFolder = ProductsCommerxcatalogFolders.objects.filter(id = firstFolder['parentid']).values()[0]
+                        print(secondFolder)
+                    else:
+                        secondFolder = firstFolder
 
-                thirdFolder = ProductsCommerxcatalogFolders.objects.filter(id = secondFolder['parentid']).values()[0]
-                print(thirdFolder)
-                thirdFolder = thirdFolder['foldername']
-                secondFolder = secondFolder['foldername']
-                firstFolder = firstFolder['foldername']
+                    thirdFolder = ProductsCommerxcatalogFolders.objects.filter(id = secondFolder['parentid']).values()[0]
+                    print(thirdFolder)
+                    thirdFolder = thirdFolder['foldername']
+                    secondFolder = secondFolder['foldername']
+                    firstFolder = firstFolder['foldername']
+        except:
+            print("DIDNT WORK!")
         service, created = Service.objects.get_or_create(
             ServiceTypeService = thirdFolder,
             TypeService = secondFolder,
