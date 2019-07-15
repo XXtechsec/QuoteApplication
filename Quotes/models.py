@@ -47,9 +47,10 @@ class ProductsCommerxcatalogProducts(models.Model):
 
 def merge_models(apps, schema_editor):
     for obj in ProductsCommerxcatalogProducts.objects.all():
-        firstFolder = ProductsCommerxcatalogFolders.objects.filter(id = obj.folderlist.replace('(', '').replace(')', '')).values()[0]
-        secondFolder = ProductsCommerxcatalogFolders.objects.filter(id = firstFolder['parentid']).values()[0]
-        thirdFolder = ProductsCommerxcatalogFolders.objects.filter(id = secondFolder['parentid']).values()[0]
+        firstFolder = ProductsCommerxcatalogFolders.objects.filter(id = obj.folderlist.replace('(', '').replace(')', '')).values()
+        print(firstFolder)
+        secondFolder = ProductsCommerxcatalogFolders.objects.filter(id = firstFolder['parentid']).values()
+        thirdFolder = ProductsCommerxcatalogFolders.objects.filter(id = secondFolder['parentid']).values()
 
         service, created = Service.objects.get_or_create(
             ServiceTypeService = thirdFolder['foldername'],
