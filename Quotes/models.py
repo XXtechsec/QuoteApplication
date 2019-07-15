@@ -50,8 +50,9 @@ def merge_models(apps, schema_editor):
         firstFolder = ProductsCommerxcatalogFolders.objects.filter(id = obj.folderlist.replace('(', '').replace(')', '')).values()[0]
         print(firstFolder)
         secondFolder = ProductsCommerxcatalogFolders.objects.filter(id = firstFolder['parentid']).values()[0]
+        print(secondFolder)
         thirdFolder = ProductsCommerxcatalogFolders.objects.filter(id = secondFolder['parentid']).values()[0]
-
+        print(thirdFolder)
         service, created = Service.objects.get_or_create(
             ServiceTypeService = thirdFolder['foldername'],
             TypeService = secondFolder['foldername'],
@@ -61,3 +62,5 @@ def merge_models(apps, schema_editor):
             priceService = obj.list,
             QtyService = 1,
         )
+        print(service)
+        service.save()
