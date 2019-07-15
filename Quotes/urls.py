@@ -17,4 +17,6 @@ urlpatterns = [
     path('search', views.search, name= 'search'),
     path('select', views.select, name= 'select'),
     path('saveQuote', views.saveQuote, name= 'saveQuote'),
+    path('logout/', views.logout, name='logout'),
+
 ]

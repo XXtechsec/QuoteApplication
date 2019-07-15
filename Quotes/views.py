@@ -16,31 +16,39 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 import csv
 from datetime import datetime
+from django.contrib.auth import logout
+from django.contrib.auth import views as auth_views
 
-z = []
 total = 0
 LookUp = {}
+UserLookUp = {}
 selectedQuoteName = 'untitled'
 selectedQuoteCompany = 'untitled'
 selectedQuoteContact = 'untitled'
 def home(request):
     z = []
+    request.session['listOfProducts'] = []
     return render(request, 'Quotes/home.html')
 
 def result(request):
     if 'add' in request.POST:
-        global z
+        global UserLookUp
+        z = UserLookUp.get(request.user.id, [])
         p = ast.literal_eval(request.POST['add'])
         z.append(p.copy())
+        UserLookUp[request.user.id] = z
         messages.success(request, "Successfully Added "+ p['Description'])
     return QuoteMaker(request)
 
 def delete(request):
     if 'deleteService' in request.POST:
         global total
-        todelete = ast.literal_eval(request.POST['deletebtn'])
+        global UserLookUp
+        z = UserLookUp.get(request.user.id, [])
+        todelete = ast.literal_eval(request.POST['deleteService'])
         messages.success(request, "Successfully Deleted "+ todelete['Description'])
         z.remove(todelete)
+        UserLookUp[request.user.id] = z
         return QuoteMaker(request)
     if 'deleteQuote' in request.POST:
         Quote.objects.filter(Name=selectedQuoteName).delete()
@@ -49,12 +57,15 @@ def delete(request):
 
         messages.success(request, "Didn't work!")
     if 'clear' in request.POST:
+        z = UserLookUp.get(request.user.id, [])
         z.clear()
+        UserLookUp[request.user.id] = z
         return QuoteMaker(request)
 
 def changeQuality(request):
-    global z
+    global UserLookUp
     global LookUp
+    z = UserLookUp.get(request.user.id, [])
     try:
         ToChangeQuality = ast.literal_eval(request.POST['ToChangeQuality'])
         Sku = ToChangeQuality['SKU']
@@ -74,19 +85,20 @@ def changeQuality(request):
         messages.success(request, "Successfully Changed the Quality of " + ToChangeQuality['Description'] + " to " + Quality)
     except:
         messages.error(request, "Could not change quality!")
+    UserLookUp[request.user.id] = z
     return QuoteMaker(request)
 
 @login_required
 def QuoteMaker(request):
     global total
-    global z
+    global UserLookUp
     global selectedQuoteName
     global selectedQuoteCompany
     global selectedQuoteContact
+    z = UserLookUp.get(request.user.id, [])
     total = 0
     for o in z:
         total += (o['Price']*float(o['Qty']))
-
 
     for q in Service.objects.values_list('Type', flat=True).distinct():
         LookUp.update({q: list(Service.objects.filter(Type=q).values_list('Quality', flat=True).distinct())})
@@ -102,12 +114,13 @@ def QuoteMaker(request):
         'company': selectedQuoteCompany,
         'contact': selectedQuoteContact
     }
-
     return render(request, 'Quotes/QuoteMaker.html', context)
 
 def Pdf(request):
     global selectedQuoteContact
     global selectedQuoteCompany
+    global UserLookUp
+    z = UserLookUp.get(request.user.id, [])
     params = {
         'products': z,
         'total': total,
@@ -120,8 +133,9 @@ def Pdf(request):
     return Render.render('Quotes/pdf.html', params)
 
 def CSV(request):
-    global z
+    global UserLookUp
     global selectedQuoteName
+    z = UserLookUp.get(request.user.id, [])
     model_class = Service
 
     meta = model_class._meta
@@ -138,13 +152,14 @@ def CSV(request):
     return response
 
 def saveQuote(request):
-    global z
+    global UserLookUp
     saveName = request.POST['saveName']
     saveCompany = request.POST['saveCompany']
     saveContact = request.POST['saveContact']
     global selectedQuoteName
     global selectedQuoteCompany
     global selectedQuoteContact
+    z = UserLookUp.get(request.user.id, [])
     if z != []:
         if Quote.objects.filter(Name=saveName).exists() == False:
             obj = Quote.objects.create(Name=saveName, Company=saveCompany, Contact=saveContact)
@@ -164,14 +179,14 @@ def saveQuote(request):
                 obj.Services.add(Service.objects.get(SKU=i['SKU']))
             Quote.objects.update(Company=saveCompany, Contact=saveContact)
             messages.success(request, "Successfully Updated " + saveName)
-            z.clear()
             selectedQuoteCompany = saveCompany
             selectedQuoteContact = saveContact
             return QuoteMaker(request)
 
 def Qty(request):
     try:
-        global z
+        global UserLookUp
+        z = UserLookUp.get(request.user.id, [])
         toChangeQty = ast.literal_eval(request.POST['ToChange'])
         qty = request.POST['Qty']
         if(qty != ''):
@@ -181,11 +196,13 @@ def Qty(request):
             messages.success(request, "Successfully Changed the Qty of " + toChangeQty['Description'] + " to " + qty)
     except:
         messages.error(request, "Went too fast!")
+    UserLookUp[request.user.id] = z
     return QuoteMaker(request)
 
 def search(request):
-    global z
+    global UserLookUp
     global total
+    z = UserLookUp.get(request.user.id, [])
     search = request.POST['userSearch']
     searchResults = Service.objects.filter(Description__icontains=search).exclude(Description__contains="Silver").exclude(Description__contains="Gold")
 
@@ -200,12 +217,14 @@ def search(request):
 
 @login_required
 def select(request):
-    global z
+    global UserLookUp
     global selectedQuoteName
     global selectedQuoteCompany
     global selectedQuoteContact
+    z = UserLookUp.get(request.user.id, [])
     if 'new' in request.POST:
         z.clear()
+        UserLookUp[request.user.id] = z
         return QuoteMaker(request)
     elif 'old' in request.POST:
         z.clear()
@@ -217,6 +236,7 @@ def select(request):
         selectedQuoteContact = ''.join(selectedQuoteContact)
         for id in selectedQuote:
             z.append(Service.objects.filter(pk=id).values()[0])
+        UserLookUp[request.user.id] = z
         return QuoteMaker(request)
 
     else:
