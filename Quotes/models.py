@@ -68,5 +68,5 @@ def merge_models(apps, schema_editor):
             QtyService = 1,
         )
         if created == True:
-            print(service.values())
             service.save()
+            print(Service.object.all())
