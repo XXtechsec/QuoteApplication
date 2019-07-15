@@ -37,10 +37,10 @@
               <tbody>
                 {% for product in result %}
                 <tr>
-                  <td>{{ product.ServiceType }}</td>
-                  <td>{{ product.Type }}</td>
+                  <td>{{ product.ServiceTypeService }}</td>
+                  <td>{{ product.TypeService }}</td>
                   <td>
-                    {% with product.Quality as quality %}
+                    {% with product.QualityService as quality %}
                     {% if "Bronze (9x5)" in quality or "Silver (12x5)" in quality or 'Gold (24x7)' in quality %}
 
                     <form action="{% url 'changeQuality' %}" method="post">{% csrf_token %}
@@ -78,9 +78,9 @@
                     {% endif %}
                     {% endwith %}
                   </td>
-                  <td>{{ product.sku }}</td>
-                  <td>{{ product.Description|truncatechars:50  }}</td>
-                  <td>{% widthratio product.price 1 product.Qty %}</td>
+                  <td>{{ product.SKUService }}</td>
+                  <td>{{ product.DescriptionService|truncatechars:50  }}</td>
+                  <td>{% widthratio product.priceService 1 product.QtyService %}</td>
                   <td>
                     <form action="{% url 'delete' %}" method="POST">{% csrf_token %}
                       <button id=deletebtn class="btn btn-danger btn-xs" type="submit" value="{{ product }}" name="deleteService">
@@ -89,7 +89,7 @@
                     </form>
                     <b>Qty:</b>
                     <form id= "QtyForm" action="{% url 'Qty' %}" method="POST">{% csrf_token %}
-                      <input type="number" min="1" value={{product.Qty}} name='Qty'  oninput="validity.valid||(value='');" onchange="this.form.submit()">
+                      <input type="number" min="1" value={{product.QtyService}} name='Qty'  oninput="validity.valid||(value='');" onchange="this.form.submit()">
                       <input style=display:none value="{{ product }}" name='ToChange'>
                     </form>
 

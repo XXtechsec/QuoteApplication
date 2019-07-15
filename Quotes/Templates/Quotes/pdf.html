@@ -115,11 +115,11 @@
             </thead>
             {% for product in products %}
                 <tr>
-                    <td width="20%">{{product.sku}}</td>
-                    <td width="50%">{{ product.Description }}</td>
-                    <td width="5%">{{ product.Qty }}</td>
-                    <td width="10%">${{ product.price }}</td>
-                    <td width="15%">${% widthratio product.price 1 product.Qty %}</td>
+                    <td width="20%">{{product.SKUService}}</td>
+                    <td width="50%">{{ product.DescriptionService }}</td>
+                    <td width="5%">{{ product.QtyService }}</td>
+                    <td width="10%">${{ product.priceService }}</td>
+                    <td width="15%">${% widthratio product.priceService 1 product.QtyService %}</td>
                 </tr>
             {% endfor %}
             <tr>

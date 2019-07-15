@@ -1,16 +1,16 @@
 from django.db import models
 
 class Service(models.Model):
-    ServiceType = models.CharField(max_length = 100)
-    Type = models.CharField(max_length = 100)
-    Quality = models.CharField(max_length = 100)
-    sku = models.CharField(max_length = 20)
-    Description = models.CharField(max_length = 200)
-    price = models.FloatField()
-    Qty = models.IntegerField(default=1)
+    ServiceTypeServiceServiceService = models.CharField(max_length = 100)
+    TypeServiceService = models.CharField(max_length = 100)
+    QualityService = models.CharField(max_length = 100)
+    SKUService = models.CharField(max_length = 20)
+    DescriptionService = models.CharField(max_length = 200)
+    priceService = models.FloatField()
+    QtyService = models.IntegerField(default=1)
 
     def __str__(self):
-        return self.Description
+        return self.DescriptionService
 
 class Quote(models.Model):
     Name = models.CharField(max_length = 25)
@@ -32,7 +32,7 @@ class ProductsCommerxcatalogFolders(models.Model):
     extratext01 = models.CharField(db_column='ExtraText01', max_length=255, blank=True, null=True)  # Field name made lowercase.
     extratext02 = models.CharField(db_column='ExtraText02', max_length=255, blank=True, null=True)  # Field name made lowercase.
     foldername = models.CharField(db_column='FolderName', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    foldertype = models.CharField(db_column='FolderType', max_length=20, blank=True, null=True)  # Field name made lowercase.
+    foldertype = models.CharField(db_column='FolderTypeService', max_length=20, blank=True, null=True)  # Field name made lowercase.
     id = models.AutoField(db_column='ID', primary_key=True)  # Field name made lowercase.
     indentlevel = models.SmallIntegerField(db_column='IndentLevel', blank=True, null=True)  # Field name made lowercase.
     parentid = models.IntegerField(db_column='ParentID', blank=True, null=True)  # Field name made lowercase.
@@ -46,7 +46,7 @@ class ProductsCommerxcatalogFolders(models.Model):
         db_table = 'Products_CommerxCatalog_Folders'
 
 class ProductsCommerxcatalogProducts(models.Model):
-    accountingitemtype = models.CharField(db_column='AccountingItemType', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    accountingitemtype = models.CharField(db_column='AccountingItemTypeService', max_length=50, blank=True, null=True)  # Field name made lowercase.
     accountingsalesaccount = models.CharField(db_column='AccountingSalesAccount', max_length=50, blank=True, null=True)  # Field name made lowercase.
     alternatecost = models.FloatField(db_column='AlternateCost', blank=True, null=True)  # Field name made lowercase.
     alternatecurrency = models.CharField(db_column='AlternateCurrency', max_length=50, blank=True, null=True)  # Field name made lowercase.
@@ -120,18 +120,18 @@ class ProductsCommerxcatalogProducts(models.Model):
     id = models.AutoField(db_column='ID', primary_key=True)  # Field name made lowercase.
     internaldescription = models.TextField(db_column='InternalDescription', blank=True, null=True)  # Field name made lowercase.
     internalpartnumber = models.CharField(db_column='InternalPartNumber', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    itemtype = models.CharField(db_column='ItemType', max_length=30, blank=True, null=True)  # Field name made lowercase.
+    itemtype = models.CharField(db_column='ItemTypeService', max_length=30, blank=True, null=True)  # Field name made lowercase.
     keywordlist = models.CharField(db_column='KeywordList', max_length=255, blank=True, null=True)  # Field name made lowercase.
     lastmodified = models.DateTimeField(db_column='LastModified', blank=True, null=True)  # Field name made lowercase.
     lastmodifiedby = models.CharField(db_column='LastModifiedBy', max_length=40, blank=True, null=True)  # Field name made lowercase.
     lineitemattributes = models.IntegerField(db_column='LineItemAttributes', blank=True, null=True)  # Field name made lowercase.
-    lineitemtype = models.IntegerField(db_column='LineItemType', blank=True, null=True)  # Field name made lowercase.
+    lineitemtype = models.IntegerField(db_column='LineItemTypeService', blank=True, null=True)  # Field name made lowercase.
     list = models.FloatField(db_column='List', blank=True, null=True)  # Field name made lowercase.
     manufacturer = models.CharField(db_column='Manufacturer', max_length=40, blank=True, null=True)  # Field name made lowercase.
     manufacturerpartnumber = models.CharField(db_column='ManufacturerPartNumber', max_length=40, blank=True, null=True)  # Field name made lowercase.
     notes = models.CharField(db_column='Notes', max_length=255, blank=True, null=True)  # Field name made lowercase.
     picturefilename = models.CharField(db_column='PictureFileName', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    priceService = models.FloatField(db_column='Price')  # Field name made lowercase.
+    price = models.FloatField(db_column='Price')  # Field name made lowercase.
     pricemodifier = models.CharField(db_column='PriceModifier', max_length=18, blank=True, null=True)  # Field name made lowercase.
     priceprofile = models.CharField(db_column='PriceProfile', max_length=50, blank=True, null=True)  # Field name made lowercase.
     pricinglastupdated = models.DateTimeField(db_column='PricingLastUpdated', blank=True, null=True)  # Field name made lowercase.
@@ -189,11 +189,11 @@ def merge_models(apps, schema_editor):
         thirdFolder = ProductsCommerxcatalogFolders.objects.filter(id = secondFolder['parentid']).values()[0]
 
         service, created = Service.objects.get_or_create(
-            ServiceType = thirdFolder['foldername'],
-            Type = secondFolder['foldername'],
-            Quality = firstFolder['foldername'],
-            sku = obj.vendorpartnumber,
-            Description = obj.description,
-            price = obj.list,
-            Qty = 1,
+            ServiceTypeService = thirdFolder['foldername'],
+            TypeService = secondFolder['foldername'],
+            QualityService = firstFolder['foldername'],
+            SKUService = obj.vendorpartnumber,
+            DescriptionService = obj.description,
+            priceService = obj.list,
+            QtyService = 1,
         )
