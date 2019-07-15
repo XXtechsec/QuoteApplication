@@ -53,7 +53,7 @@ def merge_models(apps, schema_editor):
         if(obj.folderlist is not None):
             folderId = obj.folderlist.replace('(83)', '').replace('(84)', '').replace('(', '').replace(')', '')
             if (folderId != ''):
-                firstFolder = ProductsCommerxcatalogFolders.objects.filter(id = folderId.values()[0]
+                firstFolder = ProductsCommerxcatalogFolders.objects.filter(id = folderId.values()[0])
                 print(firstFolder)
 
                 if(firstFolder['indentlevel'] > 2):
