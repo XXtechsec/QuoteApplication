@@ -47,9 +47,9 @@ class ProductsCommerxcatalogProducts(models.Model):
 
 def merge_models(apps, schema_editor):
     for obj in ProductsCommerxcatalogProducts.objects.all():
-        thirdFolder = 'Not Specified'
-        secondFolder = 'Other'
-        firstFolder = '-'
+        thirdFolder['foldername'] = 'Not Specified'
+        secondFolder['foldername'] = 'Other'
+        firstFolder['foldername'] = '-'
         if(obj.folderlist is not None):
             folderId = obj.folderlist.replace('(83)', '').replace('(84)', '').replace('(', '').replace(')', '')
             if (folderId != ''):
