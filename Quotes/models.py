@@ -69,4 +69,4 @@ def merge_models(apps, schema_editor):
         )
         if created == True:
             service.save()
-            print(Service.object.all())
+            print(Service.objects.all())
