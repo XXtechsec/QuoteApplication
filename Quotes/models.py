@@ -1,8 +1,8 @@
 from django.db import models
 
 class Service(models.Model):
-    ServiceTypeServiceServiceService = models.CharField(max_length = 100)
-    TypeServiceService = models.CharField(max_length = 100)
+    ServiceTypeService = models.CharField(max_length = 100)
+    TypeService= models.CharField(max_length = 100)
     QualityService = models.CharField(max_length = 100)
     SKUService = models.CharField(max_length = 20)
     DescriptionService = models.CharField(max_length = 200)
