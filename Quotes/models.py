@@ -36,9 +36,9 @@ class ProductsCommerxcatalogFolders(models.Model):
 class ProductsCommerxcatalogProducts(models.Model):
     description = models.TextField(db_column='Description', blank=True, null=True)  # Field name made lowercase.
     folderlist = models.TextField(db_column='FolderList', blank=True, null=True)  # Field name made lowercase.
-    id = models.AutoField(db_column='ID', primary_key=True)  # Field name made lowercas
+    id = models.AutoField(db_column='ID', primary_key=True)  # Field name made lowercase.
+    list = models.FloatField(db_column='List', blank=True, null=True)  # Field name made lowercase.
     vendorpartnumber = models.CharField(db_column='VendorPartNumber', max_length=40, blank=True, null=True)  # Field name made lowercase.
-
     class Meta:
         managed = False
         db_table = 'Products_CommerxCatalog_Products'
