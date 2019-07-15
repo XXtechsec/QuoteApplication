@@ -65,17 +65,17 @@ def changeQuality(request):
     z = UserLookUp.get(request.user.id, [])
     try:
         ToChangeQuality = ast.literal_eval(request.POST['ToChangeQuality'])
-        Sku = ToChangeQuality['SKU']
+        Sku = ToChangeQuality['sku']
         Quality = request.POST['dropdown']
-        if (ToChangeQuality['SKU'].endswith('.G') or ToChangeQuality['SKU'].endswith('.S')):
-            Sku = ToChangeQuality['SKU'][:-2]
+        if (ToChangeQuality['sku'].endswith('.G') or ToChangeQuality['sku'].endswith('.S')):
+            Sku = ToChangeQuality['sku'][:-2]
         if(Quality == 'Bronze'):
             Sku = Sku + ''
         if(Quality == 'Silver'):
             Sku = Sku + '.S'
         if(Quality == 'Gold'):
             Sku = Sku + '.G'
-        TheChange = Service.objects.filter(SKU = Sku).values()[0]
+        TheChange = Service.objects.filter(sku = Sku).values()[0]
         TheChange['Qty'] = ToChangeQuality['Qty']
         indexToChange = z.index(ToChangeQuality)
         z[indexToChange] = TheChange
@@ -101,7 +101,7 @@ def QuoteMaker(request):
         LookUp.update({q: list(Service.objects.filter(Type=q).values_list('Quality', flat=True).distinct())})
 
     context = {
-        'Service': Service.objects.values('price', 'Description', 'ServiceType', 'Type', 'Quality', 'SKU', 'Qty'),
+        'Service': Service.objects.values('price', 'Description', 'ServiceType', 'Type', 'Quality', 'sku', 'Qty'),
         'LookUp': sorted(LookUp.items()),
         'type': sorted(Service.objects.values_list('Type', flat=True).distinct()),
         'quality': sorted(Service.objects.values_list('Quality', flat=True).distinct()),
@@ -136,7 +136,7 @@ def CSV(request):
     model_class = Service
 
     meta = model_class._meta
-    field_names = ['ServiceType', 'Type', 'Quality', 'SKU', 'Description', 'price', 'Qty']
+    field_names = ['ServiceType', 'Type', 'Quality', 'sku', 'Description', 'price', 'Qty']
 
     response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename=' + selectedQuoteName + '.csv'.format(meta)
@@ -161,7 +161,7 @@ def saveQuote(request):
         if Quote.objects.filter(Name=saveName).exists() == False:
             obj = Quote.objects.create(Name=saveName, Company=saveCompany, Contact=saveContact)
             for i in z:
-                obj.Services.add(Service.objects.get(SKU=i['SKU']))
+                obj.Services.add(Service.objects.get(sku=i['sku']))
 
             obj.save()
             messages.success(request, "Successfully Created " + saveName)
@@ -173,7 +173,7 @@ def saveQuote(request):
             obj = Quote.objects.get(Name=saveName)
             obj.Services.set('')
             for i in z:
-                obj.Services.add(Service.objects.get(SKU=i['SKU']))
+                obj.Services.add(Service.objects.get(sku=i['sku']))
             Quote.objects.update(Company=saveCompany, Contact=saveContact)
             messages.success(request, "Successfully Updated " + saveName)
             selectedQuoteCompany = saveCompany
@@ -204,7 +204,7 @@ def search(request):
     searchResults = Service.objects.filter(Description__icontains=search).exclude(Description__contains="Silver").exclude(Description__contains="Gold")
 
     contextS = {
-        'Service': searchResults.values('price', 'Description', 'ServiceType', 'Type', 'Quality', 'SKU', 'Qty'),
+        'Service': searchResults.values('price', 'Description', 'ServiceType', 'Type', 'Quality', 'sku', 'Qty'),
         'result': z,
         'total': total,
         'search': search,
