@@ -1,6 +1,9 @@
 from django.db import models
 
 class Service(models.Model):
+    ServiceType = models.CharField(max_length = 100, default="")
+    Type = models.CharField(max_length = 100, default="")
+    Quality = models.CharField(max_length = 100, default="")
     SKU = models.CharField(db_column='VendorPartNumber', max_length = 20)
     Description = models.CharField(db_column='Description', max_length = 200)
     Price = models.FloatField(db_column='Cost')
