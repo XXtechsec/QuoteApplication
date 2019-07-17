@@ -177,9 +177,9 @@ def saveQuote(request):
             obj.QtyLookup = ''
             for i in selectedProducts:
                 obj.Services.add(ProductsCommerxcatalogProducts.objects.get(vendorpartnumber=i['vendorpartnumber']))
-                obj.QtyLookup+= str(i['extralng01']) + ', '
+                obj.QtyLookup+= str(i['extralng01']) + ':' + i['description'] + ', '
             obj.Services.add(ProductsCommerxcatalogProducts.objects.get(vendorpartnumber=i['vendorpartnumber']))
-            obj.QtyLookup+= str(i['extralng01']) + ', '
+            obj.QtyLookup+= str(i['extralng01'])+ ':' + i['description'] + ', '
             #saves the object
             obj.save()
 
@@ -199,7 +199,7 @@ def saveQuote(request):
             obj.QtyLookup = ''
             for i in selectedProducts:
                 obj.Services.add(ProductsCommerxcatalogProducts.objects.get(vendorpartnumber=i['vendorpartnumber']))
-                obj.QtyLookup += str(i['extralng01']) + ', '
+                obj.QtyLookup += str(i['extralng01']) + ':' + i['description'] + ', '
             #update any changes to the company or contact
             obj.Company = saveCompany
             obj.Contact = saveContact
@@ -299,13 +299,16 @@ def select(request):
         selectedQuoteQty = ''.join(selectedQuoteQty)
         quantityList = selectedQuoteQty.split(',')
         quantityList.remove(' ')
-        quantityList = [int(j) for j in quantityList]
         counter = 0
-        for id in selectedQuote:
-            obj = ProductsCommerxcatalogProducts.objects.filter(pk=id).values()[0]
-            obj['extralng01'] = quantityList[counter]
+
+        for j in quantityList:
+            k = j.split(':')
+            value = k[0]
+            key = k[1]
+            obj = ProductsCommerxcatalogProducts.objects.filter(description=key).values()[0]
+            obj['extralng01'] = value
             selectedProducts.append(obj)
-            counter += 1
+
         UserLookUp[request.user.id] = selectedProducts
         #renders the page using the QuoteMaker function
         return QuoteMaker(request)
