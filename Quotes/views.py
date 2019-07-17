@@ -64,7 +64,7 @@ def delete(request):
         #runs the Quotemaker function inorder to render the page
         return QuoteMaker(request)
     if 'deleteQuote' in request.POST:
-        Quote.objects.filter(Name=selectedQuoteName).delete()
+        PreviousQuote.objects.filter(Name=selectedQuoteName).delete()
         messages.success(request, "Successfully Deleted: "+ selectedQuoteName)
         #runs the select instead of Quotemaker because the quote the user was working on was delete so they need to get a new one
         return select(request)
@@ -170,9 +170,9 @@ def saveQuote(request):
     #checks to make sure there is something to save
     if selectedProducts != []:
         #check to make sure the name given doesn't already exist
-        if Quote.objects.filter(Name=saveName).exists() == False:
+        if PreviousQuote.objects.filter(Name=saveName).exists() == False:
             #creates a new object with the values provided and adds all the services
-            obj = Quote.objects.create(Name=saveName, Company=saveCompany, Contact=saveContact)
+            obj = PreviousQuote.objects.create(Name=saveName, Company=saveCompany, Contact=saveContact)
             for i in selectedProducts:
                 obj.Services.add(ProductsCommerxcatalogProducts.objects.get(vendorpartnumber=i['vendorpartnumber']))
 
@@ -189,13 +189,13 @@ def saveQuote(request):
         #if name is taken update the Quote with that name
         else:
             #get the quote with that name
-            obj = Quote.objects.get(Name=saveName)
+            obj = PreviousQuote.objects.get(Name=saveName)
             #resets the products stored and sets them to what the user currently has selected
             obj.Services.set('')
             for i in selectedProducts:
                 obj.Services.add(ProductsCommerxcatalogProducts.objects.get(vendorpartnumber=i['vendorpartnumber']))
             #update any changes to the company or contact
-            Quote.objects.update(Company=saveCompany, Contact=saveContact)
+            PreviousQuote.objects.update(Company=saveCompany, Contact=saveContact)
             messages.success(request, "Successfully Updated " + saveName)
             selectedQuoteCompany = saveCompany
             selectedQuoteContact = saveContact
@@ -249,13 +249,13 @@ def search(request):
         search = request.POST['quoteSearch']
         LookUpQuote = {}
         #set the Quotes to those that have the same name as the search
-        for Name in Quote.objects.filter(Name__icontains=search).values_list('Name', flat=True):
-            LookUpQuote.update({Name: list(Quote.objects.filter(Name=Name).values_list('Services', flat=True))})
+        for Name in PreviousQuote.objects.filter(Name__icontains=search).values_list('Name', flat=True):
+            LookUpQuote.update({Name: list(PreviousQuote.objects.filter(Name=Name).values_list('Services', flat=True))})
 
         #gets all quotes if no search
         if search == None:
-            for Name in Quote.objects.values_list('Name', flat=True):
-                LookUpQuote.update({Name: list(Quote.objects.filter(Name=Name).values_list('Services', flat=True))})
+            for Name in PreviousQuote.objects.values_list('Name', flat=True):
+                LookUpQuote.update({Name: list(PreviousQuote.objects.filter(Name=Name).values_list('Services', flat=True))})
 
         contextS= {
             'LookUpQuote': LookUpQuote.items(),
@@ -283,9 +283,9 @@ def select(request):
         #map the set given to it as a dictonary think of ast.literal_eval like set_to_dict
         selectedQuote = ast.literal_eval(request.POST['old'])
         selectedQuoteName = request.POST['oldName']
-        selectedQuoteCompany = list(Quote.objects.filter(Name=selectedQuoteName).values_list('Company', flat=True))
+        selectedQuoteCompany = list(PreviousQuote.objects.filter(Name=selectedQuoteName).values_list('Company', flat=True))
         selectedQuoteCompany = ''.join(selectedQuoteCompany)
-        selectedQuoteContact = list(Quote.objects.filter(Name=selectedQuoteName).values_list('Contact', flat=True))
+        selectedQuoteContact = list(PreviousQuote.objects.filter(Name=selectedQuoteName).values_list('Contact', flat=True))
         selectedQuoteContact = ''.join(selectedQuoteContact)
         for id in selectedQuote:
             selectedProducts.append(ProductsCommerxcatalogProducts.objects.filter(pk=id).values()[0])
@@ -296,8 +296,8 @@ def select(request):
     else:
         #if no select display all Quotes
         LookUpQuote = {}
-        for Name in Quote.objects.values_list('Name', flat=True):
-            LookUpQuote.update({Name: list(Quote.objects.filter(Name=Name).values_list('Services', flat=True))})
+        for Name in PreviousQuote.objects.values_list('Name', flat=True):
+            LookUpQuote.update({Name: list(PreviousQuote.objects.filter(Name=Name).values_list('Services', flat=True))})
         contextSelect= {
             'LookUpQuote': LookUpQuote.items(),
         }
@@ -314,7 +314,6 @@ def QuoteMaker(request):
     global selectedQuoteContact
     selectedProducts = UserLookUp.get(request.user.id, [])
     total = 0
-    
     #use temporary variable o inorder to get the total price
     for o in selectedProducts:
         total += (o['list']*float(o['QtyService']))
