@@ -73,11 +73,10 @@ def merge_models(apps, schema_editor):
             print("DIDNT WORK!")
 
         #create or update an object
-        partNumber = obj.vendorpartnumber
         service, created = ProductsCommerxcatalogProducts.objects.get_or_create(
             vendorpartnumber = secondFolder,
             category = firstFolder,
-            vendorpartnumber = partNumber,
+            vendorpartnumber = obj['vendorpartnumber'],
             description = obj['description'],
             list = obj['list'],
             QtyService = 1,
