@@ -45,7 +45,7 @@ def result(request):
         selectedProducts.append(p.copy())
         #set the product list of the user to selectedProducts
         UserLookUp[request.user.id] = selectedProducts
-        messages.success(request, "Successfully Added "+ p['DescriptionService'])
+        messages.success(request, "Successfully Added "+ p['description'])
     #runs the Quotemaker function inorder to render the page
     return QuoteMaker(request)
 
@@ -58,7 +58,7 @@ def delete(request):
         selectedProducts = UserLookUp.get(request.user.id, [])
         #map the set given to it as a dictonary think of ast.literal_eval like set_to_dict
         todelete = ast.literal_eval(request.POST['deleteService'])
-        messages.success(request, "Successfully Deleted "+ todelete['DescriptionService'])
+        messages.success(request, "Successfully Deleted "+ todelete['description'])
         selectedProducts.remove(todelete)
         UserLookUp[request.user.id] = selectedProducts
         #runs the Quotemaker function inorder to render the page
@@ -85,25 +85,25 @@ def changeQuality(request):
     try:
         #map the set given to it as a dictonary think of ast.literal_eval like set_to_dict
         ToChangeQuality = ast.literal_eval(request.POST['ToChangeQuality'])
-        Sku = ToChangeQuality['SKUService']
-        QualityService = request.POST['dropdown']
+        Sku = ToChangeQuality['vendorpartnumber']
+        category = request.POST['dropdown']
         #removes the letter
-        if (ToChangeQuality['SKUService'].endswith('.G') or ToChangeQuality['SKUService'].endswith('.S')):
-            Sku = ToChangeQuality['SKUService'][:-2]
+        if (ToChangeQuality['vendorpartnumber'].endswith('.G') or ToChangeQuality['vendorpartnumber'].endswith('.S')):
+            Sku = ToChangeQuality['vendorpartnumber'][:-2]
         #uses what the user inputed to change it
-        if(QualityService == 'Bronze'):
+        if(category == 'Bronze'):
             Sku = Sku + ''
-        if(QualityService == 'Silver'):
+        if(category == 'Silver'):
             Sku = Sku + '.S'
-        if(QualityService == 'Gold'):
+        if(category == 'Gold'):
             Sku = Sku + '.G'
         #get the product with the updated SKU
-        TheChange = ProductsCommerxcatalogProducts.objects.filter(SKUService = Sku).values()[0]
+        TheChange = ProductsCommerxcatalogProducts.objects.filter(vendorpartnumber = Sku).values()[0]
         #update everything including deleting it from selectedProduct which in turn deletes it from UserLookUp
         TheChange['QtyService'] = ToChangeQuality['QtyService']
         indexToChange = selectedProducts.index(ToChangeQuality)
         selectedProducts[indexToChange] = TheChange
-        messages.success(request, "Successfully Changed the QualityService of " + ToChangeQuality['DescriptionService'] + " to " + QualityService)
+        messages.success(request, "Successfully Changed the category of " + ToChangeQuality['description'] + " to " + category)
     except:
         messages.error(request, "Could not change quality!")
     UserLookUp[request.user.id] = selectedProducts
@@ -139,7 +139,7 @@ def CSV(request):
     model_class = ProductsCommerxcatalogProducts
 
     meta = model_class._meta
-    field_names = ['TypeService', 'QualityService', 'SKUService', 'DescriptionService', 'priceService', 'QtyService']
+    field_names = ['vendorpartnumber', 'category', 'vendorpartnumber', 'description', 'list', 'QtyService']
 
     response = HttpResponse(content_type='text/csv')
     #sets up file name to QuoteName
@@ -174,7 +174,7 @@ def saveQuote(request):
             #creates a new object with the values provided and adds all the services
             obj = Quote.objects.create(Name=saveName, Company=saveCompany, Contact=saveContact)
             for i in selectedProducts:
-                obj.Services.add(ProductsCommerxcatalogProducts.objects.get(SKUService=i['SKUService']))
+                obj.Services.add(ProductsCommerxcatalogProducts.objects.get(vendorpartnumber=i['vendorpartnumber']))
 
             #saves the object
             obj.save()
@@ -193,7 +193,7 @@ def saveQuote(request):
             #resets the products stored and sets them to what the user currently has selected
             obj.Services.set('')
             for i in selectedProducts:
-                obj.Services.add(ProductsCommerxcatalogProducts.objects.get(SKUService=i['SKUService']))
+                obj.Services.add(ProductsCommerxcatalogProducts.objects.get(vendorpartnumber=i['vendorpartnumber']))
             #update any changes to the company or contact
             Quote.objects.update(Company=saveCompany, Contact=saveContact)
             messages.success(request, "Successfully Updated " + saveName)
@@ -219,7 +219,7 @@ def Qty(request):
             indexToChange = selectedProducts.index(toChangeQty)
             toChangeQty['QtyService'] = qty
             selectedProducts[indexToChange] = toChangeQty
-            messages.success(request, "Successfully Changed the QtyService of " + toChangeQty['DescriptionService'] + " to " + qty)
+            messages.success(request, "Successfully Changed the QtyService of " + toChangeQty['description'] + " to " + qty)
     except:
         messages.error(request, "Went too fast!")
     UserLookUp[request.user.id] = selectedProducts
@@ -238,7 +238,7 @@ def search(request):
         searchResults = ProductsCommerxcatalogProducts.objects.filter(Description__icontains=search).exclude(Description__contains="Silver").exclude(Description__contains="Gold")
 
         contextS = {
-            'Service': searchResults.values('priceService', 'DescriptionService', 'ServiceTypeService', 'TypeService', 'QualityService', 'SKUService', 'QtyService'),
+            'Service': searchResults.values('list', 'description', 'ServiceTypeService', 'vendorpartnumber', 'category', 'vendorpartnumber', 'QtyService'),
             'result': selectedProducts,
             'total': total,
             'search': search,
@@ -316,17 +316,17 @@ def QuoteMaker(request):
     total = 0
     #use temporary variable o inorder to get the total price
     for o in selectedProducts:
-        total += (o['priceService']*float(o['QtyService']))
+        total += (o['list']*float(o['QtyService']))
     #use temporary variable q to map the type to the give subtypes
-    for q in ProductsCommerxcatalogProducts.objects.values_list('TypeService', flat=True).distinct():
-        LookUp.update({q: list(ProductsCommerxcatalogProducts.objects.filter(TypeService=q).values_list('QualityService', flat=True).distinct())})
+    for q in ProductsCommerxcatalogProducts.objects.values_list('vendorpartnumber', flat=True).distinct():
+        LookUp.update({q: list(ProductsCommerxcatalogProducts.objects.filter(vendorpartnumber=q).values_list('category', flat=True).distinct())})
 
     #use all the info given to it to make a context
     context = {
-        'Service': ProductsCommerxcatalogProducts.objects.values('priceService', 'DescriptionService', 'ServiceTypeService', 'TypeService', 'QualityService', 'SKUService', 'QtyService'),
+        'Service': ProductsCommerxcatalogProducts.objects.values('list', 'description', 'ServiceTypeService', 'vendorpartnumber', 'category', 'vendorpartnumber', 'QtyService'),
         'LookUp': sorted(LookUp.items()),
-        'type': sorted(ProductsCommerxcatalogProducts.objects.values_list('TypeService', flat=True).distinct()),
-        'quality': sorted(ProductsCommerxcatalogProducts.objects.values_list('QualityService', flat=True).distinct()),
+        'type': sorted(ProductsCommerxcatalogProducts.objects.values_list('vendorpartnumber', flat=True).distinct()),
+        'quality': sorted(ProductsCommerxcatalogProducts.objects.values_list('category', flat=True).distinct()),
         'result': selectedProducts,
         'total': total,
         'name': selectedQuoteName,
