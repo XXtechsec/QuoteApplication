@@ -23,6 +23,8 @@ LookUp = {}
 #for mapping each product list to a user so multiple users can work at once
 UserLookUp = {}
 
+#for mapping each product to its Quantity
+
 #Default values
 selectedQuoteName = 'untitled'
 selectedQuoteCompany = 'untitled'
@@ -175,7 +177,7 @@ def saveQuote(request):
             obj = SavedQuotes.objects.create(Name=saveName, Company=saveCompany, Contact=saveContact)
             for i in selectedProducts:
                 obj.Services.add(ProductsCommerxcatalogProducts.objects.get(vendorpartnumber=i['vendorpartnumber']))
-
+                obj.QtyLookup+= i['extralng01']) + ', '
             #saves the object
             obj.save()
 
@@ -287,8 +289,13 @@ def select(request):
         selectedQuoteCompany = ''.join(selectedQuoteCompany)
         selectedQuoteContact = list(SavedQuotes.objects.filter(Name=selectedQuoteName).values_list('Contact', flat=True))
         selectedQuoteContact = ''.join(selectedQuoteContact)
+        quantityList = map(int, selectedQuote['QtyLookup'].split(', '))
+        counter = 0
         for id in selectedQuote:
-            selectedProducts.append(ProductsCommerxcatalogProducts.objects.filter(pk=id).values()[0])
+            obj = ProductsCommerxcatalogProducts.objects.filter(pk=id).values()[0]
+            obj['extralng01'] = quantityList[counter]
+            selectedProducts.append()
+            counter += 1
         UserLookUp[request.user.id] = selectedProducts
         #renders the page using the QuoteMaker function
         return QuoteMaker(request)

@@ -29,6 +29,7 @@ class SavedQuotes(models.Model):
     Company = models.CharField(max_length = 25)
     Contact = models.CharField(max_length = 25)
     Services = models.ManyToManyField(ProductsCommerxcatalogProducts)
+    QtyLookup = models.TextField()
 
 
     def __str__(self):
