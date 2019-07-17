@@ -4,8 +4,8 @@ from Quotes.models import Quote
 
 class ServiceAdmin(admin.ModelAdmin):
     # pass what attributes to display and what search field will look for in admin
-    list_display = ('vendorpartnumber','description', 'list')
-    search_fields = ('vendorpartnumber', 'description', 'vendorpartnumber', 'id' )
+    list_display = ('itemtype','description', 'list')
+    search_fields = ('itemtype', 'description', 'vendorpartnumber', 'id' )
     pass
 # register model for admin
 admin.site.register(ProductsCommerxcatalogProducts, ServiceAdmin)

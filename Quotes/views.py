@@ -139,7 +139,7 @@ def CSV(request):
     model_class = ProductsCommerxcatalogProducts
 
     meta = model_class._meta
-    field_names = ['vendorpartnumber', 'category', 'vendorpartnumber', 'description', 'list', 'QtyService']
+    field_names = ['itemtype', 'category', 'vendorpartnumber', 'description', 'list', 'QtyService']
 
     response = HttpResponse(content_type='text/csv')
     #sets up file name to QuoteName
@@ -238,7 +238,7 @@ def search(request):
         searchResults = ProductsCommerxcatalogProducts.objects.filter(Description__icontains=search).exclude(Description__contains="Silver").exclude(Description__contains="Gold")
 
         contextS = {
-            'Service': searchResults.values('list', 'description', 'ServiceTypeService', 'vendorpartnumber', 'category', 'vendorpartnumber', 'QtyService'),
+            'Service': searchResults.values('list', 'description', 'itemtype', 'category', 'vendorpartnumber', 'QtyService'),
             'result': selectedProducts,
             'total': total,
             'search': search,
@@ -318,14 +318,14 @@ def QuoteMaker(request):
     for o in selectedProducts:
         total += (o['list']*float(o['QtyService']))
     #use temporary variable q to map the type to the give subtypes
-    for q in ProductsCommerxcatalogProducts.objects.values_list('vendorpartnumber', flat=True).distinct():
-        LookUp.update({q: list(ProductsCommerxcatalogProducts.objects.filter(vendorpartnumber=q).values_list('category', flat=True).distinct())})
+    for q in ProductsCommerxcatalogProducts.objects.values_list('itemtype', flat=True).distinct():
+        LookUp.update({q: list(ProductsCommerxcatalogProducts.objects.filter(itemtype=q).values_list('category', flat=True).distinct())})
 
     #use all the info given to it to make a context
     context = {
-        'Service': ProductsCommerxcatalogProducts.objects.values('list', 'description', 'ServiceTypeService', 'vendorpartnumber', 'category', 'vendorpartnumber', 'QtyService'),
+        'Service': ProductsCommerxcatalogProducts.objects.values('list', 'description', 'itemtype', 'category', 'vendorpartnumber', 'QtyService'),
         'LookUp': sorted(LookUp.items()),
-        'type': sorted(ProductsCommerxcatalogProducts.objects.values_list('vendorpartnumber', flat=True).distinct()),
+        'type': sorted(ProductsCommerxcatalogProducts.objects.values_list('itemtype', flat=True).distinct()),
         'quality': sorted(ProductsCommerxcatalogProducts.objects.values_list('category', flat=True).distinct()),
         'result': selectedProducts,
         'total': total,

@@ -74,7 +74,7 @@ def merge_models(apps, schema_editor):
 
         #create or update an object
         service, created = ProductsCommerxcatalogProducts.objects.get_or_create(
-            vendorpartnumber = secondFolder,
+            itemtype = secondFolder,
             category = firstFolder,
             vendorpartnumber = obj['vendorpartnumber'],
             description = obj['description'],
