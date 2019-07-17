@@ -92,7 +92,7 @@
                   {# make it so descriptions can't go on forever #}
                   <td>{{ product.description|truncatechars:50  }}</td>
                   {# simple multiplication #}
-                  <td>{% widthratio product.list 1 product.QtyService %}</td>
+                  <td>{% widthratio product.list 1 product.extralng01 %}</td>
                   <td>
 
                     {# make a button that on press sends the value of the product attributed to it to the function delete in views #}
@@ -105,7 +105,7 @@
                     <b>Qty:</b>
                     {# makes an input field that on confirm sends its value to the Qty function in views as well as the product attributed to it #}
                     <form id= "QtyForm" action="{% url 'Qty' %}" method="POST">{% csrf_token %}
-                      <input type="number" min="1" value={{product.QtyService}} name='Qty'  oninput="validity.valid||(value='');" onchange="this.form.submit()">
+                      <input type="number" min="1" value={{product.extralng01}} name='Qty'  oninput="validity.valid||(value='');" onchange="this.form.submit()">
                       <input style=display:none value="{{ product }}" name='ToChange'>
                     </form>
 

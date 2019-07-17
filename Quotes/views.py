@@ -100,7 +100,7 @@ def changeQuality(request):
         #get the product with the updated SKU
         TheChange = ProductsCommerxcatalogProducts.objects.filter(vendorpartnumber = Sku).values()[0]
         #update everything including deleting it from selectedProduct which in turn deletes it from UserLookUp
-        TheChange['QtyService'] = ToChangeQuality['QtyService']
+        TheChange['extralng01'] = ToChangeQuality['extralng01']
         indexToChange = selectedProducts.index(ToChangeQuality)
         selectedProducts[indexToChange] = TheChange
         messages.success(request, "Successfully Changed the category of " + ToChangeQuality['description'] + " to " + category)
@@ -139,7 +139,7 @@ def CSV(request):
     model_class = ProductsCommerxcatalogProducts
 
     meta = model_class._meta
-    field_names = ['itemtype', 'category', 'vendorpartnumber', 'description', 'list', 'QtyService']
+    field_names = ['itemtype', 'category', 'vendorpartnumber', 'description', 'list', 'extralng01']
 
     response = HttpResponse(content_type='text/csv')
     #sets up file name to QuoteName
@@ -212,14 +212,14 @@ def Qty(request):
         #map the set given to it as a dictonary think of ast.literal_eval like set_to_dict
         toChangeQty = ast.literal_eval(request.POST['ToChange'])
         #get the qty the user selected
-        qty = request.POST['QtyService']
+        qty = request.POST['extralng01']
         #if its not nothing
         if(qty != ''):
             #simply change the Qty
             indexToChange = selectedProducts.index(toChangeQty)
-            toChangeQty['QtyService'] = qty
+            toChangeQty['extralng01'] = qty
             selectedProducts[indexToChange] = toChangeQty
-            messages.success(request, "Successfully Changed the QtyService of " + toChangeQty['description'] + " to " + qty)
+            messages.success(request, "Successfully Changed the extralng01 of " + toChangeQty['description'] + " to " + qty)
     except:
         messages.error(request, "Went too fast!")
     UserLookUp[request.user.id] = selectedProducts
@@ -238,7 +238,7 @@ def search(request):
         searchResults = ProductsCommerxcatalogProducts.objects.filter(Description__icontains=search).exclude(Description__contains="Silver").exclude(Description__contains="Gold")
 
         contextS = {
-            'Service': searchResults.values('list', 'description', 'itemtype', 'category', 'vendorpartnumber', 'QtyService'),
+            'Service': searchResults.values('list', 'description', 'itemtype', 'category', 'vendorpartnumber', 'extralng01'),
             'result': selectedProducts,
             'total': total,
             'search': search,
@@ -316,14 +316,14 @@ def QuoteMaker(request):
     total = 0
     #use temporary variable o inorder to get the total price
     for o in selectedProducts:
-        total += (o['list']*float(o['QtyService']))
+        total += (o['list']*float(o['extralng01']))
     #use temporary variable q to map the type to the give subtypes
     for q in ProductsCommerxcatalogProducts.objects.values_list('itemtype', flat=True).distinct():
         LookUp.update({q: list(ProductsCommerxcatalogProducts.objects.filter(itemtype=q).values_list('category', flat=True).distinct())})
 
     #use all the info given to it to make a context
     context = {
-        'Service': ProductsCommerxcatalogProducts.objects.values('list', 'description', 'itemtype', 'category', 'vendorpartnumber', 'QtyService'),
+        'Service': ProductsCommerxcatalogProducts.objects.values('list', 'description', 'itemtype', 'category', 'vendorpartnumber', 'extralng01'),
         'LookUp': sorted(LookUp.items()),
         'type': sorted(ProductsCommerxcatalogProducts.objects.values_list('itemtype', flat=True).distinct()),
         'quality': sorted(ProductsCommerxcatalogProducts.objects.values_list('category', flat=True).distinct()),
