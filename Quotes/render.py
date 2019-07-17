@@ -6,6 +6,7 @@ import xhtml2pdf.pisa as pisa
 
 class Render:
 
+    #for converting it to PDF nothing much to change
     @staticmethod
     def render(path: str, params: dict):
         template = get_template(path)

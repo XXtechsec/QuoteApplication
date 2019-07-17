@@ -19,7 +19,8 @@ from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
 
-
+# sets up urls for website
+#make sure to include any future urls here
 urlpatterns = [
     path('', include('Quotes.urls')),
     path('login/', auth_views.LoginView.as_view(), name='login'),

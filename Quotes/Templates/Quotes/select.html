@@ -1,17 +1,28 @@
 {% extends "Quotes/base.html" %}
 {% block content %}
+
+{# runs the select function with the name new, creating a new quote #}
 <form action="{% url 'select' %}" method="POST">{% csrf_token %}
   <button id=Menubtn class="button" data-toggle="collapse" aria-label="Toggle navigation" name='new' type="submit">
     New Quote
   </button>
 </form>
+
+{# on confirm displays only the products matching the services through search function in views  #}
+<form id="searchform" action="{% url 'search' %}" method="POST"> {% csrf_token %}
+<input class="searchfield" id="searchbox" name="quoteSearch" type="text" placeholder="search" value = "{{ search }}">
+</form>
+
+{# goes through all products given to it matching name to the service #}
 {% for name, service in LookUpQuote %}
 
+{# runs select function in views with the name old, loading an old quote #}
 <form action="{% url 'select' %}" method="POST">{% csrf_token %}
   <button id=Menubtn class="button" data-toggle="collapse" aria-label="Toggle navigation" name='old' value= "{{ service }}" type="submit">
     Name: {{ name }}
     <input style=display:none value="{{ name }}" name='oldName'>
   </button>
 </form>
+
 {%endfor%}
 {%endblock content%}

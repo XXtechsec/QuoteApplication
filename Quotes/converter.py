@@ -1,4 +1,5 @@
 import csv
+# not really needed used to import data from csv
 from Quotes.models import Service
 from django.http import HttpResponse
 with open('Quotes/services_db.csv', 'r') as csvfile:

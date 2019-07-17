@@ -1,3 +1,4 @@
+/* edit css here */
 body {
   background: #fafafa;
   color: #333333;
@@ -6,6 +7,29 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   color: #444444;
+}
+.sticky{
+  font-size: 10px;
+  position: sticky;
+  top: 10%;
+  overflow: auto;
+  max-height:1500px;
+  position: -webkit-sticky;
+  margin-bottom: 500px;
+}
+#searchbox{
+  margin-top: 20px;
+  width: 90%;
+}
+#Menubtn {
+  width: 90%;
+  margin-top: 10px;
+
+}
+.searchfield {
+  padding: 6px;
+  font-size: 17px;
+  margin-bottom: 5px;
 }
 button:focus {
   outline:none !important;
@@ -40,6 +64,11 @@ button:focus {
   font-size: 10px;
   width:100%;
 }
+#Menubtn{
+  background-color: grey;
+  text-align: left;
+  font-size: 12px;
+}
 button:hover{
   color: black;
 }
@@ -51,6 +80,10 @@ button:hover{
 }
 #SubSub:active{
   background-color: #a2b8d6;
+}
+#deletebtn{
+  padding: 0px;
+  font-size: 10px;
 }
 .bg-steel {
   background-color: #5f788a;
