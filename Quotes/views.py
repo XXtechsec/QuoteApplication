@@ -298,7 +298,7 @@ def select(request):
         for id in selectedQuote:
             obj = ProductsCommerxcatalogProducts.objects.filter(pk=id).values()[0]
             obj['extralng01'] = quantityList[counter]
-            selectedProducts.append()
+            selectedProducts.append(obj)
             counter += 1
         UserLookUp[request.user.id] = selectedProducts
         #renders the page using the QuoteMaker function
