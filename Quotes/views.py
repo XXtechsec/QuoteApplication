@@ -292,7 +292,7 @@ def select(request):
         selectedQuoteQty = list(SavedQuotes.objects.filter(Name=selectedQuoteName).values_list('QtyLookup', flat=True))
         selectedQuoteQty = ''.join(selectedQuoteQty)
         quantityList = selectedQuoteQty.split(',')
-        quantityList = [int(i) for i in quantityList]
+        quantityList = [int(i) for i in len(quantityList) - 1]
         counter = 0
         for id in selectedQuote:
             obj = ProductsCommerxcatalogProducts.objects.filter(pk=id).values()[0]
