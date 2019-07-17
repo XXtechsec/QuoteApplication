@@ -7,43 +7,43 @@
   {% for T, SubType in LookUp %}
   {# make a button of type and on press uncollaspe a list of buttons of Subtype that on press uncollaspes a list of buttons of services #}
   {# using data-target to link each type to subtype #}
-  <button class="button" type="button" data-target="#{{ T|cut:" " |cut:"(" |cut:")" |cut:"x" }}" aria-expanded="false" data-toggle="collapse" aria-label="Toggle navigation">
+  <button class="button" type="button" data-target="#{{ T }}" aria-expanded="false" data-toggle="collapse" aria-label="Toggle navigation">
     {{ T }}
   </button>
-  <div class="collapse" id="{{ T|cut:" " |cut:"(" |cut:")" |cut:"x" }}">
+  <div class="collapse" id="{{ T }}">
     {% for o in SubType %}
     {# do not generate button of subtype if the sub type is - or subtype is gold or silver or bronze, silver, and gold are the only ones in subtype #}
-    {% if '-' in o and SubType|length_is:1 or 'Gold (24x7)' in o or 'Silver (12x5)' in o or 'Bronze (9x5)' in o and SubType|length_is:3 %}
+    {% if '-' in o and SubType|length_is:1 or 'Gold' in o or 'Silver' in o or 'Bronze' in o and SubType|length_is:3 %}
     <div>
 
       {% else %}
       {% with T|add:o as To%}
 
 
-      <button class="button" id='Sub' type="button" data-target="#{{To|cut:" " |cut:"(" |cut:")" |cut:"x"}}" aria-expanded="false" data-toggle="collapse" aria-label="Toggle navigation">
+      <button class="button" id='Sub' type="button" data-target="#{{To}}" aria-expanded="false" data-toggle="collapse" aria-label="Toggle navigation">
         {# if multiple subtypes either than quality exist name that group general #}
-        {% if 'Bronze (9x5)' in o %}
+        {% if 'Bronze' in o %}
         General
         {% else %}
         {{ o }}
         {% endif %}
       </button>
 
-      <div class="collapse" id="{{To|cut:" " |cut:"(" |cut:")" |cut:"x"}}" id='SubSub'>
+      <div class="collapse" id="{{To}}" id='SubSub'>
         {%endwith%}
         {% endif %}
         {% for product in Service %}
         {# only include the bronze version #}
-        {% if 'Gold (24x7)' in o or 'Silver (12x5)' in o %}
+        {% if 'Gold' in o or 'Silver' in o %}
 
         {% else %}
-        {% if product.Quality == o and product.Type == T %}
+        {% if product.category == o and product.itemtype == T %}
 
         {# add a button that on press runs the result function in views #}
         <form action="{% url 'result' %}" method="POST">{% csrf_token %}
           <button id=SubSub class="button" aria-expanded="false" data-toggle="collapse" aria-label="Toggle navigation" type="submit" name="add" value="{{ product }}">
             {# cut out the word bronze #}
-            {{ product.Description|cut:"Bronze" }}
+            {{ product.description|cut:"Bronze" }}
           </button>
         </form>
 

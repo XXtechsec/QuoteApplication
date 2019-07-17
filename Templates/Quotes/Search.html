@@ -5,14 +5,14 @@
 {# runs through all products specified by the users search #}
 {% for product in Service %}
 {# don't show gold or silver results only bronze #}
-{% if 'Gold (24x7)' in o or 'Silver (12x5)' in o %}
+{% if 'Gold' in o or 'Silver' in o %}
 
 {% else %}
 
 <form action="{% url 'result' %}" method="POST">{% csrf_token %}
   <button id=SubSub class="button" aria-expanded="false" data-toggle="collapse" aria-label="Toggle navigation" type="submit" name="add" value="{{ product }}">
     {# cut out the word bronze  #}
-    {{ product.Description|cut:"Bronze" }}
+    {{ product.description|cut:"Bronze" }}
   </button>
 </form>
 {% endif %}
