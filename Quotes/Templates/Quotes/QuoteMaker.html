@@ -1,14 +1,18 @@
 {% extends "Quotes/Results.html" %}
+{# extends Results.html which itself extends the base that way it is easier to understand was is going on #}
+{# the tool on the left that you navigate #}
 {% block QuoteMaker %}
 <ul class="list-group">
+  {# for every unique pair of type and subtype #}
   {% for T, SubType in LookUp %}
-  <form action="{% url 'result' %}" method="POST">{% csrf_token %}
-  </form>
+  {# make a button of type and on press uncollaspe a list of buttons of Subtype that on press uncollaspes a list of buttons of services #}
+  {# using data-target to link each type to subtype #}
   <button class="button" type="button" data-target="#{{ T|cut:" " |cut:"(" |cut:")" |cut:"x" }}" aria-expanded="false" data-toggle="collapse" aria-label="Toggle navigation">
     {{ T }}
   </button>
   <div class="collapse" id="{{ T|cut:" " |cut:"(" |cut:")" |cut:"x" }}">
     {% for o in SubType %}
+    {# do not generate button of subtype if the sub type is - or subtype is gold or silver or bronze, silver, and gold are the only ones in subtype #}
     {% if '-' in o and SubType|length_is:1 or 'Gold (24x7)' in o or 'Silver (12x5)' in o or 'Bronze (9x5)' in o and SubType|length_is:3 %}
     <div>
 
@@ -17,6 +21,7 @@
 
 
       <button class="button" id='Sub' type="button" data-target="#{{To|cut:" " |cut:"(" |cut:")" |cut:"x"}}" aria-expanded="false" data-toggle="collapse" aria-label="Toggle navigation">
+        {# if multiple subtypes either than quality exist name that group general #}
         {% if 'Bronze (9x5)' in o %}
         General
         {% else %}
@@ -28,15 +33,20 @@
         {%endwith%}
         {% endif %}
         {% for product in Service %}
+        {# only include the bronze version #}
         {% if 'Gold (24x7)' in o or 'Silver (12x5)' in o %}
 
         {% else %}
         {% if product.Quality == o and product.Type == T %}
+
+        {# add a button that on press runs the result function in views #}
         <form action="{% url 'result' %}" method="POST">{% csrf_token %}
           <button id=SubSub class="button" aria-expanded="false" data-toggle="collapse" aria-label="Toggle navigation" type="submit" name="add" value="{{ product }}">
+            {# cut out the word bronze #}
             {{ product.Description|cut:"Bronze" }}
           </button>
         </form>
+
         {% endif %}
         {% endif %}
         {%endfor%}

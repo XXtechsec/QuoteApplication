@@ -5,6 +5,7 @@ from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
 
+#maps all urls to a function in views
 urlpatterns = [
     path('', views.home, name='home'),
     path('QuoteMaker', views.QuoteMaker, name='QuoteMaker'),

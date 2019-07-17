@@ -1,10 +1,12 @@
 {% extends "Quotes/base.html" %}
 {% block content %}
+{# default login #}
     <div class="content-section">
         <form method="POST">
             {% csrf_token %}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-4">Log In</legend>
+                {# loads default form #}
                 {{ form }}
             </fieldset>
             <div class="form-group">
