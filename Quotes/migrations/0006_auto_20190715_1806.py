@@ -9,7 +9,6 @@ class Migration(migrations.Migration):
         ('Quotes', '0005_auto_20190715_1608'),
     ]
 
-
     operations = [
         migrations.CreateModel(
             name='ProductsCommerxcatalogFolders',
