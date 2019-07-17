@@ -14,7 +14,7 @@ class ProductsCommerxcatalogFolders(models.Model):
 
 class ProductsCommerxcatalogProducts(models.Model):
     category = models.CharField(max_length = 100, db_column='Category')
-    extralng01 = models.IntegerField(db_column='ExtraLng01', blank=True, null=True)  # Field name made lowercase.
+    extralng01 = models.IntegerField(db_column='ExtraLng01', blank=True, null=True, default=1)  # Field name made lowercase.
     description = models.TextField(db_column='Description', blank=True, null=True)  # Field name made lowercase.
     folderlist = models.TextField(db_column='FolderList', blank=True, null=True)  # Field name made lowercase.
     list = models.FloatField(db_column='List', blank=True, null=True)  # Field name made lowercase.
