@@ -6,7 +6,7 @@ from Quotes.models import merge_models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('Quotes', '0006_auto_20190715_1806'),
+        ('Quotes', '0005_auto_20190715_1608'),
     ]
 
     operations = [

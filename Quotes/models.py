@@ -13,15 +13,13 @@ class ProductsCommerxcatalogFolders(models.Model):
         db_table = 'Products_CommerxCatalog_Folders'
 
 class ProductsCommerxcatalogProducts(models.Model):
-    QualityService = models.TextField(default='nothing')
-    #models.CharField(max_length = 100, db_column='Category')
+    QualityService = models.CharField(max_length = 100, db_column='Category')
     QtyService = models.IntegerField(default=1)
     DescriptionService = models.TextField(db_column='Description', blank=True, null=True)  # Field name made lowercase.
     folderlist = models.TextField(db_column='FolderList', blank=True, null=True)  # Field name made lowercase.
     priceService = models.FloatField(db_column='List', blank=True, null=True)  # Field name made lowercase.
     SKUService = models.CharField(db_column='VendorPartNumber', max_length=40, blank=True, null=True)  # Field name made lowercase.
-    TypeService= models.TextField(default='general')
-    #models.CharField(max_length = 100, db_column='ItemType')
+    TypeService= models.CharField(max_length = 100, db_column='ItemType')
     class Meta:
         managed = False
         db_table = 'Products_CommerxCatalog_Products'
