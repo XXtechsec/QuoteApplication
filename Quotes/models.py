@@ -13,13 +13,13 @@ class ProductsCommerxcatalogFolders(models.Model):
         db_table = 'Products_CommerxCatalog_Folders'
 
 class ProductsCommerxcatalogProducts(models.Model):
-    QualityService = models.CharField(max_length = 100, db_column='Category')
+    category = models.CharField(max_length = 100, db_column='Category')
     QtyService = models.IntegerField(default=1)
-    DescriptionService = models.TextField(db_column='Description', blank=True, null=True)  # Field name made lowercase.
+    description = models.TextField(db_column='Description', blank=True, null=True)  # Field name made lowercase.
     folderlist = models.TextField(db_column='FolderList', blank=True, null=True)  # Field name made lowercase.
-    priceService = models.FloatField(db_column='List', blank=True, null=True)  # Field name made lowercase.
-    SKUService = models.CharField(db_column='VendorPartNumber', max_length=40, blank=True, null=True)  # Field name made lowercase.
-    TypeService= models.CharField(max_length = 100, db_column='ItemType')
+    list = models.FloatField(db_column='List', blank=True, null=True)  # Field name made lowercase.
+    vendorpartnumber = models.CharField(db_column='VendorPartNumber', max_length=40, blank=True, null=True)  # Field name made lowercase.
+    itemtype = models.CharField(max_length = 100, db_column='ItemType')
     class Meta:
         managed = False
         db_table = 'Products_CommerxCatalog_Products'
@@ -45,9 +45,9 @@ def merge_models(apps, schema_editor):
             secondFolder = 'Other'
             firstFolder = '-'
             #gets the products folderlist and using this find what categories it belongs to
-            if(obj.folderlist is not None):
+            if(obj['folderlist'] is not None):
                 #formats it and does away with all un acceptable inputs
-                folderId = obj.folderlist.replace('(83)', '').replace('(84)', '').replace('(', '').replace(')', '')
+                folderId = obj['folderlist'].replace('(83)', '').replace('(84)', '').replace('(', '').replace(')', '')
                 if (folderId != ''):
                     #set the quality to string found at the folderId
                     firstFolder = ProductsCommerxcatalogFolders.objects.filter(id = folderId).values()[0]
@@ -73,13 +73,11 @@ def merge_models(apps, schema_editor):
             print("DIDNT WORK!")
 
         #create or update an object
-
-        service, created = ProductsCommerxcatalogProducts.objects.update_or_create(
-            TypeService = secondFolder,
-            QualityService = firstFolder,
-            SKUService = obj.vendorpartnumber,
-            DescriptionService = obj.description,
-            priceService = obj.list,
+        service, created = ProductsCommerxcatalogProducts.objects.get_or_create(
+            vendorpartnumber = secondFolder,
+            category = firstFolder,
+            vendorpartnumber = obj['vendorpartnumber'],
+            description = obj['description'],
+            list = obj['list'],
             QtyService = 1,
         )
-        service.save()
