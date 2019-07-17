@@ -10,5 +10,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-
+        migrations.RunPython(merge_models),
     ]
