@@ -46,8 +46,7 @@
                 {# for every product selected give the values placed under the headers above #}
                 {% for product in result %}
                 <tr>
-                  <td>{{ product.ServiceTypeService }}</td>
-                  <td>{{ product.vendorpartnumber }}</td>
+                  <td>{{ product.itemtype }}</td>
                   <td>
                     {% with product.category as quality %}
 
