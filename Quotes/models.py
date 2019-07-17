@@ -24,7 +24,7 @@ class ProductsCommerxcatalogProducts(models.Model):
         managed = False
         db_table = 'Products_CommerxCatalog_Products'
 
-class PreviousQuote(models.Model):
+class SavedQuotes(models.Model):
     Name = models.CharField(max_length = 25)
     Company = models.CharField(max_length = 25)
     Contact = models.CharField(max_length = 25)
