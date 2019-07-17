@@ -50,7 +50,7 @@
                     {% with product.category as quality %}
 
                     {# allows you to change quality only if the product is Bronze, Silver or Gold #}
-                    {% if "Bronze (9x5)" in quality or "Silver (12x5)" in quality or 'Gold (24x7)' in quality %}
+                    {% if "Bronze (8x5)" in quality or "Silver (12x5)" in quality or 'Gold (24x7)' in quality %}
 
                     {# lengthy process for choosing and being able to change the Quality of the product  #}
                     {# runs the changeQuality function in views #}
@@ -59,12 +59,12 @@
                       <select name="dropdown" onchange="this.form.submit()">
                         </input>
 
-                        {% if "Bronze (9x5)" in quality %}
+                        {% if "Bronze (8x5)" in quality %}
                         <option selected="selected" disabled>
                           {% else %}
                         <option value="Bronze">
                           {% endif %}
-                          Bronze (9x5)</option>
+                          Bronze (8x5)</option>
 
                         {% if 'Silver (12x5)' in quality %}
                         <option selected="selected" disabled>
