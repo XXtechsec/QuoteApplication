@@ -13,7 +13,7 @@
   <div class="collapse" id="{{ T|cut:" " |cut:"(" |cut:")" |cut:"x" }}">
     {% for o in SubType %}
     {# do not generate button of subtype if the sub type is - or subtype is gold or silver or bronze, silver, and gold are the only ones in subtype #}
-    {% if 'empty' in o and SubType|length_is:1 or 'Gold (24x7)' in o or 'Silver (12x5)' in o or 'Bronze (9x5)' in o and SubType|length_is:3 %}
+    {% if 'empty' in o and SubType|length_is:1 or 'Gold (24x7)' in o or 'Silver (12x5)' in o or 'Bronze (8x5)' in o and SubType|length_is:3 %}
     <div>
 
       {% else %}
@@ -22,7 +22,7 @@
 
       <button class="button" id='Sub' type="button" data-target="#{{To|cut:" " |cut:"(" |cut:")" |cut:"x"}}" aria-expanded="false" data-toggle="collapse" aria-label="Toggle navigation">
         {# if multiple subtypes either than quality exist name that group general #}
-        {% if 'Bronze (9x5)' in o %}
+        {% if 'Bronze (8x5)' in o %}
         General
         {% else %}
         {{ o }}
