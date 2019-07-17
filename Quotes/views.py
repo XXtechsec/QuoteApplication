@@ -212,7 +212,7 @@ def Qty(request):
         #map the set given to it as a dictonary think of ast.literal_eval like set_to_dict
         toChangeQty = ast.literal_eval(request.POST['ToChange'])
         #get the qty the user selected
-        qty = request.POST['extralng01']
+        qty = request.POST['Qty']
         #if its not nothing
         if(qty != ''):
             #simply change the Qty
