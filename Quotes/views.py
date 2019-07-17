@@ -177,7 +177,7 @@ def saveQuote(request):
             obj.QtyLookup = ''
             for i in selectedProducts:
                 obj.Services.add(ProductsCommerxcatalogProducts.objects.get(vendorpartnumber=i['vendorpartnumber']))
-                obj.QtyLookup+= i['extralng01'] + ', '
+                obj.QtyLookup+= str(i['extralng01']) + ', '
             #saves the object
             obj.save()
 
