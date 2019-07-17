@@ -23,7 +23,6 @@ LookUp = {}
 #for mapping each product list to a user so multiple users can work at once
 UserLookUp = {}
 
-#for mapping each product to its Quantity
 
 #Default values
 selectedQuoteName = 'untitled'
@@ -175,9 +174,10 @@ def saveQuote(request):
         if SavedQuotes.objects.filter(Name=saveName).exists() == False:
             #creates a new object with the values provided and adds all the services
             obj = SavedQuotes.objects.create(Name=saveName, Company=saveCompany, Contact=saveContact)
+            obj.QtyLookup = ''
             for i in selectedProducts:
                 obj.Services.add(ProductsCommerxcatalogProducts.objects.get(vendorpartnumber=i['vendorpartnumber']))
-                obj.QtyLookup+= i['extralng01']) + ', '
+                obj.QtyLookup+= i['extralng01'] + ', '
             #saves the object
             obj.save()
 
