@@ -45,9 +45,9 @@ def merge_models(apps, schema_editor):
             secondFolder = 'Other'
             firstFolder = '-'
             #gets the products folderlist and using this find what categories it belongs to
-            if(obj.folderlist is not None):
+            if(obj['folderlist'] is not None):
                 #formats it and does away with all un acceptable inputs
-                folderId = obj.folderlist.replace('(83)', '').replace('(84)', '').replace('(', '').replace(')', '')
+                folderId = obj['folderlist'].replace('(83)', '').replace('(84)', '').replace('(', '').replace(')', '')
                 if (folderId != ''):
                     #set the quality to string found at the folderId
                     firstFolder = ProductsCommerxcatalogFolders.objects.filter(id = folderId).values()[0]
@@ -78,7 +78,7 @@ def merge_models(apps, schema_editor):
             vendorpartnumber = secondFolder,
             category = firstFolder,
             vendorpartnumber = partNumber,
-            description = obj.description,
-            list = obj.list,
+            description = obj['description'],
+            list = obj['list'],
             QtyService = 1,
         )
