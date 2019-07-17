@@ -289,7 +289,9 @@ def select(request):
         selectedQuoteCompany = ''.join(selectedQuoteCompany)
         selectedQuoteContact = list(SavedQuotes.objects.filter(Name=selectedQuoteName).values_list('Contact', flat=True))
         selectedQuoteContact = ''.join(selectedQuoteContact)
-        quantityList = map(int, selectedQuote['QtyLookup'].split(', '))
+        selectedQuoteQty = list(SavedQuotes.objects.filter(Name=selectedQuoteName).values_list('QtyLookup', flat=True))
+        selectedQuoteQty = ''.join(selectedQuoteQty)
+        quantityList = map(int, selectedQuoteQty.split(', '))
         counter = 0
         for id in selectedQuote:
             obj = ProductsCommerxcatalogProducts.objects.filter(pk=id).values()[0]
