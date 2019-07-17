@@ -1,6 +1,6 @@
 from django.contrib import admin
 from Quotes.models import ProductsCommerxcatalogProducts
-from Quotes.models import Quote
+from Quotes.models import PreviousQuote
 
 class ServiceAdmin(admin.ModelAdmin):
     # pass what attributes to display and what search field will look for in admin
@@ -14,4 +14,4 @@ class QuoteAdmin(admin.ModelAdmin):
     # add whatever you want here
     pass
 # register model for admin
-admin.site.register(Quote, QuoteAdmin)
+admin.site.register(PreviousQuote, QuoteAdmin)
