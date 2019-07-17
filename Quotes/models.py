@@ -22,6 +22,7 @@ class ProductsCommerxcatalogProducts(models.Model):
     TypeService= models.CharField(max_length = 100, db_column='ItemType', blank=True, null=True)
     QualityService = models.CharField(max_length = 100, db_column='Category', blank=True, null=True)
     class Meta:
+        managed = False
         db_table = 'Products_CommerxCatalog_Products'
 
 class Quote(models.Model):
