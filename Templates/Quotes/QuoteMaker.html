@@ -13,7 +13,7 @@
   <div class="collapse" id="{{ T }}">
     {% for o in SubType %}
     {# do not generate button of subtype if the sub type is - or subtype is gold or silver or bronze, silver, and gold are the only ones in subtype #}
-    {% if '-' in o and SubType|length_is:1 or 'Gold' in o or 'Silver' in o or 'Bronze' in o and SubType|length_is:3 %}
+    {% if "empty" in o and SubType|length_is:1 or 'Gold' in o or 'Silver' in o or 'Bronze' in o and SubType|length_is:3 %}
     <div>
 
       {% else %}
