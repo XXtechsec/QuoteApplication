@@ -22,12 +22,12 @@ class ProductsCommerxcatalogProducts(models.Model):
     class Meta:
         managed = False
         db_table = 'Products_CommerxCatalog_Products'
-        
+
 class Quote(models.Model):
     Name = models.CharField(max_length = 25)
     Company = models.CharField(max_length = 25)
     Contact = models.CharField(max_length = 25)
-    Services = models.ManyToManyField(Service)
+    Services = models.ManyToManyField(ProductsCommerxcatalogProducts)
 
 
     def __str__(self):
