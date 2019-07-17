@@ -19,8 +19,8 @@ class ProductsCommerxcatalogProducts(models.Model):
     DescriptionService = models.TextField(db_column='Description', blank=True, null=True)  # Field name made lowercase.
     priceService = models.FloatField(db_column='List', blank=True, null=True)  # Field name made lowercase.
     SKUService = models.CharField(db_column='VendorPartNumber', max_length=40, blank=True, null=True)  # Field name made lowercase.
-    TypeService= models.CharField(max_length = 100, db_column='ItemType')
-    QualityService = models.CharField(max_length = 100, db_column='Category')
+    TypeService= models.CharField(max_length = 100, db_column='ItemType', blank=True, null=True)
+    QualityService = models.CharField(max_length = 100, db_column='Category', blank=True, null=True)
     class Meta:
         db_table = 'Products_CommerxCatalog_Products'
 
