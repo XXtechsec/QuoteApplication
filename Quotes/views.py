@@ -98,7 +98,7 @@ def changeQuality(request):
         if(QualityService == 'Gold'):
             Sku = Sku + '.G'
         #get the product with the updated SKU
-        TheChange = Service.objects.filter(SKUService = Sku).values()[0]
+        TheChange = ProductsCommerxcatalogProducts.objects.filter(SKUService = Sku).values()[0]
         #update everything including deleting it from selectedProduct which in turn deletes it from UserLookUp
         TheChange['QtyService'] = ToChangeQuality['QtyService']
         indexToChange = selectedProducts.index(ToChangeQuality)
@@ -136,10 +136,10 @@ def CSV(request):
     global selectedQuoteName
 
     selectedProducts = UserLookUp.get(request.user.id, [])
-    model_class = Service
+    model_class = ProductsCommerxcatalogProducts
 
     meta = model_class._meta
-    field_names = ['ServiceTypeService', 'TypeService', 'QualityService', 'SKUService', 'DescriptionService', 'priceService', 'QtyService']
+    field_names = ['TypeService', 'QualityService', 'SKUService', 'DescriptionService', 'priceService', 'QtyService']
 
     response = HttpResponse(content_type='text/csv')
     #sets up file name to QuoteName
@@ -174,7 +174,7 @@ def saveQuote(request):
             #creates a new object with the values provided and adds all the services
             obj = Quote.objects.create(Name=saveName, Company=saveCompany, Contact=saveContact)
             for i in selectedProducts:
-                obj.Services.add(Service.objects.get(SKUService=i['SKUService']))
+                obj.Services.add(ProductsCommerxcatalogProducts.objects.get(SKUService=i['SKUService']))
 
             #saves the object
             obj.save()
@@ -193,7 +193,7 @@ def saveQuote(request):
             #resets the products stored and sets them to what the user currently has selected
             obj.Services.set('')
             for i in selectedProducts:
-                obj.Services.add(Service.objects.get(SKUService=i['SKUService']))
+                obj.Services.add(ProductsCommerxcatalogProducts.objects.get(SKUService=i['SKUService']))
             #update any changes to the company or contact
             Quote.objects.update(Company=saveCompany, Contact=saveContact)
             messages.success(request, "Successfully Updated " + saveName)
@@ -235,7 +235,7 @@ def search(request):
     if 'userSearch' in request.POST:
         #gets the search and gets all Service obj with that description minus silver and gold
         search = request.POST['userSearch']
-        searchResults = Service.objects.filter(Description__icontains=search).exclude(Description__contains="Silver").exclude(Description__contains="Gold")
+        searchResults = ProductsCommerxcatalogProducts.objects.filter(Description__icontains=search).exclude(Description__contains="Silver").exclude(Description__contains="Gold")
 
         contextS = {
             'Service': searchResults.values('priceService', 'DescriptionService', 'ServiceTypeService', 'TypeService', 'QualityService', 'SKUService', 'QtyService'),
@@ -288,7 +288,7 @@ def select(request):
         selectedQuoteContact = list(Quote.objects.filter(Name=selectedQuoteName).values_list('Contact', flat=True))
         selectedQuoteContact = ''.join(selectedQuoteContact)
         for id in selectedQuote:
-            selectedProducts.append(Service.objects.filter(pk=id).values()[0])
+            selectedProducts.append(ProductsCommerxcatalogProducts.objects.filter(pk=id).values()[0])
         UserLookUp[request.user.id] = selectedProducts
         #renders the page using the QuoteMaker function
         return QuoteMaker(request)
@@ -318,15 +318,15 @@ def QuoteMaker(request):
     for o in selectedProducts:
         total += (o['priceService']*float(o['QtyService']))
     #use temporary variable q to map the type to the give subtypes
-    for q in Service.objects.values_list('TypeService', flat=True).distinct():
-        LookUp.update({q: list(Service.objects.filter(TypeService=q).values_list('QualityService', flat=True).distinct())})
+    for q in ProductsCommerxcatalogProducts.objects.values_list('TypeService', flat=True).distinct():
+        LookUp.update({q: list(ProductsCommerxcatalogProducts.objects.filter(TypeService=q).values_list('QualityService', flat=True).distinct())})
 
     #use all the info given to it to make a context
     context = {
-        'Service': Service.objects.values('priceService', 'DescriptionService', 'ServiceTypeService', 'TypeService', 'QualityService', 'SKUService', 'QtyService'),
+        'Service': ProductsCommerxcatalogProducts.objects.values('priceService', 'DescriptionService', 'ServiceTypeService', 'TypeService', 'QualityService', 'SKUService', 'QtyService'),
         'LookUp': sorted(LookUp.items()),
-        'type': sorted(Service.objects.values_list('TypeService', flat=True).distinct()),
-        'quality': sorted(Service.objects.values_list('QualityService', flat=True).distinct()),
+        'type': sorted(ProductsCommerxcatalogProducts.objects.values_list('TypeService', flat=True).distinct()),
+        'quality': sorted(ProductsCommerxcatalogProducts.objects.values_list('QualityService', flat=True).distinct()),
         'result': selectedProducts,
         'total': total,
         'name': selectedQuoteName,

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from Quotes.models import Service
+from Quotes.models import ProductsCommerxcatalogProducts
 from Quotes.models import Quote
 
 class ServiceAdmin(admin.ModelAdmin):
@@ -8,7 +8,7 @@ class ServiceAdmin(admin.ModelAdmin):
     search_fields = ('TypeService', 'DescriptionService', 'SKUService', 'id' )
     pass
 # register model for admin
-admin.site.register(Service, ServiceAdmin)
+admin.site.register(ProductsCommerxcatalogProducts, ServiceAdmin)
 
 class QuoteAdmin(admin.ModelAdmin):
     # add whatever you want here
