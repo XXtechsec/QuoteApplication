@@ -178,6 +178,8 @@ def saveQuote(request):
             for i in selectedProducts:
                 obj.Services.add(ProductsCommerxcatalogProducts.objects.get(vendorpartnumber=i['vendorpartnumber']))
                 obj.QtyLookup+= str(i['extralng01']) + ', '
+            obj.Services.add(ProductsCommerxcatalogProducts.objects.get(vendorpartnumber=i['vendorpartnumber']))
+            obj.QtyLookup+= str(i['extralng01']) + ', '
             #saves the object
             obj.save()
 
@@ -297,7 +299,7 @@ def select(request):
         selectedQuoteQty = ''.join(selectedQuoteQty)
         quantityList = selectedQuoteQty.split(',')
         quantityList.remove(' ')
-        quantityList = [int(i) for i in quantityList]
+        quantityList = [int(j) for j in quantityList]
         counter = 0
         for id in selectedQuote:
             obj = ProductsCommerxcatalogProducts.objects.filter(pk=id).values()[0]
