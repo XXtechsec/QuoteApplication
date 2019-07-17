@@ -197,9 +197,10 @@ def saveQuote(request):
             obj.QtyLookup = ''
             for i in selectedProducts:
                 obj.Services.add(ProductsCommerxcatalogProducts.objects.get(vendorpartnumber=i['vendorpartnumber']))
-                obj.QtyLookup+= str(i['extralng01']) + ', '
+                obj.QtyLookup += str(i['extralng01']) + ', '
             #update any changes to the company or contact
-            SavedQuotes.objects.update(Company=saveCompany, Contact=saveContact)
+            obj.objects.update(Company=saveCompany, Contact=saveContact)
+            obj.save()
             messages.success(request, "Successfully Updated " + saveName)
             selectedQuoteCompany = saveCompany
             selectedQuoteContact = saveContact
