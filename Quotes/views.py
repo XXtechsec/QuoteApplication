@@ -314,6 +314,7 @@ def QuoteMaker(request):
     global selectedQuoteContact
     selectedProducts = UserLookUp.get(request.user.id, [])
     total = 0
+    
     #use temporary variable o inorder to get the total price
     for o in selectedProducts:
         total += (o['list']*float(o['QtyService']))
