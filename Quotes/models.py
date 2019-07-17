@@ -15,7 +15,6 @@ class ProductsCommerxcatalogFolders(models.Model):
 
 
 class ProductsCommerxcatalogProducts(models.Model):
-    id = models.AutoField(db_column='ID', primary_key=True)  # Field name made lowercase.
     folderlist = models.TextField(db_column='FolderList', blank=True, null=True)  # Field name made lowercase.
     DescriptionService = models.TextField(db_column='Description', blank=True, null=True)  # Field name made lowercase.
     priceService = models.FloatField(db_column='List', blank=True, null=True)  # Field name made lowercase.
@@ -35,7 +34,7 @@ class Quote(models.Model):
     def __str__(self):
         # requesting it gives you its description, useful for debugging
         return self.Name
-    
+
 #function that merges the two table to actually useful stuff
 def merge_models(apps, schema_editor):
     #gets all products
