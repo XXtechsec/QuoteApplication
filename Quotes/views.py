@@ -194,8 +194,10 @@ def saveQuote(request):
             obj = SavedQuotes.objects.get(Name=saveName)
             #resets the products stored and sets them to what the user currently has selected
             obj.Services.set('')
+            obj.QtyLookup = ''
             for i in selectedProducts:
                 obj.Services.add(ProductsCommerxcatalogProducts.objects.get(vendorpartnumber=i['vendorpartnumber']))
+                obj.QtyLookup+= str(i['extralng01']) + ', '
             #update any changes to the company or contact
             SavedQuotes.objects.update(Company=saveCompany, Contact=saveContact)
             messages.success(request, "Successfully Updated " + saveName)
