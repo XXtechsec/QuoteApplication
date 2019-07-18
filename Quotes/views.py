@@ -339,7 +339,8 @@ def QuoteMaker(request):
         total += (o['list']*float(o['extralng01']))
     #use temporary variable q to map the type to the give subtypes
     for q in ProductsCommerxcatalogProducts.objects.values_list('itemtype', flat=True).distinct():
-        LookUp.update({q: list(ProductsCommerxcatalogProducts.objects.filter(itemtype=q).values_list('category', flat=True).distinct())})
+        if q != '':
+            LookUp.update({q: list(ProductsCommerxcatalogProducts.objects.filter(itemtype=q).values_list('category', flat=True).distinct())})
 
     #use all the info given to it to make a context
     context = {
