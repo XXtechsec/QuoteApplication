@@ -227,7 +227,7 @@ def Qty(request):
             indexToChange = selectedProducts.index(toChangeQty)
             toChangeQty['extralng01'] = qty
             selectedProducts[indexToChange] = toChangeQty
-            messages.success(request, "Successfully Changed the extralng01 of " + toChangeQty['description'] + " to " + qty)
+            messages.success(request, "Successfully Changed the Quantity of " + toChangeQty['description'] + " to " + qty)
     except:
         messages.error(request, "Went too fast!")
     UserLookUp[request.user.id] = selectedProducts
