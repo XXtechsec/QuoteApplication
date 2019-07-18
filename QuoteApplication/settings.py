@@ -26,7 +26,7 @@ SECRET_KEY = KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['10.0.1.130']
 
 # setup django error messages to be a bootstrap danger
 MESSAGE_TAGS = {
@@ -136,6 +136,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = "/var/www/quty.commerx.ca/static/"
 
 #set up where you get redirected
 LOGIN_REDIRECT_URL = 'home'
