@@ -128,7 +128,6 @@ def Pdf(request):
         #formats the data
         'Date': datetime.now().strftime("%Y-%m-%d")
     }
-    
     #render the pdf using function in render.py using the context provided
     return Render.render('Quotes/pdf.html', params)
 
@@ -141,7 +140,8 @@ def CSV(request):
     model_class = ProductsCommerxcatalogProducts
 
     meta = model_class._meta
-    field_names = ['itemtype', 'category', 'vendorpartnumber', 'description', 'list', 'Qty']
+    field_names = ['itemtype', 'category', 'vendorpartnumber', 'description', 'list', 'extralng01']
+    header = ['Type', 'SubType/Quality', 'SKU', 'Description', 'Price', 'Qty']
 
     response = HttpResponse(content_type='text/csv')
     #sets up file name to QuoteName
@@ -149,7 +149,7 @@ def CSV(request):
     writer = csv.writer(response)
 
     #for the fields specified in field_name write all objects selected
-    writer.writerow(field_names)
+    writer.writerow(header)
     for obj in selectedProducts:
         row = writer.writerow(obj[field] for field in field_names)
 
