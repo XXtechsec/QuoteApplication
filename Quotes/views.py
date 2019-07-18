@@ -65,6 +65,7 @@ def delete(request):
         #runs the Quotemaker function inorder to render the page
         return QuoteMaker(request)
     if 'deleteQuote' in request.POST:
+        raise forms.ValidationError("This will get rid of this Quote forever, are you sure?")
         SavedQuotes.objects.filter(Name=selectedQuoteName).delete()
         messages.success(request, "Successfully Deleted: "+ selectedQuoteName)
         #runs the select instead of Quotemaker because the quote the user was working on was delete so they need to get a new one
@@ -114,6 +115,7 @@ def changeQuality(request):
 #renders PDF
 def Pdf(request):
     #!note Quote needs to be saved first
+    raise forms.ValidationError("Make sure to save first!")
     global selectedQuoteContact
     global selectedQuoteCompany
     global UserLookUp
@@ -128,11 +130,13 @@ def Pdf(request):
         #formats the data
         'Date': datetime.now().strftime("%Y-%m-%d")
     }
+
     #render the pdf using function in render.py using the context provided
     return Render.render('Quotes/pdf.html', params)
 
 #renders CSV using the csv library
 def CSV(request):
+    raise forms.ValidationError("Make sure to save first!")
     global UserLookUp
     global selectedQuoteName
 
@@ -140,7 +144,7 @@ def CSV(request):
     model_class = ProductsCommerxcatalogProducts
 
     meta = model_class._meta
-    field_names = ['itemtype', 'category', 'vendorpartnumber', 'description', 'list', 'extralng01']
+    field_names = ['itemtype', 'category', 'vendorpartnumber', 'description', 'list', 'Qty']
 
     response = HttpResponse(content_type='text/csv')
     #sets up file name to QuoteName
@@ -192,6 +196,7 @@ def saveQuote(request):
 
         #if name is taken update the Quote with that name
         else:
+            raise forms.ValidationError("A Quote with that name exists, do you want to update it?")
             #get the quote with that name
             obj = SavedQuotes.objects.get(Name=saveName)
             #resets the products stored and sets them to what the user currently has selected
