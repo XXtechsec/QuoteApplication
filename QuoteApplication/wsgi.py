@@ -12,6 +12,8 @@ import sys
 path = '/var/www/QuoteApplication'
 if (path not in sys.path):
     sys.path.append(path)
+    
+sys.path.append('var/www/quty_venv/Lib/site-packages')
 
 from django.core.wsgi import get_wsgi_application
 
