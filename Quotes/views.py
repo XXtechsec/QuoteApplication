@@ -211,7 +211,8 @@ def saveQuote(request):
 
             #renders the page using the QuoteMaker function
             return QuoteMaker(request)
-
+    messages.success(request, "You need to add something first!")
+    return QuoteMaker(request)
 #changes the Quantity of a specific product
 def Qty(request):
     try:
