@@ -156,13 +156,16 @@ def CSV(request):
 def saveQuote(request):
     global UserLookUp
     #gets the info of the Quote
-    saveName = request.POST['saveName']
-    saveCompany = request.POST['saveCompany']
-    saveContact = request.POST['saveContact']
+    request.session['selectedQuoteName'] = request.POST['saveName']
+    request.session['selectedQuoteName'] = request.POST['saveCompany']
+    request.session['selectedQuoteName'] = request.POST['saveContact']
     #gets variables to update
-    global request.session['selectedQuoteName']
-    global request.session['selectedQuoteName']
-    global request.session['selectedQuoteName']
+
+    saveName = request.session['selectedQuoteName']
+    saveCompany = request.session['selectedQuoteName']
+    saveContact = request.session['selectedQuoteName']
+
+
 
     #get selected products
     selectedProducts = UserLookUp.get(request.user.id, [])
@@ -182,9 +185,9 @@ def saveQuote(request):
             obj.save()
 
             messages.success(request, "Successfully Created " + saveName)
-            request.session['selectedQuoteName'] = saveName
-            request.session['selectedQuoteName'] = saveCompany
-            request.session['selectedQuoteName'] = saveContact
+            '' = saveName
+            '' = saveCompany
+            '' = saveContact
             #renders the page using the QuoteMaker function
             return QuoteMaker(request)
 
@@ -328,9 +331,6 @@ def QuoteMaker(request):
     #gets alot of variables
     global total
     global UserLookUp
-    global request.session['selectedQuoteName']
-    global request.session['selectedQuoteName']
-    global request.session['selectedQuoteName']
     selectedProducts = UserLookUp.get(request.user.id, [])
     total = 0
     #use temporary variable o inorder to get the total price
