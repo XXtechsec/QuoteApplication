@@ -1,13 +1,14 @@
+/* CSS used here will be applied after bootstrap.css */
 /* edit css here */
 body {
   background: #fafafa;
   color: #333333;
   margin-top: 5rem;
-  padding-top: 70px;
 }
 
 h1, h2, h3, h4, h5, h6 {
   color: #444444;
+  font-family: 'Montserrat', sans-serif;
 }
 .sticky{
   font-size: 10px;
@@ -22,11 +23,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 20px;
   width: 90%;
 }
-#Menubtn {
-  width: 10%;
-  margin-top: 10px;
 
-}
 .searchfield {
   padding: 6px;
   font-size: 17px;
@@ -66,9 +63,7 @@ button:focus {
   width:100%;
 }
 #Menubtn{
-  background-color: grey;
-  text-align: left;
-  font-size: 12px;
+ margin:10px;
 }
 button:hover{
   color: black;
@@ -85,6 +80,7 @@ button:hover{
 #deletebtn{
   padding: 0px;
   font-size: 10px;
+  margin: 5px;
 }
 .bg-steel {
   background-color: #5f788a;

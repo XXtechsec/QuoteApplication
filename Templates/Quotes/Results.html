@@ -24,8 +24,19 @@
     {# sticky so it follows the user #}
     <div class="sticky">
       <div class='content-section'>
-        <h1>Quote: <small>{{ name }}</small></h1>
-        <h6>Company: {{ company }}</h6>
+        {# on press the quote is saved through the function saveQuote in Views #}
+        <form action="{% url 'saveQuote' %}" method="POST">{% csrf_token %}
+          {# gets Quote info #}
+            <h1>Quote:
+              <input value="{{ name }}" name='saveName'>
+            </h1>
+            <h6>Client:
+              <input value="{{ company }}" name='saveCompany'>
+            </h6>
+            <p>Client Contact:
+              <input value="{{ contact }}" name='saveContact'>
+            </p>
+        </form>
         <div class="container">
           <div class="card">
 
@@ -124,37 +135,27 @@
               </tbody>
             </table>
           </div>
-          {# on press the quote is saved through the function saveQuote in Views #}
-          <form action="{% url 'saveQuote' %}" method="POST">{% csrf_token %}
-            {# gets Quote info #}
-            <div class='content-section'>
-              <h4>Enter Name:
-                <input value="{{ name }}" name='saveName'>
-              </h4>
-              <h4>Enter Client Name:
-                <input value="{{ company }}" name='saveCompany'>
-              </h4>
-              <h4>Enter Client Contact:
-                <input value="{{ contact }}" name='saveContact'>
-              </h4>
-            </div>
-            <button id=Menubtn class="button" data-toggle="collapse" aria-label="Toggle navigation" type="submit">
+<div class="row">
+            {# on press the quote is saved through the function saveQuote in Views #}
+            <form action="{% url 'saveQuote' %}" method="POST">{% csrf_token %}
+            <button id=Menubtn class="btn btn-primary btn-s" data-toggle="collapse" aria-label="Toggle navigation" type="submit">
               save
             </button>
           </form>
           {# on press the quote is converted to pdf through the function Pdf in Views #}
           <form action="{% url 'Pdf' %}" target="_blank" method="POST">{% csrf_token %}
-            <button id=Menubtn class="button" data-toggle="collapse" aria-label="Toggle navigation" type="submit">
-              export to pdf
+            <button id=Menubtn class="btn btn-primary btn-s" data-toggle="collapse" aria-label="Toggle navigation" type="submit">
+              export to PDF
             </button>
           </form>
           {# on press the quote is converted to csv through the function CSV in Views #}
           <form action="{% url 'CSV' %}" method="POST">{% csrf_token %}
-            <button id=Menubtn class="button" data-toggle="collapse" aria-label="Toggle navigation" type="submit">
+            <button id=Menubtn class="btn btn-primary btn-s" data-toggle="collapse" aria-label="Toggle navigation" type="submit">
               export to CSV
             </button>
           </form>
-
+</div>
+<div class="row">
           {# on press the quote is Deleted through the function delete in Views #}
           <form action="{% url 'delete' %}" method="POST">{% csrf_token %}
             <button id=deletebtn class="btn btn-danger btn-xs" type="submit" value="{{ product }}" name="deleteQuote">
@@ -169,7 +170,7 @@
           </form>
         </div>
       </div>
-
+</div>
 
 
     </div>
