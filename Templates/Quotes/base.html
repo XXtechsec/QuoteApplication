@@ -63,12 +63,19 @@
 
 <!-- sets up messaging -->
   <main role="main" class="container">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible text-center" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
 
 {# where all the website is contained #}
-    {% block content %}{% endblock %}
 {# you can add footer here #}
   </main>
-
+{% block content %}{% endblock %}
 
 </body>
 
