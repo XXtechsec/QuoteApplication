@@ -25,16 +25,16 @@
     <div class="sticky">
       <div class='content-section'>
         {# on press the quote is saved through the function saveQuote in Views #}
-        <form action="{% url 'saveQuote' %}" method="POST">{% csrf_token %}
+        <form action="{% url 'saveQuote' %}" method="POST" id="saveForm">{% csrf_token %}
           {# gets Quote info #}
             <h1>Quote:
-              <input maxlength="25" value="{{ name }}" name='saveName'>
+              <input maxlength="25" value="{{ name }}" name='saveName' onchange="this.form.submit()">
             </h1>
             <h6>Client:
-              <input maxlength="25" value="{{ company }}" name='saveCompany'>
+              <input maxlength="25" value="{{ company }}" name='saveCompany' onchange="this.form.submit()">
             </h6>
             <p>Client Contact:
-              <input maxlength="25" value="{{ contact }}" name='saveContact'>
+              <input maxlength="25" value="{{ contact }}" name='saveContact' onchange="this.form.submit()">
             </p>
         </form>
         <div class="container">
@@ -138,7 +138,7 @@
 <div class="row">
             {# on press the quote is saved through the function saveQuote in Views #}
             <form action="{% url 'saveQuote' %}" method="POST">{% csrf_token %}
-            <button id=Menubtn class="btn btn-primary btn-s" data-toggle="collapse" aria-label="Toggle navigation" type="submit">
+            <button id=Menubtn form="saveForm" class="btn btn-primary btn-s" data-toggle="collapse" aria-label="Toggle navigation" type="submit">
               save
             </button>
           </form>
