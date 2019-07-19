@@ -28,13 +28,13 @@
         <form action="{% url 'saveQuote' %}" method="POST" id="saveForm">{% csrf_token %}
           {# gets Quote info #}
             <h1>Quote:
-              <input maxlength="25" value="{{ name }}" name='saveName' onchange="this.form.submit()">
+              <input maxlength="25" value="{{ name }}" name='saveName'>
             </h1>
             <h6>Client:
-              <input maxlength="25" value="{{ company }}" name='saveCompany' onchange="this.form.submit()">
+              <input maxlength="25" value="{{ company }}" name='saveCompany'>
             </h6>
             <p>Client Contact:
-              <input maxlength="25" value="{{ contact }}" name='saveContact' onchange="this.form.submit()">
+              <input maxlength="25" value="{{ contact }}" name='saveContact'>
             </p>
         </form>
         <div class="container">
