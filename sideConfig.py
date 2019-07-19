@@ -1,0 +1,5 @@
+KEY = 'key'
+Usernamedb = 'username'
+Passworddb = 'password'
+serverName = 'server name'
+hostName = 'host name'

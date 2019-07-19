@@ -9,11 +9,11 @@ https://docs.djangoproject.com/en/2.1/howto/deployment/wsgi/
 
 import os
 import sys
-path = '/var/www/QuoteApplication'
+path = '/PATH/TO/PROJECT'
 if (path not in sys.path):
     sys.path.append(path)
-    
-sys.path.append('var/www/quty_venv/Lib/site-packages')
+
+sys.path.append('PATH/TO/VENV/PACKAGES')
 
 from django.core.wsgi import get_wsgi_application
 
