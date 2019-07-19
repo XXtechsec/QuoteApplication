@@ -3,7 +3,7 @@
 
 {# runs the select function with the name new, creating a new quote #}
 <form action="{% url 'select' %}" method="POST">{% csrf_token %}
-  <button id=Menubtn class="button" data-toggle="collapse" aria-label="Toggle navigation" name='new' type="submit">
+  <button id=selectBtn class="button" data-toggle="collapse" aria-label="Toggle navigation" name='new' type="submit">
     New Quote
   </button>
 </form>
@@ -18,7 +18,7 @@
 
 {# runs select function in views with the name old, loading an old quote #}
 <form action="{% url 'select' %}" method="POST">{% csrf_token %}
-  <button id=Menubtn class="button" data-toggle="collapse" aria-label="Toggle navigation" name='old' value= "{{ service }}" type="submit">
+  <button id=selectBtn class="button" data-toggle="collapse" aria-label="Toggle navigation" name='old' value= "{{ service }}" type="submit">
     Name: {{ name }}
     <input style=display:none value="{{ name }}" name='oldName'>
   </button>

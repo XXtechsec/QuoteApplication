@@ -105,3 +105,8 @@ button:hover{
   border-radius: 3px;
   margin-bottom: 20px;
 }
+#selectBtn{
+  background-color: grey;
+  text-align: left;
+  font-size: 12px;
+}
