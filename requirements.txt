@@ -1,5 +1,5 @@
 pip==19.1.1
-django==2.1
+django>=2.1.10
 xhtml2pdf==0.2.3
 pyodbc==4.0.26
 django-pyodbc-azure==2.1
