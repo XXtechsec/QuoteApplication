@@ -33,7 +33,6 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
-SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 # Application definition
 
 INSTALLED_APPS = [
