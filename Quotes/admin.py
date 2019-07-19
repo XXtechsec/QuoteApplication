@@ -11,7 +11,8 @@ class ServiceAdmin(admin.ModelAdmin):
 admin.site.register(ProductsCommerxcatalogProducts, ServiceAdmin)
 
 class QuoteAdmin(admin.ModelAdmin):
-    # add whatever you want here
+    list_display = ('Name','Company')
+    search_fields = ('Name','Company')
     pass
 # register model for admin
 admin.site.register(SavedQuotes, QuoteAdmin)
