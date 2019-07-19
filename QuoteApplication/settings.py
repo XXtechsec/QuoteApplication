@@ -33,7 +33,7 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
-
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 # Application definition
 
 INSTALLED_APPS = [
@@ -70,6 +70,11 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'loaders': [
+            ('django.template.loaders.cached.Loader', [
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
+            ]),
         },
     },
 ]
@@ -88,6 +93,7 @@ DATABASES = {
         'HOST': hostName,
         'USER': Usernamedb,
         'PASSWORD': Passworddb,
+        'CONN_MAX_AGE': 600,
         'PORT': '',
 
         'OPTIONS': {
