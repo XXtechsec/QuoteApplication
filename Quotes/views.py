@@ -24,10 +24,6 @@ LookUp = {}
 UserLookUp = {}
 
 
-#Default values
-request.session['selectedQuoteName'] = 'untitled'
-request.session['selectedQuoteName'] = 'untitled'
-request.session['selectedQuoteName'] = 'untitled'
 
 #add whatever you want here just resets values currently
 def home(request):
