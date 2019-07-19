@@ -11,10 +11,10 @@
 
       {# create a search function that on enter takes its value to the search function in views #}
       <form id="searchform" action="{% url 'search' %}" method="POST"> {% csrf_token %}
-      <input class="searchfield" id="searchbox" name="userSearch" type="text" placeholder="search" value = "{{ search }}">
+        <input class="searchfield" id="searchbox" name="userSearch" type="text" placeholder="search" value="{{ search }}">
       </form>
 
-      {# renders the Quote Maker  #}
+      {# renders the Quote Maker #}
       {%block QuoteMaker%}{%endblock QuoteMaker%}
 
     </div>
@@ -52,7 +52,7 @@
                     {# allows you to change quality only if the product is Bronze, Silver or Gold #}
                     {% if "Bronze (8x5)" in quality or "Silver (12x5)" in quality or 'Gold (24x7)' in quality %}
 
-                    {# lengthy process for choosing and being able to change the Quality of the product  #}
+                    {# lengthy process for choosing and being able to change the Quality of the product #}
                     {# runs the changeQuality function in views #}
                     <form action="{% url 'changeQuality' %}" method="post">{% csrf_token %}
                       <input style=display:none value="{{ product }}" name='ToChangeQuality'>
@@ -103,8 +103,8 @@
 
                     <b>Qty:</b>
                     {# makes an input field that on confirm sends its value to the Qty function in views as well as the product attributed to it #}
-                    <form id= "QtyForm" action="{% url 'Qty' %}" method="POST">{% csrf_token %}
-                      <input type="number" min="1" value={{product.extralng01}} name='Qty'  oninput="validity.valid||(value='');" onchange="this.form.submit()">
+                    <form id="QtyForm" action="{% url 'Qty' %}" method="POST">{% csrf_token %}
+                      <input type="number" min="1" value={{product.extralng01}} name='Qty' oninput="validity.valid||(value='');" onchange="this.form.submit()">
                       <input style=display:none value="{{ product }}" name='ToChange'>
                     </form>
 
@@ -124,6 +124,24 @@
               </tbody>
             </table>
           </div>
+          {# on press the quote is saved through the function saveQuote in Views #}
+          <form action="{% url 'saveQuote' %}" method="POST">{% csrf_token %}
+            {# gets Quote info #}
+            <div class='content-section'>
+              <h4>Enter Name:
+                <input value="{{ name }}" name='saveName'>
+              </h4>
+              <h4>Enter Client Name:
+                <input value="{{ company }}" name='saveCompany'>
+              </h4>
+              <h4>Enter Client Contact:
+                <input value="{{ contact }}" name='saveContact'>
+              </h4>
+            </div>
+            <button id=Menubtn class="button" data-toggle="collapse" aria-label="Toggle navigation" type="submit">
+              save
+            </button>
+          </form>
           {# on press the quote is converted to pdf through the function Pdf in Views #}
           <form action="{% url 'Pdf' %}" target="_blank" method="POST">{% csrf_token %}
             <button id=Menubtn class="button" data-toggle="collapse" aria-label="Toggle navigation" type="submit">
@@ -135,25 +153,6 @@
             <button id=Menubtn class="button" data-toggle="collapse" aria-label="Toggle navigation" type="submit">
               export to CSV
             </button>
-          </form>
-          {# on press the quote is saved through the function saveQuote in Views #}
-          <form action="{% url 'saveQuote' %}" method="POST">{% csrf_token %}
-            <button id=Menubtn class="button" data-toggle="collapse" aria-label="Toggle navigation" type="submit">
-              save
-            </button>
-
-            {# gets Quote info #}
-            <div class='content-section'>
-            <h4>Enter Name:
-            <input value="{{ name }}" name='saveName'>
-            </h4>
-            <h4>Enter Client Name:
-            <input value="{{ company }}" name='saveCompany'>
-            </h4>
-            <h4>Enter Client Contact:
-            <input value="{{ contact }}" name='saveContact'>
-            </h4>
-          </div>
           </form>
 
           {# on press the quote is Deleted through the function delete in Views #}
