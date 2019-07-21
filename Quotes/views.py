@@ -175,9 +175,9 @@ def saveQuote(request):
             obj.save()
 
             messages.success(request, "Successfully Created " + saveName)
-            UserLookUp.get(request.user.id + 'Name') = saveName
-            UserLookUp.get(request.user.id + 'Company') = saveCompany
-            UserLookUp.get(request.user.id + 'Contact') = saveContact
+            UserLookUp[request.user.id + 'Name'] = saveName
+            UserLookUp[request.user.id + 'Company'] = saveCompany
+            UserLookUp[request.user.id + 'Contact'] = saveContact
             #renders the page using the QuoteMaker function
             return QuoteMaker(request)
 
@@ -196,8 +196,8 @@ def saveQuote(request):
             obj.Contact = saveContact
             obj.save()
             messages.success(request, "Successfully Updated " + saveName)
-            UserLookUp.get(request.user.id + 'Company') = saveCompany
-            UserLookUp.get(request.user.id + 'Contact') = saveContact
+            UserLookUp[request.user.id + 'Company'] = saveCompany
+            UserLookUp[request.user.id + 'Contact'] = saveContact
 
             #renders the page using the QuoteMaker function
             return QuoteMaker(request)
@@ -279,11 +279,11 @@ def select(request):
         selectedProducts.clear()
         #map the set given to it as a dictonary think of ast.literal_eval like set_to_dict
         selectedQuote = ast.literal_eval(request.POST['old'])
-        UserLookUp.get(request.user.id + 'Name') = request.POST['oldName']
-        UserLookUp.get(request.user.id + 'Company') = list(SavedQuotes.objects.filter(Name=UserLookUp.get(request.user.id + 'Name')).values_list('Company', flat=True))
-        UserLookUp.get(request.user.id + 'Company') = ''.join(UserLookUp.get(request.user.id + 'Company'))
-        UserLookUp.get(request.user.id + 'Contact') = list(SavedQuotes.objects.filter(Name=UserLookUp.get(request.user.id + 'Name')).values_list('Contact', flat=True))
-        UserLookUp.get(request.user.id + 'Contact') = ''.join(UserLookUp.get(request.user.id + 'Contact'))
+        UserLookUp[request.user.id + 'Name'] = request.POST['oldName']
+        UserLookUp[request.user.id + 'Company'] = list(SavedQuotes.objects.filter(Name=UserLookUp.get(request.user.id + 'Name')).values_list('Company', flat=True))
+        UserLookUp[request.user.id + 'Company'] = ''.join(UserLookUp.get(request.user.id + 'Company'))
+        UserLookUp[request.user.id + 'Contact'] = list(SavedQuotes.objects.filter(Name=UserLookUp.get(request.user.id + 'Name')).values_list('Contact', flat=True))
+        UserLookUp[request.user.id + 'Contact'] = ''.join(UserLookUp.get(request.user.id + 'Contact'))
         selectedQuoteQty = list(SavedQuotes.objects.filter(Name=UserLookUp.get(request.user.id + 'Name')).values_list('QtyLookup', flat=True))
         selectedQuoteQty = ''.join(selectedQuoteQty)
         quantityList = selectedQuoteQty.split(',')
