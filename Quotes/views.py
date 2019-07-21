@@ -25,9 +25,9 @@ UserLookUp = {}
 
 
 #Default values
-selectedQuoteName = 'untitled'
-selectedQuoteCompany = 'untitled'
-selectedQuoteContact = 'untitled'
+UserLookUp[request.user.id + 'Name'] = 'untitled'
+UserLookUp[request.user.id + 'Company'] = 'untitled'
+UserLookUp[request.user.id + 'Contact'] = 'untitled'
 
 #add whatever you want here just resets values currently
 def home(request):
@@ -65,8 +65,8 @@ def delete(request):
         #runs the Quotemaker function inorder to render the page
         return QuoteMaker(request)
     if 'deleteQuote' in request.POST:
-        SavedQuotes.objects.filter(Name=selectedQuoteName).delete()
-        messages.success(request, "Successfully Deleted: "+ selectedQuoteName)
+        SavedQuotes.objects.filter(Name=UserLookUp[request.user.id + 'Name']).delete()
+        messages.success(request, "Successfully Deleted: "+ UserLookUp[request.user.id + 'Name'])
         #runs the select instead of Quotemaker because the quote the user was working on was delete so they need to get a new one
         return select(request)
 
@@ -114,8 +114,6 @@ def changeQuality(request):
 #renders PDF
 def Pdf(request):
     #!note Quote needs to be saved first
-    global selectedQuoteContact
-    global selectedQuoteCompany
     global UserLookUp
     selectedProducts = UserLookUp.get(request.user.id, [])
     #sets up the following context
@@ -123,8 +121,8 @@ def Pdf(request):
         'products': selectedProducts,
         'total': total,
         'User': request.user,
-        'company': selectedQuoteCompany,
-        'contact': selectedQuoteContact,
+        'company': UserLookUp[request.user.id + 'Company'],
+        'contact': UserLookUp[request.user.id + 'Contact'],
         #formats the data
         'Date': datetime.now().strftime("%Y-%m-%d")
     }
@@ -134,7 +132,6 @@ def Pdf(request):
 #renders CSV using the csv library
 def CSV(request):
     global UserLookUp
-    global selectedQuoteName
 
     selectedProducts = UserLookUp.get(request.user.id, [])
     model_class = ProductsCommerxcatalogProducts
@@ -145,7 +142,7 @@ def CSV(request):
 
     response = HttpResponse(content_type='text/csv')
     #sets up file name to QuoteName
-    response['Content-Disposition'] = 'attachment; filename=' + selectedQuoteName + '.csv'.format(meta)
+    response['Content-Disposition'] = 'attachment; filename=' + UserLookUp[request.user.id + 'Name'] + '.csv'.format(meta)
     writer = csv.writer(response)
 
     #for the fields specified in field_name write all objects selected
@@ -162,10 +159,7 @@ def saveQuote(request):
     saveName = request.POST['saveName']
     saveCompany = request.POST['saveCompany']
     saveContact = request.POST['saveContact']
-    #gets variables to update
-    global selectedQuoteName
-    global selectedQuoteCompany
-    global selectedQuoteContact
+
 
     #get selected products
     selectedProducts = UserLookUp.get(request.user.id, [])
@@ -185,9 +179,9 @@ def saveQuote(request):
             obj.save()
 
             messages.success(request, "Successfully Created " + saveName)
-            selectedQuoteName = saveName
-            selectedQuoteCompany = saveCompany
-            selectedQuoteContact = saveContact
+            UserLookUp[request.user.id + 'Name'] = saveName
+            UserLookUp[request.user.id + 'Company'] = saveCompany
+            UserLookUp[request.user.id + 'Contact'] = saveContact
             #renders the page using the QuoteMaker function
             return QuoteMaker(request)
 
@@ -206,8 +200,8 @@ def saveQuote(request):
             obj.Contact = saveContact
             obj.save()
             messages.success(request, "Successfully Updated " + saveName)
-            selectedQuoteCompany = saveCompany
-            selectedQuoteContact = saveContact
+            UserLookUp[request.user.id + 'Company'] = saveCompany
+            UserLookUp[request.user.id + 'Contact'] = saveContact
 
             #renders the page using the QuoteMaker function
             return QuoteMaker(request)
@@ -276,9 +270,6 @@ def search(request):
 @login_required
 def select(request):
     global UserLookUp
-    global selectedQuoteName
-    global selectedQuoteCompany
-    global selectedQuoteContact
     selectedProducts = UserLookUp.get(request.user.id, [])
     #if the user selects new
     if 'new' in request.POST:
@@ -292,12 +283,12 @@ def select(request):
         selectedProducts.clear()
         #map the set given to it as a dictonary think of ast.literal_eval like set_to_dict
         selectedQuote = ast.literal_eval(request.POST['old'])
-        selectedQuoteName = request.POST['oldName']
-        selectedQuoteCompany = list(SavedQuotes.objects.filter(Name=selectedQuoteName).values_list('Company', flat=True))
-        selectedQuoteCompany = ''.join(selectedQuoteCompany)
-        selectedQuoteContact = list(SavedQuotes.objects.filter(Name=selectedQuoteName).values_list('Contact', flat=True))
-        selectedQuoteContact = ''.join(selectedQuoteContact)
-        selectedQuoteQty = list(SavedQuotes.objects.filter(Name=selectedQuoteName).values_list('QtyLookup', flat=True))
+        UserLookUp[request.user.id + 'Name'] = request.POST['oldName']
+        UserLookUp[request.user.id + 'Company'] = list(SavedQuotes.objects.filter(Name=UserLookUp[request.user.id + 'Name']).values_list('Company', flat=True))
+        UserLookUp[request.user.id + 'Company'] = ''.join(UserLookUp[request.user.id + 'Company'])
+        UserLookUp[request.user.id + 'Contact'] = list(SavedQuotes.objects.filter(Name=UserLookUp[request.user.id + 'Name']).values_list('Contact', flat=True))
+        UserLookUp[request.user.id + 'Contact'] = ''.join(UserLookUp[request.user.id + 'Contact'])
+        selectedQuoteQty = list(SavedQuotes.objects.filter(Name=UserLookUp[request.user.id + 'Name']).values_list('QtyLookup', flat=True))
         selectedQuoteQty = ''.join(selectedQuoteQty)
         quantityList = selectedQuoteQty.split(',')
         quantityList.remove(' ')
@@ -331,9 +322,6 @@ def QuoteMaker(request):
     #gets alot of variables
     global total
     global UserLookUp
-    global selectedQuoteName
-    global selectedQuoteCompany
-    global selectedQuoteContact
     selectedProducts = UserLookUp.get(request.user.id, [])
     total = 0
     #use temporary variable o inorder to get the total price
@@ -352,9 +340,9 @@ def QuoteMaker(request):
         'quality': sorted(ProductsCommerxcatalogProducts.objects.values_list('category', flat=True).distinct()),
         'result': selectedProducts,
         'total': total,
-        'name': selectedQuoteName,
-        'company': selectedQuoteCompany,
-        'contact': selectedQuoteContact
+        'name': UserLookUp[request.user.id + 'Name'],
+        'company': UserLookUp[request.user.id + 'Company'],
+        'contact': UserLookUp[request.user.id + 'Contact']
     }
     #renders the page using the context
     return render(request, 'Quotes/QuoteMaker.html', context)
