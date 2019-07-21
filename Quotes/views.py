@@ -61,8 +61,8 @@ def delete(request):
         #runs the Quotemaker function inorder to render the page
         return QuoteMaker(request)
     if 'deleteQuote' in request.POST:
-        SavedQuotes.objects.filter(Name=UserLookUp.get(request.user.id + 'Name')).delete()
-        messages.success(request, "Successfully Deleted: "+ UserLookUp.get(request.user.id + 'Name'))
+        SavedQuotes.objects.filter(Name=UserLookUp.get(request.user.id + 'Name', "untitled")).delete()
+        messages.success(request, "Successfully Deleted: "+ UserLookUp.get(request.user.id + 'Name', "untitled"))
         #runs the select instead of Quotemaker because the quote the user was working on was delete so they need to get a new one
         return select(request)
 
@@ -117,8 +117,8 @@ def Pdf(request):
         'products': selectedProducts,
         'total': total,
         'User': request.user,
-        'company': UserLookUp.get(request.user.id + 'Company'),
-        'contact': UserLookUp.get(request.user.id + 'Contact'),
+        'company': UserLookUp.get(request.user.id + 'Company', "untitled"),
+        'contact': UserLookUp.get(request.user.id + 'Contact', "untitled"),
         #formats the data
         'Date': datetime.now().strftime("%Y-%m-%d")
     }
@@ -138,7 +138,7 @@ def CSV(request):
 
     response = HttpResponse(content_type='text/csv')
     #sets up file name to QuoteName
-    response['Content-Disposition'] = 'attachment; filename=' + UserLookUp.get(request.user.id + 'Name') + '.csv'.format(meta)
+    response['Content-Disposition'] = 'attachment; filename=' + UserLookUp.get(request.user.id + 'Name', "untitled") + '.csv'.format(meta)
     writer = csv.writer(response)
 
     #for the fields specified in field_name write all objects selected
@@ -280,11 +280,11 @@ def select(request):
         #map the set given to it as a dictonary think of ast.literal_eval like set_to_dict
         selectedQuote = ast.literal_eval(request.POST['old'])
         UserLookUp[request.user.id + 'Name'] = request.POST['oldName']
-        UserLookUp[request.user.id + 'Company'] = list(SavedQuotes.objects.filter(Name=UserLookUp.get(request.user.id + 'Name')).values_list('Company', flat=True))
-        UserLookUp[request.user.id + 'Company'] = ''.join(UserLookUp.get(request.user.id + 'Company'))
-        UserLookUp[request.user.id + 'Contact'] = list(SavedQuotes.objects.filter(Name=UserLookUp.get(request.user.id + 'Name')).values_list('Contact', flat=True))
-        UserLookUp[request.user.id + 'Contact'] = ''.join(UserLookUp.get(request.user.id + 'Contact'))
-        selectedQuoteQty = list(SavedQuotes.objects.filter(Name=UserLookUp.get(request.user.id + 'Name')).values_list('QtyLookup', flat=True))
+        UserLookUp[request.user.id + 'Company'] = list(SavedQuotes.objects.filter(Name=UserLookUp.get(request.user.id + 'Name', "untitled")).values_list('Company', flat=True))
+        UserLookUp[request.user.id + 'Company'] = ''.join(UserLookUp.get(request.user.id + 'Company', "untitled"))
+        UserLookUp[request.user.id + 'Contact'] = list(SavedQuotes.objects.filter(Name=UserLookUp.get(request.user.id + 'Name', "untitled")).values_list('Contact', flat=True))
+        UserLookUp[request.user.id + 'Contact'] = ''.join(UserLookUp.get(request.user.id + 'Contact', "untitled"))
+        selectedQuoteQty = list(SavedQuotes.objects.filter(Name=UserLookUp.get(request.user.id + 'Name', "untitled")).values_list('QtyLookup', flat=True))
         selectedQuoteQty = ''.join(selectedQuoteQty)
         quantityList = selectedQuoteQty.split(',')
         quantityList.remove(' ')
@@ -336,9 +336,9 @@ def QuoteMaker(request):
         'quality': sorted(ProductsCommerxcatalogProducts.objects.values_list('category', flat=True).distinct()),
         'result': selectedProducts,
         'total': total,
-        'name': UserLookUp.get(request.user.id + 'Name'),
-        'company': UserLookUp.get(request.user.id + 'Company'),
-        'contact': UserLookUp.get(request.user.id + 'Contact')
+        'name': UserLookUp.get(request.user.id + 'Name', "untitled"),
+        'company': UserLookUp.get(request.user.id + 'Company', "untitled"),
+        'contact': UserLookUp.get(request.user.id + 'Contact', "untitled")
     }
     #renders the page using the context
     return render(request, 'Quotes/QuoteMaker.html', context)
