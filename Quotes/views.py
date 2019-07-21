@@ -24,10 +24,6 @@ LookUp = {}
 UserLookUp = {}
 
 
-#Default values
-UserLookUp.get(request.user.id + 'Name') = 'untitled'
-UserLookUp.get(request.user.id + 'Company') = 'untitled'
-UserLookUp.get(request.user.id + 'Contact') = 'untitled'
 
 #add whatever you want here just resets values currently
 def home(request):
