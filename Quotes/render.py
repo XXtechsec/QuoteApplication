@@ -6,13 +6,14 @@ from django.template import RequestContext
 from django.conf import settings
 import os
 
+def fetch_resources(uri, rel):
+    if uri.startswith(sUrl):
+        sUrl = settings.STATIC_URL
+        sRoot = settings.STATIC_ROOT
+        path = os.path.join(sRoot, uri.replace(sUrl, ""))
+        return path
+
 class Render:
-    def fetch_resources(uri, rel):
-        if uri.startswith(sUrl):
-            sUrl = settings.STATIC_URL
-            sRoot = settings.STATIC_ROOT
-            path = os.path.join(sRoot, uri.replace(sUrl, ""))
-            return path
 
     def render(path: str, params: dict):
         template = get_template(path)
