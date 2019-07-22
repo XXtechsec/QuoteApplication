@@ -249,7 +249,7 @@ def search(request):
         search = request.POST['quoteSearch']
         LookUpQuote = {}
         #set the Quotes to those that have the same name as the search
-        for Name in SavedQuotes.objects.filter(Name__icontains=search).values_list('Name', flat=True):
+        for Name in SavedQuotes.objects.filter(Name__icontains=search).values_list('Name', flat=True) | SavedQuotes.objects.filter(Company__icontains=search).values_list('Name', flat=True):
             LookUpQuote.update({Name: [list(SavedQuotes.objects.filter(Name=Name).values_list('Services', flat=True)), list(SavedQuotes.objects.filter(Name=Name).values_list('Company', flat=True))[0]]})
 
         #gets all quotes if no search
