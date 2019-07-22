@@ -4,7 +4,6 @@ from django.template.loader import get_template
 import xhtml2pdf.pisa as pisa
 from django.template import RequestContext
 from django.conf import settings
-import ho.pisa as pisa
 import cStringIO as StringIO
 import cgi
 import os
