@@ -6,20 +6,13 @@ from django.template import RequestContext
 from django.conf import settings
 import os
 
-def fetch_resources(uri, rel):
-    if uri.startswith(sUrl):
-        sUrl = settings.STATIC_URL
-        sRoot = settings.STATIC_ROOT
-        path = os.path.join(sRoot, uri.replace(sUrl, ""))
-        return path
-
 class Render:
 
     def render(path: str, params: dict):
         template = get_template(path)
         html = template.render(params)
         response = BytesIO()
-        pdf = pisa.pisaDocument(BytesIO(html.encode("UTF-8")), response, link_callback=fetch_resources)
+        pdf = pisa.pisaDocument(BytesIO(html.encode("UTF-8")), response)
         if not pdf.err:
             return HttpResponse(response.getvalue(), content_type='application/pdf')
         else:
