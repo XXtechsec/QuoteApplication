@@ -146,3 +146,8 @@ STATIC_ROOT = "static"
 #set up where you get redirected
 LOGIN_REDIRECT_URL = 'home'
 LOGIN_URL = 'login'
+
+#ssl settings
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
