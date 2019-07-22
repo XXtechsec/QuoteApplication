@@ -235,7 +235,7 @@ def search(request):
     if 'userSearch' in request.POST:
         #gets the search and gets all Service obj with that description minus silver and gold
         search = request.POST['userSearch']
-        searchResults = ProductsCommerxcatalogProducts.objects.filter(Description__icontains=search).exclude(Description__contains="Silver").exclude(Description__contains="Gold")
+        searchResults = ProductsCommerxcatalogProducts.objects.filter(description__icontains=search).exclude(description__contains="Silver").exclude(description__contains="Gold")
 
         contextS = {
             'Service': searchResults.values('list', 'description', 'itemtype', 'category', 'vendorpartnumber', 'extralng01'),
@@ -332,8 +332,6 @@ def QuoteMaker(request):
     context = {
         'Service': ProductsCommerxcatalogProducts.objects.values('list', 'description', 'itemtype', 'category', 'vendorpartnumber', 'extralng01'),
         'LookUp': sorted(LookUp.items()),
-        'type': sorted(ProductsCommerxcatalogProducts.objects.values_list('itemtype', flat=True).distinct()),
-        'quality': sorted(ProductsCommerxcatalogProducts.objects.values_list('category', flat=True).distinct()),
         'result': selectedProducts,
         'total': total,
         'name': UserLookUp.get(str(request.user.id) + 'Name'),
