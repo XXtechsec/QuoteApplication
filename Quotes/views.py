@@ -306,7 +306,7 @@ def select(request):
         #if no select display all Quotes
         LookUpQuote = {}
         for Name in SavedQuotes.objects.values_list('Name', flat=True):
-            LookUpQuote.update({Name: [list(SavedQuotes.objects.filter(Name=Name).values_list('Services', flat=True)), list(SavedQuotes.objects.filter(Name=Name).values_list('Company', flat=True))]})
+            LookUpQuote.update({Name: [list(SavedQuotes.objects.filter(Name=Name).values_list('Services', flat=True)), SavedQuotes.objects.filter(Name=Name).values_list('Company', flat=True)]})
         contextSelect= {
             'LookUpQuote': LookUpQuote.items(),
         }
