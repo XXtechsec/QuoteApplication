@@ -7,12 +7,6 @@
   {% for T, SubType in LookUp %}
   {# make a button of type and on press uncollaspe a list of buttons of Subtype that on press uncollaspes a list of buttons of services #}
   {# using data-target to link each type to subtype #}
-  <button class="button" type="button" data-toggle="collapse" data-target="#n">
-    hi
-  </button>
-  <div class="collapse" id="n">
-    hi
-  </div>
   <button class="button" type="button" data-target="#{{ T|cut:" " |cut:"(" |cut:")" |cut:"x" }}" aria-expanded="false" data-toggle="collapse" aria-label="Toggle navigation">
     {{ T }}
   </button>
