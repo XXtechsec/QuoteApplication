@@ -249,13 +249,13 @@ def search(request):
         search = request.POST['quoteSearch']
         LookUpQuote = {}
         #set the Quotes to those that have the same name as the search
-        for Name in SavedQuotes.objects.filter(Name__icontains=search).values_list('Name', flat=True) | SavedQuotes.objects.filter(Company__icontains=search).values_list('Name', flat=True):
-            LookUpQuote.update({Name: (list(SavedQuotes.objects.filter(Name=Name).values_list('Services', flat=True)), list(SavedQuotes.objects.filter(Name=Name).values_list('Company', flat=True))) })
+        for Name in SavedQuotes.objects.filter(Name__icontains=search).values_list('Name', flat=True):
+            LookUpQuote.update({Name: list(SavedQuotes.objects.filter(Name=Name).values_list('Services', flat=True))})
 
         #gets all quotes if no search
         if search == None:
             for Name in SavedQuotes.objects.values_list('Name', flat=True):
-                LookUpQuote.update({Name: (list(SavedQuotes.objects.filter(Name=Name).values_list('Services', flat=True)), list(SavedQuotes.objects.filter(Name=Name).values_list('Company', flat=True))) })
+                LookUpQuote.update({Name: list(SavedQuotes.objects.filter(Name=Name).values_list('Services', flat=True))})
 
         contextS= {
             'LookUpQuote': LookUpQuote.items(),
@@ -306,9 +306,9 @@ def select(request):
         #if no select display all Quotes
         LookUpQuote = {}
         for Name in SavedQuotes.objects.values_list('Name', flat=True):
-            LookUpQuote.update({Name: [list(SavedQuotes.objects.filter(Name=Name).values_list('Services', flat=True)), list(SavedQuotes.objects.filter(Name=Name).values_list('Company', flat=True))] })
+            LookUpQuote.update({Name: list(SavedQuotes.objects.filter(Name=Name).values_list('Services', flat=True), SavedQuotes.objects.filter(Name=Name).values_list('Company', flat=True))})
         contextSelect= {
-            'Name': LookUpQuote.items(),
+            'LookUpQuote': LookUpQuote.items(),
         }
         return render(request, 'Quotes/select.html', contextSelect)
 
