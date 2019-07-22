@@ -263,7 +263,6 @@ def search(request):
         #render select.html with the given context
         return render(request, 'Quotes/select.html', contextS)
 
-@login_required
 def select(request):
     global UserLookUp
     selectedProducts = UserLookUp.get(request.user.id, [])
