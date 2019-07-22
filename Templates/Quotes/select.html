@@ -19,8 +19,10 @@
 {# runs select function in views with the name old, loading an old quote #}
 <form action="{% url 'select' %}" method="POST">{% csrf_token %}
   <button id=selectBtn class="button" data-toggle="collapse" aria-label="Toggle navigation" name='old' value= "{{ attributes.0 }}" type="submit">
-    {{ name }}
     <input style=display:none value="{{ name }}" name='oldName'>
+    <div align=<"left">
+     {{ name }}
+   </div>
     <div align="right">
      Client: {{attributes.1}}
    </div>
