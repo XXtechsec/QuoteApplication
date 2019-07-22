@@ -21,10 +21,10 @@
   <button id=selectBtn class="button" data-toggle="collapse" aria-label="Toggle navigation" name='old' value= "{{ attributes.0 }}" type="submit">
     {{ name }}
     <input style=display:none value="{{ name }}" name='oldName'>
+    <div align="right">
+     Client: {{attributes.1}}
+   </div>
   </button>
-  <div align="right">
-   Client: {{attributes.1}}
-</div>
 </form>
 
 {%endfor%}
