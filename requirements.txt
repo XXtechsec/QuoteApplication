@@ -4,5 +4,5 @@ xhtml2pdf==0.2.3
 pyodbc==4.0.26
 django-pyodbc-azure==2.1
 django-xhtml2pdf==0.0.4
-Pillow==6.1.0
+Pillow==6.2.0
 pytz==2019.1
